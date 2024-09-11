@@ -1,0 +1,6 @@
+edgedb-postgis is Copyright 2023-present EdgeDB Inc.
+It is licensed under the GNU General Public License, version 2.0
+
+PostGIS is also licensed GNU General Public License, version 2.0.
+More information about its license and its dependencies are available
+in LICENSE-postgis.txt.
