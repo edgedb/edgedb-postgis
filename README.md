@@ -2,3 +2,8 @@
 
 Currently ``make`` and the ``gen_ext_postgis.py`` script should be run
 from inside an edgedb development venv.
+
+To build, install, and test into a dev env:
+- ``make``
+- ``edb load-ext postgis--3.4.2.zip``
+- ``edb test tests/test_edgeql_postgis.py``
