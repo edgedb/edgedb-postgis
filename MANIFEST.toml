@@ -1,0 +1,4 @@
+name = "postgis"
+version = "3.4.2"
+files = ["postgis.edgeql"]
+postgres_files = "pg"
