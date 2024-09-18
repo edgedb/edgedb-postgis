@@ -4,8 +4,12 @@ EXTRA_FILES := LICENSE LICENSE-postgis.txt NOTICE
 
 CUSTOM_SQL_BUILD := 1
 
-MKS := $(shell edb config --make-include)
+### Boilerplate
+PYTHON := python3
+EDB := $(PYTHON) -m edb.tools $(EDBFLAGS)
+MKS := $(shell $(EDB) config --make-include)
 include $(MKS)
+### End Boilerplate
 
 $(SQL_STAMP): MANIFEST.toml postgis/NEWS Makefile
 	cd postgis && sh autogen.sh
