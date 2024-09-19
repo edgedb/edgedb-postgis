@@ -8,6 +8,7 @@ CUSTOM_SQL_BUILD := 1
 PYTHON := python3
 EDB := $(PYTHON) -m edb.tools $(EDBFLAGS)
 MKS := $(shell $(EDB) config --make-include)
+MKS := exts.mk
 include $(MKS)
 ### End Boilerplate
 

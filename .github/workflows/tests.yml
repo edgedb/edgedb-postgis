@@ -1,0 +1,88 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+      - ci*
+  pull_request:
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: bash
+
+    env:
+      PIP_DISABLE_PIP_VERSION_CHECK: 1
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12"]
+        edgedb-version: [nightly]
+        os: [ubuntu-24.04]
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 50
+        submodules: true
+
+    - name: Install EdgeDB
+      uses: edgedb/setup-edgedb@v1
+      with:
+        server-version: ${{ matrix.edgedb-version }}
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Find the edgedb directory
+      run: |
+        echo EDBDIR=$(dirname $(which edgedb-server)) >> $GITHUB_ENV
+
+    - name: Register deb-src repositories
+      run: |
+        sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources
+        sudo apt-get update
+
+    # There is some sort of weird github postgres installed that is
+    # causing problems with doing the build-dep installation, so blow
+    # it away first.
+    - name: Remove initially installed Postgres
+      run: |
+        sudo apt-get remove $(dpkg --get-selections | grep postgres | cut -f1)
+
+    - name: Install PostGIS build deps
+      run: |
+        sudo apt-get build-dep --ignore-missing postgis
+
+    - name: Install Postgres
+      run: |
+        sudo apt-get install postgresql-16 postgresql-server-dev-16
+
+    - name: Query pg_config sigh
+      run: |
+        /usr/bin/pg_config
+
+    - name: Build extension package
+      run: |
+        make -j8 PYTHON=$EDBDIR/python3 EDBFLAGS=--no-devmode PG_CONFIG=/usr/bin/pg_config
+        unzip -l postgis--3.4.2.zip
+
+    - name: Install extension package
+      run: |
+        $EDBDIR/edgedb-load-ext postgis--*.zip
+        # XXX: HACK: work around a bug in load-ext and copy the files
+        # to the right directory
+        # mv $($EDBDIR/pg_config --libdir)/{postgis*.so,address_standardizer-3.so} $($EDBDIR/pg_config --pkglibdir)
+
+    - name: Test
+      run: |
+        EDGEDB_DEBUG_SERVER=1 $EDBDIR/python3 -m edb.tools --no-devmode test -v -j1 tests/test_edgeql_postgis.py
