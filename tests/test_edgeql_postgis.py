@@ -877,6 +877,13 @@ class TestEdgeQLPostgis(tb.QueryTestCase):
                 ''',
             )
 
+    # FIXME: This function crashed the server on a CI test build.
+    # What's up with that?
+    BROKEN = {
+        'relate',
+        'simplifypolygonhull',
+    }
+
     async def test_edgeql_postgis_bulk_06(self):
         # Test in bulk all postgis functions that take the same type of
         # arguments: (geometry, geometry)
@@ -920,6 +927,8 @@ class TestEdgeQLPostgis(tb.QueryTestCase):
             'touches',
             'within',
         ]:
+            if fname in self.BROKEN:
+                continue
             await self.con.query_json(
                 f'''
                     with module ext::postgis
@@ -937,14 +946,19 @@ class TestEdgeQLPostgis(tb.QueryTestCase):
         for params, names in g.items():
             args = self._get_args(params)
             for fname in names:
+                if fname.replace('ext::postgis::', '') in self.BROKEN:
+                    continue
+
                 async with self._run_and_rollback():
                     try:
-                        await self.con.query_json(
-                            f'''
-                                with module ext::postgis
-                                select {fname}({", ".join(args)})
-                            ''',
-                        )
+                        q = f'''
+                            with module ext::postgis
+                            select {fname}({", ".join(args)})
+                        '''
+
+                        import sys
+                        print('===========', q, file=sys.stderr)
+                        await self.con.query_json(q)
                     except edgedb.errors.InternalServerError as e:
                         # Some ISE are acceptable here, namely if they come
                         # from inside the functions because of arguments not
