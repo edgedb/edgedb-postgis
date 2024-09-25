@@ -62,11 +62,13 @@ create extension package postgis version '3.4.2' {
     create scalar type ext::postgis::box2d extending std::anyscalar {
         set id := <uuid>"7fae5536-6311-4f60-8eb9-096a5d972f48";
         set sql_type := "box2d";
+        set custom_sql_serialization := "geometry";
     };
 
     create scalar type ext::postgis::box3d extending std::anyscalar {
         set id := <uuid>"c1a50ff8-fded-48b0-85c2-4905a8481433";
         set sql_type := "box3d";
+        set custom_sql_serialization := "geometry";
     };
 
     create cast from ext::postgis::geometry to std::json {
@@ -270,6 +272,13 @@ create extension package postgis version '3.4.2' {
         SELECT val::geography;
         $$;
     };
+
+    create index match for ext::postgis::geometry using pg::gist;
+    create index match for ext::postgis::geometry using pg::spgist;
+    create index match for ext::postgis::geometry using pg::brin;
+    create index match for ext::postgis::geography using pg::gist;
+    create index match for ext::postgis::geography using pg::spgist;
+    create index match for ext::postgis::geography using pg::brin;
 
     create function ext::postgis::letters(letters: std::str, font: optional std::json = {}) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';

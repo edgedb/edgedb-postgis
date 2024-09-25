@@ -44,6 +44,32 @@ EQLINDENT = '.. eql:function:: '
 SIGINDENT = ' ' * len(EQLINDENT)
 INDENT = '    '
 MAXLENGTH = 79
+# These functions return NULL (empty set) on some inputs
+OPT_RETURN_FUNC = {
+    'linefromtext',
+    'mlinefromtext',
+    'linefromwkb',
+    'mlinefromwkb',
+    'multilinefromwkb',
+    'pointfromtext',
+    'pointfromwkb',
+    'mpointfromtext',
+    'mpointfromwkb',
+    'multipointfromtext',
+    'multipointfromwkb',
+    'geomcollfromtext',
+    'geomcollfromwkb',
+    'polyfromtext',
+    'polyfromwkb',
+    'polygonfromtext',
+    'polygonfromwkb',
+    'mpolyfromtext',
+    'mpolyfromwkb',
+    'multipolyfromwkb',
+    'multipolygonfromtext',
+    'linestringfromwkb',
+    'multilinestringfromtext',
+}
 
 
 def die(msg):
@@ -542,6 +568,11 @@ def generate_eqlfunc(functions, comments):
                     # rather than integer codes.
                     continue
 
+                if not is_strict or eqlname in OPT_RETURN_FUNC:
+                    returning_typemod = qltypes.TypeModifier.OptionalType
+                else:
+                    returning_typemod = qltypes.TypeModifier.SingletonType
+
                 ef = qlast.CreateFunction(
                     name=qlast.ObjectRef(
                         name=eqlname,
@@ -550,9 +581,7 @@ def generate_eqlfunc(functions, comments):
                     ),
                     params=params,
                     returning=rettype,
-                    returning_typemod=qltypes.TypeModifier.SingletonType
-                                      if is_strict else
-                                      qltypes.TypeModifier.OptionalType,
+                    returning_typemod=returning_typemod,
                     code=code,
                     commands=commands,
                 )
@@ -715,17 +744,15 @@ def get_func_categories(eqlfunc):
     return func_categories
 
 
-def rst_make_body(text, indent_level=1):
-    indent = INDENT * indent_level
-
+def rst_make_body(text):
     if '\n' in text:
         # assume it's formatted already
         return text
 
     else:
         body = textwrap.indent(
-            '\n'.join(textwrap.wrap(text, MAXLENGTH - len(indent))),
-            indent,
+            '\n'.join(textwrap.wrap(text, MAXLENGTH - len(INDENT))),
+            INDENT,
         )
         return f'\n{body}'
 
@@ -767,7 +794,7 @@ def rst_print_functions(func_dict, func_docs, is_operator=False, file=None):
                 r'SELECT a (\S+) b', ef.code.code).group(1)
             print(
                 rst_make_body(
-                    f'This is exposing the ``{sql_name}`` operator.', 1),
+                    f'This is exposing the ``{sql_name}`` operator.'),
                 file=file,
             )
 
@@ -778,10 +805,10 @@ def rst_print_functions(func_dict, func_docs, is_operator=False, file=None):
                 if '\n' not in x and len(x) > 79:
                     print(len(x), sql_name, x)
                 else:
-                    print(rst_make_body(x, 1), file=file)
+                    print(rst_make_body(x), file=file)
 
             print(
-                rst_make_body(f'This is exposing ``{sql_name}``.', 1),
+                rst_make_body(f'This is exposing ``{sql_name}``.'),
                 file=file,
             )
 
@@ -813,13 +840,13 @@ def main(show_broken=False):
 
     # XXX: This is kind of hacky, and requires the build to be already done.
     parse_postgis_extension(
-        base_build / 'pg/share/extension',
+        base_build / 'pg' / 'share' / 'extension',
         functions, aggregates, comments, aggcomments, operators,
     )
     eqlop = generate_eqlop(operators, functions)
 
     # Specific for .rst
-    func_docs = read_xml(base_build / 'postgis/src/doc')
+    func_docs = read_xml(base_build / 'postgis' / 'src' / 'doc')
 
     # remove functions corresponding to operators
     for op in operators:

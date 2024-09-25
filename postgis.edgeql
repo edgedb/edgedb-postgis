@@ -62,11 +62,13 @@ create extension package postgis version '3.4.2' {
     create scalar type ext::postgis::box2d extending std::anyscalar {
         set id := <uuid>"7fae5536-6311-4f60-8eb9-096a5d972f48";
         set sql_type := "box2d";
+        set custom_sql_serialization := "geometry";
     };
 
     create scalar type ext::postgis::box3d extending std::anyscalar {
         set id := <uuid>"c1a50ff8-fded-48b0-85c2-4905a8481433";
         set sql_type := "box3d";
+        set custom_sql_serialization := "geometry";
     };
 
     create cast from ext::postgis::geometry to std::json {
@@ -270,6 +272,13 @@ create extension package postgis version '3.4.2' {
         SELECT val::geography;
         $$;
     };
+
+    create index match for ext::postgis::geometry using pg::gist;
+    create index match for ext::postgis::geometry using pg::spgist;
+    create index match for ext::postgis::geometry using pg::brin;
+    create index match for ext::postgis::geography using pg::gist;
+    create index match for ext::postgis::geography using pg::spgist;
+    create index match for ext::postgis::geography using pg::brin;
 
     create function ext::postgis::letters(letters: std::str, font: optional std::json = {}) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
@@ -3040,127 +3049,127 @@ create extension package postgis version '3.4.2' {
         using sql $$SELECT st_geomfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::pointfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::pointfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_pointfromtext("a0")$$;
     };
 
-    create function ext::postgis::pointfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::pointfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_pointfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::linefromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::linefromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_linefromtext("a0")$$;
     };
 
-    create function ext::postgis::linefromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::linefromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_linefromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::polyfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::polyfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polyfromtext("a0")$$;
     };
 
-    create function ext::postgis::polyfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::polyfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polyfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::polygonfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::polygonfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polygonfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::polygonfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::polygonfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polygonfromtext("a0")$$;
     };
 
-    create function ext::postgis::mlinefromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::mlinefromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mlinefromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::mlinefromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::mlinefromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mlinefromtext("a0")$$;
     };
 
-    create function ext::postgis::multilinestringfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::multilinestringfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multilinestringfromtext("a0")$$;
     };
 
-    create function ext::postgis::multilinestringfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::multilinestringfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multilinestringfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::mpointfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::mpointfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpointfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::mpointfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::mpointfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpointfromtext("a0")$$;
     };
 
-    create function ext::postgis::multipointfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::multipointfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql function 'st_multipointfromtext';
     };
 
-    create function ext::postgis::mpolyfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::mpolyfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpolyfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::mpolyfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::mpolyfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpolyfromtext("a0")$$;
     };
 
-    create function ext::postgis::multipolygonfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::multipolygonfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multipolygonfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::multipolygonfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::multipolygonfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multipolygonfromtext("a0")$$;
     };
 
-    create function ext::postgis::geomcollfromtext(a0: std::str, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::geomcollfromtext(a0: std::str, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_geomcollfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::geomcollfromtext(a0: std::str) ->  ext::postgis::geometry {
+    create function ext::postgis::geomcollfromtext(a0: std::str) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_geomcollfromtext("a0")$$;
@@ -3178,139 +3187,139 @@ create extension package postgis version '3.4.2' {
         using sql $$SELECT st_geomfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::pointfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::pointfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_pointfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::pointfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::pointfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_pointfromwkb("a0")$$;
     };
 
-    create function ext::postgis::linefromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::linefromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_linefromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::linefromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::linefromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_linefromwkb("a0")$$;
     };
 
-    create function ext::postgis::linestringfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::linestringfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_linestringfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::linestringfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::linestringfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_linestringfromwkb("a0")$$;
     };
 
-    create function ext::postgis::polyfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::polyfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polyfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::polyfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::polyfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polyfromwkb("a0")$$;
     };
 
-    create function ext::postgis::polygonfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::polygonfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polygonfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::polygonfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::polygonfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_polygonfromwkb("a0")$$;
     };
 
-    create function ext::postgis::mpointfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::mpointfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpointfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::mpointfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::mpointfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpointfromwkb("a0")$$;
     };
 
-    create function ext::postgis::multipointfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::multipointfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multipointfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::multipointfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::multipointfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multipointfromwkb("a0")$$;
     };
 
-    create function ext::postgis::multilinefromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::multilinefromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql function 'st_multilinefromwkb';
     };
 
-    create function ext::postgis::mlinefromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::mlinefromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mlinefromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::mlinefromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::mlinefromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mlinefromwkb("a0")$$;
     };
 
-    create function ext::postgis::mpolyfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::mpolyfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpolyfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::mpolyfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::mpolyfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_mpolyfromwkb("a0")$$;
     };
 
-    create function ext::postgis::multipolyfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::multipolyfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multipolyfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::multipolyfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::multipolyfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_multipolyfromwkb("a0")$$;
     };
 
-    create function ext::postgis::geomcollfromwkb(a0: std::bytes, a1: std::int64) ->  ext::postgis::geometry {
+    create function ext::postgis::geomcollfromwkb(a0: std::bytes, a1: std::int64) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_geomcollfromwkb("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::geomcollfromwkb(a0: std::bytes) ->  ext::postgis::geometry {
+    create function ext::postgis::geomcollfromwkb(a0: std::bytes) -> optional ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
         using sql $$SELECT st_geomcollfromwkb("a0")$$;
