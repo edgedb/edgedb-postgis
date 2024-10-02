@@ -5,5 +5,5 @@ from inside an edgedb development venv.
 
 To build, install, and test into a dev env:
 - ``make``
-- ``edb load-ext postgis--3.4.2.zip``
+- ``edb load-ext postgis--3.4.3.zip``
 - ``edb test tests/test_edgeql_postgis.py``
