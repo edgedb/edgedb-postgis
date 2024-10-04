@@ -74,7 +74,7 @@ jobs:
     - name: Build extension package
       run: |
         make -j8 PYTHON=$EDBDIR/python3 EDBFLAGS=--no-devmode PG_CONFIG=/usr/bin/pg_config
-        unzip -l postgis--3.4.2.zip
+        unzip -l postgis--3.4.3.zip
 
     - name: Install extension package
       run: |
