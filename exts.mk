@@ -18,8 +18,11 @@ SQL_DEPS := $(call rwildcard,$(SQL_MODULE),*.c *.h *.sql *.control Makefile)
 SQL_BUILD_STAMP := build/.sql_build_stamp
 SQL_INSTALL_STAMP := build/.sql_install_stamp
 EDGEQL_INSTALL_STAMP := build/.edgeql_install_stamp
+INSTALLABLES := MANIFEST.toml
 
 ifeq ($(strip $(WITH_SQL)),yes)
+
+INSTALLABLES += lib/ share/
 
 ifeq ($(origin PG_CONFIG), undefined)
 EDB := $(PYTHON) -m edb.tools $(EDBFLAGS)
@@ -52,6 +55,8 @@ $(SQL_INSTALL_STAMP):
 	touch $(SQL_INSTALL_STAMP)
 endif
 ifeq ($(strip $(WITH_EDGEQL)),yes)
+INSTALLABLES += $(EDGEQL_SRCS) $(EXTRA_FILES)
+
 $(EDGEQL_INSTALL_STAMP): MANIFEST.toml $(EDGEQL_SRCS) $(EXTRA_FILES) Makefile
 	mkdir -p build/$(EXT_FNAME)
 	cp $(EDGEQL_SRCS) build/$(EXT_FNAME)
@@ -69,7 +74,7 @@ build: $(EDGEQL_INSTALL_STAMP) $(SQL_INSTALL_STAMP)
 install: build
 	if [ -z "$(DESTDIR)" ]; then echo "DESTDIR must be set" >&2; exit 1; fi
 	mkdir -p "$(DESTDIR)"
-	cd "build/$(EXT_FNAME)" && cp -r MANIFEST.toml $(EDGEQL_SRCS) $(EXTRA_FILES) lib/ share/ "${DESTDIR}/"
+	cd "build/$(EXT_FNAME)" && cp -r $(INSTALLABLES) "${DESTDIR}/"
 
 $(EXT_FNAME).zip: build
 	rm -f $(EXT_FNAME).zip
