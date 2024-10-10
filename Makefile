@@ -5,10 +5,9 @@ EXTRA_FILES := LICENSE LICENSE-postgis.txt NOTICE
 CUSTOM_SQL_BUILD := 1
 
 ### Boilerplate
-# PYTHON := python3
-# EDB := $(PYTHON) -m edb.tools $(EDBFLAGS)
-# MKS := $(shell $(EDB) config --make-include)
-MKS := exts.mk
+PYTHON := python3
+EDB := $(PYTHON) -m edb.tools $(EDBFLAGS)
+MKS := $(shell $(EDB) config --make-include)
 include $(MKS)
 ### End Boilerplate
 
