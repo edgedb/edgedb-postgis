@@ -1,0 +1,1796 @@
+name: Build Test and Publish Nightly Packages
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs: {}
+  push:
+    branches:
+      - nightly
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    outputs:
+      branch: ${{ steps.whichver.outputs.branch }}
+
+
+
+      if_debian_buster_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_debian_buster_x86_64_edgedb_6_dev8877 }}
+
+      if_debian_buster_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_debian_buster_aarch64_edgedb_6_dev8877 }}
+
+      if_debian_bullseye_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_debian_bullseye_x86_64_edgedb_6_dev8877 }}
+
+      if_debian_bullseye_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_debian_bullseye_aarch64_edgedb_6_dev8877 }}
+
+      if_debian_bookworm_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_debian_bookworm_x86_64_edgedb_6_dev8877 }}
+
+      if_debian_bookworm_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_debian_bookworm_aarch64_edgedb_6_dev8877 }}
+
+      if_ubuntu_bionic_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_bionic_x86_64_edgedb_6_dev8877 }}
+
+      if_ubuntu_bionic_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_bionic_aarch64_edgedb_6_dev8877 }}
+
+      if_ubuntu_focal_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_focal_x86_64_edgedb_6_dev8877 }}
+
+      if_ubuntu_focal_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_focal_aarch64_edgedb_6_dev8877 }}
+
+      if_ubuntu_jammy_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_jammy_x86_64_edgedb_6_dev8877 }}
+
+      if_ubuntu_jammy_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_jammy_aarch64_edgedb_6_dev8877 }}
+
+      if_ubuntu_noble_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_noble_x86_64_edgedb_6_dev8877 }}
+
+      if_ubuntu_noble_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_ubuntu_noble_aarch64_edgedb_6_dev8877 }}
+
+      if_centos_8_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_centos_8_x86_64_edgedb_6_dev8877 }}
+
+      if_centos_8_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_centos_8_aarch64_edgedb_6_dev8877 }}
+
+      if_rockylinux_9_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_rockylinux_9_x86_64_edgedb_6_dev8877 }}
+
+      if_rockylinux_9_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_rockylinux_9_aarch64_edgedb_6_dev8877 }}
+
+      if_linux_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_linux_x86_64_edgedb_6_dev8877 }}
+
+      if_linux_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_linux_aarch64_edgedb_6_dev8877 }}
+
+      if_linuxmusl_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_linuxmusl_x86_64_edgedb_6_dev8877 }}
+
+      if_linuxmusl_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_linuxmusl_aarch64_edgedb_6_dev8877 }}
+
+      if_macos_x86_64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_macos_x86_64_edgedb_6_dev8877 }}
+
+      if_macos_aarch64_edgedb_6_dev8877: ${{ steps.scm.outputs.if_macos_aarch64_edgedb_6_dev8877 }}
+
+
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Determine package version
+      shell: bash
+      run: |
+        branch=${GITHUB_REF#refs/heads/}
+        echo branch="${branch}" >> $GITHUB_OUTPUT
+      id: whichver
+
+
+    - name: Determine SCM revision
+      id: scm
+      shell: bash
+      run: |
+        rev=$(git rev-parse HEAD)
+        jq_filter='.packages[] | select(.basename == $NAME) | select(.architecture == $ARCH) | .version_details.metadata.scm_revision | . as $rev | select(($rev != null) and ($REV | startswith($rev)))'
+
+
+        key="debian-buster-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=buster.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="debian-buster-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=buster.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="debian-bullseye-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=bullseye.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="debian-bullseye-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=bullseye.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="debian-bookworm-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=bookworm.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="debian-bookworm-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=bookworm.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-bionic-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=bionic.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-bionic-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=bionic.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-focal-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=focal.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-focal-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=focal.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-jammy-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=jammy.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-jammy-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=jammy.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-noble-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=noble.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="ubuntu-noble-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=noble.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="centos-8-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=el8.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="centos-8-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=el8.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="rockylinux-9-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=el9.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="rockylinux-9-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        idx_file=el9.nightly.json
+        if [ ! -e "/tmp/$idx_file" ]; then
+          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        fi
+        if [ -e "/tmp/$idx_file" ]; then
+          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="linux-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
+        if [ -n "$out" ]; then
+          echo "Skip rebuilding existing ${key}"
+          val=false
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="linux-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
+        if [ -n "$out" ]; then
+          echo "Skip rebuilding existing ${key}"
+          val=false
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="linuxmusl-x86_64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
+        if [ -n "$out" ]; then
+          echo "Skip rebuilding existing ${key}"
+          val=false
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        key="linuxmusl-aarch64-edgedb-6-dev8877"
+        name="edgedb-server-6-dev8877-postgis"
+        val=true
+
+        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
+        if [ -n "$out" ]; then
+          echo "Skip rebuilding existing ${key}"
+          val=false
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+
+        val=true
+
+        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
+        if [ -n "$out" ]; then
+          echo "Skip rebuilding existing ${key}"
+          val=false
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+        val=true
+
+        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
+        if [ -n "$out" ]; then
+          echo "Skip rebuilding existing ${key}"
+          val=false
+        fi
+
+        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+
+
+
+
+  build-debian-buster-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_debian_buster_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/debian-buster@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "buster"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-debian-buster-x86_64
+        path: artifacts/debian-buster
+
+  build-debian-buster-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_debian_buster_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/debian-buster@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "buster"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-debian-buster-aarch64
+        path: artifacts/debian-buster
+
+  build-debian-bullseye-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_debian_bullseye_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/debian-bullseye@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bullseye"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-debian-bullseye-x86_64
+        path: artifacts/debian-bullseye
+
+  build-debian-bullseye-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_debian_bullseye_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/debian-bullseye@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bullseye"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-debian-bullseye-aarch64
+        path: artifacts/debian-bullseye
+
+  build-debian-bookworm-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_debian_bookworm_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/debian-bookworm@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bookworm"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-debian-bookworm-x86_64
+        path: artifacts/debian-bookworm
+
+  build-debian-bookworm-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_debian_bookworm_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/debian-bookworm@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bookworm"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-debian-bookworm-aarch64
+        path: artifacts/debian-bookworm
+
+  build-ubuntu-bionic-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_bionic_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "bionic"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-bionic-x86_64
+        path: artifacts/ubuntu-bionic
+
+  build-ubuntu-bionic-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_bionic_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "bionic"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-bionic-aarch64
+        path: artifacts/ubuntu-bionic
+
+  build-ubuntu-focal-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_focal_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-focal@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "focal"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-focal-x86_64
+        path: artifacts/ubuntu-focal
+
+  build-ubuntu-focal-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_focal_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-focal@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "focal"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-focal-aarch64
+        path: artifacts/ubuntu-focal
+
+  build-ubuntu-jammy-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_jammy_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-jammy@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "jammy"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-jammy-x86_64
+        path: artifacts/ubuntu-jammy
+
+  build-ubuntu-jammy-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_jammy_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-jammy@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "jammy"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-jammy-aarch64
+        path: artifacts/ubuntu-jammy
+
+  build-ubuntu-noble-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_noble_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-noble@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "noble"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-noble-x86_64
+        path: artifacts/ubuntu-noble
+
+  build-ubuntu-noble-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_ubuntu_noble_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-noble@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "noble"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-ubuntu-noble-aarch64
+        path: artifacts/ubuntu-noble
+
+  build-centos-8-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_centos_8_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/centos-8@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "centos"
+        PKG_PLATFORM_VERSION: "8"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-centos-8-x86_64
+        path: artifacts/centos-8
+
+  build-centos-8-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_centos_8_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/centos-8@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "centos"
+        PKG_PLATFORM_VERSION: "8"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-centos-8-aarch64
+        path: artifacts/centos-8
+
+  build-rockylinux-9-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_rockylinux_9_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/rockylinux-9@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "rockylinux"
+        PKG_PLATFORM_VERSION: "9"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-rockylinux-9-x86_64
+        path: artifacts/rockylinux-9
+
+  build-rockylinux-9-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_rockylinux_9_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/rockylinux-9@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "rockylinux"
+        PKG_PLATFORM_VERSION: "9"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-rockylinux-9-aarch64
+        path: artifacts/rockylinux-9
+
+  build-linux-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_linux_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/linux-x86_64@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "x86_64"
+        EXTRA_OPTIMIZATIONS: "true"
+        BUILD_GENERIC: true
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-linux-x86_64
+        path: artifacts/linux-x86_64
+
+  build-linux-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_linux_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/linux-aarch64@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "aarch64"
+        EXTRA_OPTIMIZATIONS: "true"
+        BUILD_GENERIC: true
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-linux-aarch64
+        path: artifacts/linux-aarch64
+
+  build-linuxmusl-x86_64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
+    needs: prep
+
+    if: needs.prep.outputs.if_linuxmusl_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/linuxmusl-x86_64@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "x86_64"
+        EXTRA_OPTIMIZATIONS: "true"
+        BUILD_GENERIC: true
+        PKG_PLATFORM_LIBC: "musl"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-linuxmusl-x86_64
+        path: artifacts/linuxmusl-x86_64
+
+  build-linuxmusl-aarch64-edgedb-6-dev8877:
+    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
+    needs: prep
+
+    if: needs.prep.outputs.if_linuxmusl_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Build
+      uses: edgedb/edgedb-pkg/integration/linux/build/linuxmusl-aarch64@master
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "aarch64"
+        EXTRA_OPTIMIZATIONS: "true"
+        BUILD_GENERIC: true
+        PKG_PLATFORM_LIBC: "musl"
+        METAPKG_GIT_CACHE: disabled
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-linuxmusl-aarch64
+        path: artifacts/linuxmusl-aarch64
+
+  build-macos-x86_64-edgedb-6-dev8877:
+    runs-on: ['macos-13']
+    needs: prep
+
+    if: needs.prep.outputs.if_macos_x86_64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Update Homebrew before installing Rust toolchain
+      run: |
+        # Homebrew renamed `rustup-init` to `rustup`:
+        #   https://github.com/Homebrew/homebrew-core/pull/177840
+        # But the GitHub Action runner is not updated with this change yet.
+        # This caused the later `brew update` in step `Build` to relink Rust
+        # toolchain executables, overwriting the custom toolchain installed by
+        # `dsherret/rust-toolchain-file`. So let's just run `brew update` early.
+        brew update
+
+    - uses: actions/checkout@v4
+      if: true
+      with:
+        sparse-checkout: |
+          rust-toolchain.toml
+        sparse-checkout-cone-mode: false
+
+    - name: Install Rust toolchain
+      uses: dsherret/rust-toolchain-file@v1
+      if: true
+
+    - uses: actions/checkout@v4
+      with:
+        repository: edgedb/edgedb-pkg
+        ref: master
+        path: edgedb-pkg
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      if: true
+      with:
+        python-version: "3.x"
+
+    - name: Set up NodeJS
+      uses: actions/setup-node@v4
+      if: true
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      if: true
+      run: |
+        env HOMEBREW_NO_AUTO_UPDATE=1 brew install libmagic
+
+    - name: Build
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "macos"
+        PKG_PLATFORM_VERSION: "x86_64"
+        PKG_PLATFORM_ARCH: "x86_64"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+        BUILD_GENERIC: true
+      run: |
+        edgedb-pkg/integration/macos/build.sh
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-macos-x86_64
+        path: artifacts/macos-x86_64
+
+  build-macos-aarch64-edgedb-6-dev8877:
+    runs-on: ['macos-14']
+    needs: prep
+
+    if: needs.prep.outputs.if_macos_aarch64_edgedb_6_dev8877 == 'true'
+
+
+    steps:
+    - name: Update Homebrew before installing Rust toolchain
+      run: |
+        # Homebrew renamed `rustup-init` to `rustup`:
+        #   https://github.com/Homebrew/homebrew-core/pull/177840
+        # But the GitHub Action runner is not updated with this change yet.
+        # This caused the later `brew update` in step `Build` to relink Rust
+        # toolchain executables, overwriting the custom toolchain installed by
+        # `dsherret/rust-toolchain-file`. So let's just run `brew update` early.
+        brew update
+
+    - uses: actions/checkout@v4
+      if: true
+      with:
+        sparse-checkout: |
+          rust-toolchain.toml
+        sparse-checkout-cone-mode: false
+
+    - name: Install Rust toolchain
+      uses: dsherret/rust-toolchain-file@v1
+      if: true
+
+    - uses: actions/checkout@v4
+      with:
+        repository: edgedb/edgedb-pkg
+        ref: master
+        path: edgedb-pkg
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      if: true
+      with:
+        python-version: "3.x"
+
+    - name: Set up NodeJS
+      uses: actions/setup-node@v4
+      if: true
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      if: true
+      run: |
+        env HOMEBREW_NO_AUTO_UPDATE=1 brew install libmagic
+
+    - name: Build
+      env:
+        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
+        SRC_REF: "6-dev8877!${{ github.sha }}"
+        PKG_REVISION: "<current-date>"
+        PKG_TAGS: "extension=postgis"
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "macos"
+        PKG_PLATFORM_VERSION: "aarch64"
+        PKG_PLATFORM_ARCH: "aarch64"
+        EXTRA_OPTIMIZATIONS: "true"
+        METAPKG_GIT_CACHE: disabled
+        BUILD_GENERIC: true
+      run: |
+        edgedb-pkg/integration/macos/build.sh
+
+    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
+      with:
+        name: builds-macos-aarch64
+        path: artifacts/macos-aarch64
+
+  publish-debian-buster-x86_64-edgedb-6-dev8877:
+    needs: [build-debian-buster-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-debian-buster-x86_64-edgedb-6-dev8877
+        path: artifacts/debian-buster
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "buster"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-debian-buster-aarch64-edgedb-6-dev8877:
+    needs: [build-debian-buster-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-debian-buster-aarch64-edgedb-6-dev8877
+        path: artifacts/debian-buster
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "buster"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-debian-bullseye-x86_64-edgedb-6-dev8877:
+    needs: [build-debian-bullseye-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-debian-bullseye-x86_64-edgedb-6-dev8877
+        path: artifacts/debian-bullseye
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bullseye"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-debian-bullseye-aarch64-edgedb-6-dev8877:
+    needs: [build-debian-bullseye-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-debian-bullseye-aarch64-edgedb-6-dev8877
+        path: artifacts/debian-bullseye
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bullseye"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-debian-bookworm-x86_64-edgedb-6-dev8877:
+    needs: [build-debian-bookworm-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-debian-bookworm-x86_64-edgedb-6-dev8877
+        path: artifacts/debian-bookworm
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bookworm"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-debian-bookworm-aarch64-edgedb-6-dev8877:
+    needs: [build-debian-bookworm-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-debian-bookworm-aarch64-edgedb-6-dev8877
+        path: artifacts/debian-bookworm
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "debian"
+        PKG_PLATFORM_VERSION: "bookworm"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-bionic-x86_64-edgedb-6-dev8877:
+    needs: [build-ubuntu-bionic-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-bionic-x86_64-edgedb-6-dev8877
+        path: artifacts/ubuntu-bionic
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "bionic"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-bionic-aarch64-edgedb-6-dev8877:
+    needs: [build-ubuntu-bionic-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-bionic-aarch64-edgedb-6-dev8877
+        path: artifacts/ubuntu-bionic
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "bionic"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-focal-x86_64-edgedb-6-dev8877:
+    needs: [build-ubuntu-focal-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-focal-x86_64-edgedb-6-dev8877
+        path: artifacts/ubuntu-focal
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "focal"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-focal-aarch64-edgedb-6-dev8877:
+    needs: [build-ubuntu-focal-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-focal-aarch64-edgedb-6-dev8877
+        path: artifacts/ubuntu-focal
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "focal"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-jammy-x86_64-edgedb-6-dev8877:
+    needs: [build-ubuntu-jammy-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-jammy-x86_64-edgedb-6-dev8877
+        path: artifacts/ubuntu-jammy
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "jammy"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-jammy-aarch64-edgedb-6-dev8877:
+    needs: [build-ubuntu-jammy-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-jammy-aarch64-edgedb-6-dev8877
+        path: artifacts/ubuntu-jammy
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "jammy"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-noble-x86_64-edgedb-6-dev8877:
+    needs: [build-ubuntu-noble-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-noble-x86_64-edgedb-6-dev8877
+        path: artifacts/ubuntu-noble
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "noble"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-ubuntu-noble-aarch64-edgedb-6-dev8877:
+    needs: [build-ubuntu-noble-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-ubuntu-noble-aarch64-edgedb-6-dev8877
+        path: artifacts/ubuntu-noble
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "ubuntu"
+        PKG_PLATFORM_VERSION: "noble"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-centos-8-x86_64-edgedb-6-dev8877:
+    needs: [build-centos-8-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-centos-8-x86_64-edgedb-6-dev8877
+        path: artifacts/centos-8
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "centos"
+        PKG_PLATFORM_VERSION: "8"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-centos-8-aarch64-edgedb-6-dev8877:
+    needs: [build-centos-8-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-centos-8-aarch64-edgedb-6-dev8877
+        path: artifacts/centos-8
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "centos"
+        PKG_PLATFORM_VERSION: "8"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-rockylinux-9-x86_64-edgedb-6-dev8877:
+    needs: [build-rockylinux-9-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-rockylinux-9-x86_64-edgedb-6-dev8877
+        path: artifacts/rockylinux-9
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "rockylinux"
+        PKG_PLATFORM_VERSION: "9"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-rockylinux-9-aarch64-edgedb-6-dev8877:
+    needs: [build-rockylinux-9-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-rockylinux-9-aarch64-edgedb-6-dev8877
+        path: artifacts/rockylinux-9
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "rockylinux"
+        PKG_PLATFORM_VERSION: "9"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-linux-x86_64-edgedb-6-dev8877:
+    needs: [build-linux-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-linux-x86_64-edgedb-6-dev8877
+        path: artifacts/linux-x86_64
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "x86_64"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-linux-aarch64-edgedb-6-dev8877:
+    needs: [build-linux-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-linux-aarch64-edgedb-6-dev8877
+        path: artifacts/linux-aarch64
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "aarch64"
+        PKG_PLATFORM_LIBC: ""
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-linuxmusl-x86_64-edgedb-6-dev8877:
+    needs: [build-linuxmusl-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-linuxmusl-x86_64-edgedb-6-dev8877
+        path: artifacts/linuxmusl-x86_64
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "x86_64"
+        PKG_PLATFORM_LIBC: "musl"
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-linuxmusl-aarch64-edgedb-6-dev8877:
+    needs: [build-linuxmusl-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-linuxmusl-aarch64-edgedb-6-dev8877
+        path: artifacts/linuxmusl-aarch64
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
+        PKG_PLATFORM: "linux"
+        PKG_PLATFORM_VERSION: "aarch64"
+        PKG_PLATFORM_LIBC: "musl"
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-macos-x86_64:
+    needs: [build-macos-x86_64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-macos-x86_64-edgedb-6-dev8877
+        path: artifacts/macos-x86_64
+
+    - uses: actions/checkout@v4
+      with:
+        repository: edgedb/edgedb-pkg
+        ref: master
+        path: edgedb-pkg
+
+    - name: Describe
+      id: describe
+      uses: edgedb/edgedb-pkg/integration/actions/describe-artifact@master
+      with:
+        target: macos-x86_64
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "macos"
+        PKG_PLATFORM_VERSION: "x86_64"
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  publish-macos-aarch64:
+    needs: [build-macos-aarch64-edgedb-6-dev8877]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
+      with:
+        name: builds-macos-aarch64-edgedb-6-dev8877
+        path: artifacts/macos-aarch64
+
+    - uses: actions/checkout@v4
+      with:
+        repository: edgedb/edgedb-pkg
+        ref: master
+        path: edgedb-pkg
+
+    - name: Describe
+      id: describe
+      uses: edgedb/edgedb-pkg/integration/actions/describe-artifact@master
+      with:
+        target: macos-aarch64
+
+    - name: Publish
+      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
+      env:
+        PKG_SUBDIST: "nightly"
+        PKG_PLATFORM: "macos"
+        PKG_PLATFORM_VERSION: "aarch64"
+        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
+
+  workflow-notifications:
+    if: failure() && github.event_name != 'pull_request'
+    name: Notify in Slack on failures
+
+    needs:
+      - prep
+      - build-debian-buster-x86_64-edgedb-6-dev8877
+      - publish-debian-buster-x86_64-edgedb-6-dev8877
+      - check-published-debian-buster-x86_64-edgedb-6-dev8877
+      - build-debian-buster-aarch64-edgedb-6-dev8877
+      - publish-debian-buster-aarch64-edgedb-6-dev8877
+      - check-published-debian-buster-aarch64-edgedb-6-dev8877
+      - build-debian-bullseye-x86_64-edgedb-6-dev8877
+      - publish-debian-bullseye-x86_64-edgedb-6-dev8877
+      - check-published-debian-bullseye-x86_64-edgedb-6-dev8877
+      - build-debian-bullseye-aarch64-edgedb-6-dev8877
+      - publish-debian-bullseye-aarch64-edgedb-6-dev8877
+      - check-published-debian-bullseye-aarch64-edgedb-6-dev8877
+      - build-debian-bookworm-x86_64-edgedb-6-dev8877
+      - publish-debian-bookworm-x86_64-edgedb-6-dev8877
+      - check-published-debian-bookworm-x86_64-edgedb-6-dev8877
+      - build-debian-bookworm-aarch64-edgedb-6-dev8877
+      - publish-debian-bookworm-aarch64-edgedb-6-dev8877
+      - check-published-debian-bookworm-aarch64-edgedb-6-dev8877
+      - build-ubuntu-bionic-x86_64-edgedb-6-dev8877
+      - publish-ubuntu-bionic-x86_64-edgedb-6-dev8877
+      - check-published-ubuntu-bionic-x86_64-edgedb-6-dev8877
+      - build-ubuntu-bionic-aarch64-edgedb-6-dev8877
+      - publish-ubuntu-bionic-aarch64-edgedb-6-dev8877
+      - check-published-ubuntu-bionic-aarch64-edgedb-6-dev8877
+      - build-ubuntu-focal-x86_64-edgedb-6-dev8877
+      - publish-ubuntu-focal-x86_64-edgedb-6-dev8877
+      - check-published-ubuntu-focal-x86_64-edgedb-6-dev8877
+      - build-ubuntu-focal-aarch64-edgedb-6-dev8877
+      - publish-ubuntu-focal-aarch64-edgedb-6-dev8877
+      - check-published-ubuntu-focal-aarch64-edgedb-6-dev8877
+      - build-ubuntu-jammy-x86_64-edgedb-6-dev8877
+      - publish-ubuntu-jammy-x86_64-edgedb-6-dev8877
+      - check-published-ubuntu-jammy-x86_64-edgedb-6-dev8877
+      - build-ubuntu-jammy-aarch64-edgedb-6-dev8877
+      - publish-ubuntu-jammy-aarch64-edgedb-6-dev8877
+      - check-published-ubuntu-jammy-aarch64-edgedb-6-dev8877
+      - build-ubuntu-noble-x86_64-edgedb-6-dev8877
+      - publish-ubuntu-noble-x86_64-edgedb-6-dev8877
+      - check-published-ubuntu-noble-x86_64-edgedb-6-dev8877
+      - build-ubuntu-noble-aarch64-edgedb-6-dev8877
+      - publish-ubuntu-noble-aarch64-edgedb-6-dev8877
+      - check-published-ubuntu-noble-aarch64-edgedb-6-dev8877
+      - build-centos-8-x86_64-edgedb-6-dev8877
+      - publish-centos-8-x86_64-edgedb-6-dev8877
+      - check-published-centos-8-x86_64-edgedb-6-dev8877
+      - build-centos-8-aarch64-edgedb-6-dev8877
+      - publish-centos-8-aarch64-edgedb-6-dev8877
+      - check-published-centos-8-aarch64-edgedb-6-dev8877
+      - build-rockylinux-9-x86_64-edgedb-6-dev8877
+      - publish-rockylinux-9-x86_64-edgedb-6-dev8877
+      - check-published-rockylinux-9-x86_64-edgedb-6-dev8877
+      - build-rockylinux-9-aarch64-edgedb-6-dev8877
+      - publish-rockylinux-9-aarch64-edgedb-6-dev8877
+      - check-published-rockylinux-9-aarch64-edgedb-6-dev8877
+      - build-linux-x86_64-edgedb-6-dev8877
+      - publish-linux-x86_64-edgedb-6-dev8877
+      - check-published-linux-x86_64-edgedb-6-dev8877
+      - build-linux-aarch64-edgedb-6-dev8877
+      - publish-linux-aarch64-edgedb-6-dev8877
+      - check-published-linux-aarch64-edgedb-6-dev8877
+      - build-linuxmusl-x86_64-edgedb-6-dev8877
+      - publish-linuxmusl-x86_64-edgedb-6-dev8877
+      - check-published-linuxmusl-x86_64-edgedb-6-dev8877
+      - build-linuxmusl-aarch64-edgedb-6-dev8877
+      - publish-linuxmusl-aarch64-edgedb-6-dev8877
+      - check-published-linuxmusl-aarch64-edgedb-6-dev8877
+      - build-macos-x86_64-edgedb-6-dev8877
+      - publish-macos-x86_64
+      - build-macos-aarch64-edgedb-6-dev8877
+      - publish-macos-aarch64
+    runs-on: ubuntu-latest
+    permissions:
+      actions: 'read'
+    steps:
+      - name: Slack Workflow Notification
+        uses: Gamesight/slack-workflow-status@26a36836c887f260477432e4314ec3490a84f309
+        with:
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+          slack_webhook_url: ${{secrets.ACTIONS_SLACK_WEBHOOK_URL}}
+          name: 'Workflow notifications'
+          icon_emoji: ':hammer:'
+          include_jobs: 'on-failure'
