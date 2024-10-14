@@ -34,7 +34,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "debian"
         PKG_PLATFORM_VERSION: "buster"
         EXTRA_OPTIMIZATIONS: "true"
@@ -43,7 +43,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-x86_64
+        name: builds-debian-buster-x86_64-edgedb-6-dev8877
         path: artifacts/debian-buster
 
   build-debian-buster-aarch64-edgedb-6-dev8877:
@@ -58,7 +58,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "debian"
         PKG_PLATFORM_VERSION: "buster"
         EXTRA_OPTIMIZATIONS: "true"
@@ -67,7 +67,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-aarch64
+        name: builds-debian-buster-aarch64-edgedb-6-dev8877
         path: artifacts/debian-buster
 
   build-debian-bullseye-x86_64-edgedb-6-dev8877:
@@ -82,7 +82,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "debian"
         PKG_PLATFORM_VERSION: "bullseye"
         EXTRA_OPTIMIZATIONS: "true"
@@ -91,7 +91,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-x86_64
+        name: builds-debian-bullseye-x86_64-edgedb-6-dev8877
         path: artifacts/debian-bullseye
 
   build-debian-bullseye-aarch64-edgedb-6-dev8877:
@@ -106,7 +106,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "debian"
         PKG_PLATFORM_VERSION: "bullseye"
         EXTRA_OPTIMIZATIONS: "true"
@@ -115,7 +115,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-aarch64
+        name: builds-debian-bullseye-aarch64-edgedb-6-dev8877
         path: artifacts/debian-bullseye
 
   build-debian-bookworm-x86_64-edgedb-6-dev8877:
@@ -130,7 +130,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "debian"
         PKG_PLATFORM_VERSION: "bookworm"
         EXTRA_OPTIMIZATIONS: "true"
@@ -139,7 +139,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-x86_64
+        name: builds-debian-bookworm-x86_64-edgedb-6-dev8877
         path: artifacts/debian-bookworm
 
   build-debian-bookworm-aarch64-edgedb-6-dev8877:
@@ -154,7 +154,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "debian"
         PKG_PLATFORM_VERSION: "bookworm"
         EXTRA_OPTIMIZATIONS: "true"
@@ -163,7 +163,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-aarch64
+        name: builds-debian-bookworm-aarch64-edgedb-6-dev8877
         path: artifacts/debian-bookworm
 
   build-ubuntu-bionic-x86_64-edgedb-6-dev8877:
@@ -178,7 +178,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "bionic"
         EXTRA_OPTIMIZATIONS: "true"
@@ -187,7 +187,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-bionic-x86_64
+        name: builds-ubuntu-bionic-x86_64-edgedb-6-dev8877
         path: artifacts/ubuntu-bionic
 
   build-ubuntu-bionic-aarch64-edgedb-6-dev8877:
@@ -202,7 +202,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "bionic"
         EXTRA_OPTIMIZATIONS: "true"
@@ -211,7 +211,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-bionic-aarch64
+        name: builds-ubuntu-bionic-aarch64-edgedb-6-dev8877
         path: artifacts/ubuntu-bionic
 
   build-ubuntu-focal-x86_64-edgedb-6-dev8877:
@@ -226,7 +226,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "focal"
         EXTRA_OPTIMIZATIONS: "true"
@@ -235,7 +235,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-x86_64
+        name: builds-ubuntu-focal-x86_64-edgedb-6-dev8877
         path: artifacts/ubuntu-focal
 
   build-ubuntu-focal-aarch64-edgedb-6-dev8877:
@@ -250,7 +250,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "focal"
         EXTRA_OPTIMIZATIONS: "true"
@@ -259,7 +259,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-aarch64
+        name: builds-ubuntu-focal-aarch64-edgedb-6-dev8877
         path: artifacts/ubuntu-focal
 
   build-ubuntu-jammy-x86_64-edgedb-6-dev8877:
@@ -274,7 +274,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "jammy"
         EXTRA_OPTIMIZATIONS: "true"
@@ -283,7 +283,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-x86_64
+        name: builds-ubuntu-jammy-x86_64-edgedb-6-dev8877
         path: artifacts/ubuntu-jammy
 
   build-ubuntu-jammy-aarch64-edgedb-6-dev8877:
@@ -298,7 +298,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "jammy"
         EXTRA_OPTIMIZATIONS: "true"
@@ -307,7 +307,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-aarch64
+        name: builds-ubuntu-jammy-aarch64-edgedb-6-dev8877
         path: artifacts/ubuntu-jammy
 
   build-ubuntu-noble-x86_64-edgedb-6-dev8877:
@@ -322,7 +322,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "noble"
         EXTRA_OPTIMIZATIONS: "true"
@@ -331,7 +331,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-x86_64
+        name: builds-ubuntu-noble-x86_64-edgedb-6-dev8877
         path: artifacts/ubuntu-noble
 
   build-ubuntu-noble-aarch64-edgedb-6-dev8877:
@@ -346,7 +346,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "ubuntu"
         PKG_PLATFORM_VERSION: "noble"
         EXTRA_OPTIMIZATIONS: "true"
@@ -355,7 +355,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-aarch64
+        name: builds-ubuntu-noble-aarch64-edgedb-6-dev8877
         path: artifacts/ubuntu-noble
 
   build-centos-8-x86_64-edgedb-6-dev8877:
@@ -370,7 +370,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "centos"
         PKG_PLATFORM_VERSION: "8"
         EXTRA_OPTIMIZATIONS: "true"
@@ -379,7 +379,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-x86_64
+        name: builds-centos-8-x86_64-edgedb-6-dev8877
         path: artifacts/centos-8
 
   build-centos-8-aarch64-edgedb-6-dev8877:
@@ -394,7 +394,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "centos"
         PKG_PLATFORM_VERSION: "8"
         EXTRA_OPTIMIZATIONS: "true"
@@ -403,7 +403,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-aarch64
+        name: builds-centos-8-aarch64-edgedb-6-dev8877
         path: artifacts/centos-8
 
   build-rockylinux-9-x86_64-edgedb-6-dev8877:
@@ -418,7 +418,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "rockylinux"
         PKG_PLATFORM_VERSION: "9"
         EXTRA_OPTIMIZATIONS: "true"
@@ -427,7 +427,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-x86_64
+        name: builds-rockylinux-9-x86_64-edgedb-6-dev8877
         path: artifacts/rockylinux-9
 
   build-rockylinux-9-aarch64-edgedb-6-dev8877:
@@ -442,7 +442,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "rockylinux"
         PKG_PLATFORM_VERSION: "9"
         EXTRA_OPTIMIZATIONS: "true"
@@ -451,7 +451,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-aarch64
+        name: builds-rockylinux-9-aarch64-edgedb-6-dev8877
         path: artifacts/rockylinux-9
 
   build-linux-x86_64-edgedb-6-dev8877:
@@ -466,7 +466,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "linux"
         PKG_PLATFORM_VERSION: "x86_64"
         EXTRA_OPTIMIZATIONS: "true"
@@ -476,7 +476,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-x86_64
+        name: builds-linux-x86_64-edgedb-6-dev8877
         path: artifacts/linux-x86_64
 
   build-linux-aarch64-edgedb-6-dev8877:
@@ -491,7 +491,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "linux"
         PKG_PLATFORM_VERSION: "aarch64"
         EXTRA_OPTIMIZATIONS: "true"
@@ -501,7 +501,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-aarch64
+        name: builds-linux-aarch64-edgedb-6-dev8877
         path: artifacts/linux-aarch64
 
   build-linuxmusl-x86_64-edgedb-6-dev8877:
@@ -516,7 +516,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "linux"
         PKG_PLATFORM_VERSION: "x86_64"
         EXTRA_OPTIMIZATIONS: "true"
@@ -527,7 +527,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-x86_64
+        name: builds-linuxmusl-x86_64-edgedb-6-dev8877
         path: artifacts/linuxmusl-x86_64
 
   build-linuxmusl-aarch64-edgedb-6-dev8877:
@@ -542,7 +542,7 @@ jobs:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "linux"
         PKG_PLATFORM_VERSION: "aarch64"
         EXTRA_OPTIMIZATIONS: "true"
@@ -553,7 +553,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-aarch64
+        name: builds-linuxmusl-aarch64-edgedb-6-dev8877
         path: artifacts/linuxmusl-aarch64
 
   build-macos-x86_64-edgedb-6-dev8877:
@@ -562,26 +562,6 @@ jobs:
 
 
     steps:
-    - name: Update Homebrew before installing Rust toolchain
-      run: |
-        # Homebrew renamed `rustup-init` to `rustup`:
-        #   https://github.com/Homebrew/homebrew-core/pull/177840
-        # But the GitHub Action runner is not updated with this change yet.
-        # This caused the later `brew update` in step `Build` to relink Rust
-        # toolchain executables, overwriting the custom toolchain installed by
-        # `dsherret/rust-toolchain-file`. So let's just run `brew update` early.
-        brew update
-
-    - uses: actions/checkout@v4
-      if: true
-      with:
-        sparse-checkout: |
-          rust-toolchain.toml
-        sparse-checkout-cone-mode: false
-
-    - name: Install Rust toolchain
-      uses: dsherret/rust-toolchain-file@v1
-      if: true
 
     - uses: actions/checkout@v4
       with:
@@ -612,7 +592,7 @@ jobs:
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         BUILD_IS_RELEASE: "true"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "macos"
         PKG_PLATFORM_VERSION: "x86_64"
         PKG_PLATFORM_ARCH: "x86_64"
@@ -624,7 +604,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-x86_64
+        name: builds-macos-x86_64-edgedb-6-dev8877
         path: artifacts/macos-x86_64
 
   build-macos-aarch64-edgedb-6-dev8877:
@@ -633,26 +613,6 @@ jobs:
 
 
     steps:
-    - name: Update Homebrew before installing Rust toolchain
-      run: |
-        # Homebrew renamed `rustup-init` to `rustup`:
-        #   https://github.com/Homebrew/homebrew-core/pull/177840
-        # But the GitHub Action runner is not updated with this change yet.
-        # This caused the later `brew update` in step `Build` to relink Rust
-        # toolchain executables, overwriting the custom toolchain installed by
-        # `dsherret/rust-toolchain-file`. So let's just run `brew update` early.
-        brew update
-
-    - uses: actions/checkout@v4
-      if: true
-      with:
-        sparse-checkout: |
-          rust-toolchain.toml
-        sparse-checkout-cone-mode: false
-
-    - name: Install Rust toolchain
-      uses: dsherret/rust-toolchain-file@v1
-      if: true
 
     - uses: actions/checkout@v4
       with:
@@ -683,7 +643,7 @@ jobs:
         SRC_REF: "6-dev8877!${{ needs.prep.outputs.branch }}"
         BUILD_IS_RELEASE: "true"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=6-dev8877"
         PKG_PLATFORM: "macos"
         PKG_PLATFORM_VERSION: "aarch64"
         PKG_PLATFORM_ARCH: "aarch64"
@@ -695,7 +655,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-aarch64
+        name: builds-macos-aarch64-edgedb-6-dev8877
         path: artifacts/macos-aarch64
   collect:
     needs:
@@ -1212,70 +1172,48 @@ jobs:
       - collect
       - build-debian-buster-x86_64-edgedb-6-dev8877
       - publish-debian-buster-x86_64-edgedb-6-dev8877
-      - check-published-debian-buster-x86_64-edgedb-6-dev8877
       - build-debian-buster-aarch64-edgedb-6-dev8877
       - publish-debian-buster-aarch64-edgedb-6-dev8877
-      - check-published-debian-buster-aarch64-edgedb-6-dev8877
       - build-debian-bullseye-x86_64-edgedb-6-dev8877
       - publish-debian-bullseye-x86_64-edgedb-6-dev8877
-      - check-published-debian-bullseye-x86_64-edgedb-6-dev8877
       - build-debian-bullseye-aarch64-edgedb-6-dev8877
       - publish-debian-bullseye-aarch64-edgedb-6-dev8877
-      - check-published-debian-bullseye-aarch64-edgedb-6-dev8877
       - build-debian-bookworm-x86_64-edgedb-6-dev8877
       - publish-debian-bookworm-x86_64-edgedb-6-dev8877
-      - check-published-debian-bookworm-x86_64-edgedb-6-dev8877
       - build-debian-bookworm-aarch64-edgedb-6-dev8877
       - publish-debian-bookworm-aarch64-edgedb-6-dev8877
-      - check-published-debian-bookworm-aarch64-edgedb-6-dev8877
       - build-ubuntu-bionic-x86_64-edgedb-6-dev8877
       - publish-ubuntu-bionic-x86_64-edgedb-6-dev8877
-      - check-published-ubuntu-bionic-x86_64-edgedb-6-dev8877
       - build-ubuntu-bionic-aarch64-edgedb-6-dev8877
       - publish-ubuntu-bionic-aarch64-edgedb-6-dev8877
-      - check-published-ubuntu-bionic-aarch64-edgedb-6-dev8877
       - build-ubuntu-focal-x86_64-edgedb-6-dev8877
       - publish-ubuntu-focal-x86_64-edgedb-6-dev8877
-      - check-published-ubuntu-focal-x86_64-edgedb-6-dev8877
       - build-ubuntu-focal-aarch64-edgedb-6-dev8877
       - publish-ubuntu-focal-aarch64-edgedb-6-dev8877
-      - check-published-ubuntu-focal-aarch64-edgedb-6-dev8877
       - build-ubuntu-jammy-x86_64-edgedb-6-dev8877
       - publish-ubuntu-jammy-x86_64-edgedb-6-dev8877
-      - check-published-ubuntu-jammy-x86_64-edgedb-6-dev8877
       - build-ubuntu-jammy-aarch64-edgedb-6-dev8877
       - publish-ubuntu-jammy-aarch64-edgedb-6-dev8877
-      - check-published-ubuntu-jammy-aarch64-edgedb-6-dev8877
       - build-ubuntu-noble-x86_64-edgedb-6-dev8877
       - publish-ubuntu-noble-x86_64-edgedb-6-dev8877
-      - check-published-ubuntu-noble-x86_64-edgedb-6-dev8877
       - build-ubuntu-noble-aarch64-edgedb-6-dev8877
       - publish-ubuntu-noble-aarch64-edgedb-6-dev8877
-      - check-published-ubuntu-noble-aarch64-edgedb-6-dev8877
       - build-centos-8-x86_64-edgedb-6-dev8877
       - publish-centos-8-x86_64-edgedb-6-dev8877
-      - check-published-centos-8-x86_64-edgedb-6-dev8877
       - build-centos-8-aarch64-edgedb-6-dev8877
       - publish-centos-8-aarch64-edgedb-6-dev8877
-      - check-published-centos-8-aarch64-edgedb-6-dev8877
       - build-rockylinux-9-x86_64-edgedb-6-dev8877
       - publish-rockylinux-9-x86_64-edgedb-6-dev8877
-      - check-published-rockylinux-9-x86_64-edgedb-6-dev8877
       - build-rockylinux-9-aarch64-edgedb-6-dev8877
       - publish-rockylinux-9-aarch64-edgedb-6-dev8877
-      - check-published-rockylinux-9-aarch64-edgedb-6-dev8877
       - build-linux-x86_64-edgedb-6-dev8877
       - publish-linux-x86_64-edgedb-6-dev8877
-      - check-published-linux-x86_64-edgedb-6-dev8877
       - build-linux-aarch64-edgedb-6-dev8877
       - publish-linux-aarch64-edgedb-6-dev8877
-      - check-published-linux-aarch64-edgedb-6-dev8877
       - build-linuxmusl-x86_64-edgedb-6-dev8877
       - publish-linuxmusl-x86_64-edgedb-6-dev8877
-      - check-published-linuxmusl-x86_64-edgedb-6-dev8877
       - build-linuxmusl-aarch64-edgedb-6-dev8877
       - publish-linuxmusl-aarch64-edgedb-6-dev8877
-      - check-published-linuxmusl-aarch64-edgedb-6-dev8877
       - build-macos-x86_64-edgedb-6-dev8877
       - publish-macos-x86_64
       - build-macos-aarch64-edgedb-6-dev8877

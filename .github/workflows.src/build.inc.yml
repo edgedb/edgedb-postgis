@@ -64,9 +64,11 @@
           val=false
         fi
 <% endif %>
-        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+        echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 <% endfor %>
 <% for tgt in targets.macos %>
+        key="<< tgt.name >>-edgedb-<< server >>"
+        name="edgedb-server-<< server >>-postgis"
         val=true
 <% if tgt.platform == "macos" %>
         out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/<< tgt.platform_version >>-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "<< tgt.arch >>" "$jq_filter" || true)
@@ -81,7 +83,7 @@
           val=false
         fi
 <% endif %>
-        echo if_${key//-/_} >>="$val" >> $GITHUB_OUTPUT
+        echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 <% endfor %>
 <% endfor %>
 <% endif %>
@@ -109,7 +111,7 @@
         SRC_REF: "<< server >>!${{ github.sha }}"
         <%- endif %>
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=<< server >>"
         <%- if subdist != "" %>
         PKG_SUBDIST: "<< subdist >>"
         <%- endif %>
@@ -129,7 +131,7 @@
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-<< tgt.name >>
+        name: builds-<< key >>
         path: artifacts/<< plat_id >>
 <%- endfor %>
 
@@ -145,26 +147,6 @@
 <% endif %>
 
     steps:
-    - name: Update Homebrew before installing Rust toolchain
-      run: |
-        # Homebrew renamed `rustup-init` to `rustup`:
-        #   https://github.com/Homebrew/homebrew-core/pull/177840
-        # But the GitHub Action runner is not updated with this change yet.
-        # This caused the later `brew update` in step `Build` to relink Rust
-        # toolchain executables, overwriting the custom toolchain installed by
-        # `dsherret/rust-toolchain-file`. So let's just run `brew update` early.
-        brew update
-
-    - uses: actions/checkout@v4
-      if: << 'false' if tgt.runs_on and 'self-hosted' in tgt.runs_on else 'true' >>
-      with:
-        sparse-checkout: |
-          rust-toolchain.toml
-        sparse-checkout-cone-mode: false
-
-    - name: Install Rust toolchain
-      uses: dsherret/rust-toolchain-file@v1
-      if: << 'false' if tgt.runs_on and 'self-hosted' in tgt.runs_on else 'true' >>
 
     - uses: actions/checkout@v4
       with:
@@ -201,7 +183,7 @@
         BUILD_IS_RELEASE: "true"
         <%- endif %>
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis"
+        PKG_TAGS: "extension=postgis,server_slot=<< server >>"
         <%- if subdist != "" %>
         PKG_SUBDIST: "<< subdist >>"
         <%- endif %>
@@ -218,7 +200,7 @@
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-<< tgt.name >>
+        name: builds-<< key >>
         path: artifacts/<< plat_id >>
 <%- endfor %>
 <%- endfor %>
@@ -328,7 +310,6 @@
       - build-<< key >>
     <%- for publish in publications %>
       - publish<< publish.suffix>>-<< key >>
-      - check-published<< publish.suffix>>-<< key >>
     <%- endfor %>
     <%- endfor %>
     <%- for tgt in targets.macos %>
