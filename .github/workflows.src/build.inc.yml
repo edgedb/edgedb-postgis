@@ -112,6 +112,7 @@
         <%- endif %>
         PKG_REVISION: "<current-date>"
         PKG_TAGS: "extension=postgis,server_slot=<< server >>"
+        PKG_COMPRESSION: "zstd,zip"
         <%- if subdist != "" %>
         PKG_SUBDIST: "<< subdist >>"
         <%- endif %>
@@ -184,6 +185,7 @@
         <%- endif %>
         PKG_REVISION: "<current-date>"
         PKG_TAGS: "extension=postgis,server_slot=<< server >>"
+        PKG_COMPRESSION: "zstd,zip"
         <%- if subdist != "" %>
         PKG_SUBDIST: "<< subdist >>"
         <%- endif %>
