@@ -557,7 +557,7 @@ jobs:
         path: artifacts/linuxmusl-aarch64
 
   build-macos-x86_64-edgedb-6-dev8877:
-    runs-on: ['macos-13']
+    runs-on: ['macos-14']
     needs: prep
 
 
