@@ -65,7 +65,10 @@ jobs:
 
     - name: Install Postgres
       run: |
-        sudo apt-get install postgresql-16 postgresql-server-dev-16
+        sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+        curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+        sudo apt-get update
+        sudo apt-get install postgresql-17 postgresql-server-dev-17
 
     - name: Query pg_config sigh
       run: |
@@ -80,9 +83,6 @@ jobs:
     - name: Install extension package
       run: |
         $EDBDIR/edgedb-load-ext postgis--*.zip
-        # XXX: HACK: work around a bug in load-ext and copy the files
-        # to the right directory
-        # mv $($EDBDIR/pg_config --libdir)/{postgis*.so,address_standardizer-3.so} $($EDBDIR/pg_config --pkglibdir)
 
     - name: Test
       run: |
