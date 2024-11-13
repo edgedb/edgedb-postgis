@@ -83,9 +83,6 @@ jobs:
     - name: Install extension package
       run: |
         $EDBDIR/edgedb-load-ext postgis--*.zip
-        # XXX: HACK: work around a bug in load-ext and copy the files
-        # to the right directory
-        # mv $($EDBDIR/pg_config --libdir)/{postgis*.so,address_standardizer-3.so} $($EDBDIR/pg_config --pkglibdir)
 
     - name: Test
       run: |
