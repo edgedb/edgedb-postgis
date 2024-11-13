@@ -65,7 +65,7 @@ jobs:
 
     - name: Install Postgres
       run: |
-        sudo apt-get install postgresql-16 postgresql-server-dev-16
+        sudo apt-get install postgresql-17 postgresql-server-dev-17
 
     - name: Query pg_config sigh
       run: |
