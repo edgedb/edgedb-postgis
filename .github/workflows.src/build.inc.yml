@@ -5,6 +5,7 @@
       branch: ${{ steps.whichver.outputs.branch }}
 <% if subdist == "nightly" %>
 <% for server in servers %>
+<%- set server = server.replace(".", "-") -%>
 <% for tgt in targets.linux + targets.macos %>
 <%- set key = tgt.name + "-edgedb-" + server %>
       if_<< key.replace('-', '_') >>: ${{ steps.scm.outputs.if_<< key.replace('-', '_') >> }}
@@ -29,6 +30,7 @@
         rev=$(git rev-parse HEAD)
         jq_filter='.packages[] | select(.basename == $NAME) | select(.architecture == $ARCH) | .version_details.metadata.scm_revision | . as $rev | select(($rev != null) and ($REV | startswith($rev)))'
 <% for server in servers %>
+<%- set server = server.replace(".", "-") -%>
 <% for tgt in targets.linux %>
         key="<< tgt.name >>-edgedb-<< server >>"
         name="edgedb-server-<< server >>-postgis"
@@ -89,6 +91,7 @@
 <% endif %>
 
 <%- for server in servers %>
+<%- set server = server.replace(".", "-") -%>
 <%- for tgt in targets.linux %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
 <%- set key = tgt.name + "-edgedb-" + server %>
@@ -211,6 +214,7 @@
   collect:
     needs:
     <%- for server in servers %>
+    <%- set server = server.replace(".", "-") -%>
     <%- for tgt in targets.linux + targets.macos %>
     <%- set key = tgt.name + "-edgedb-" + server %>
     - build-<< key >>
@@ -222,6 +226,7 @@
 <%- endif %>
 
 <%- for server in servers %>
+<%- set server = server.replace(".", "-") -%>
 <%- for tgt in targets.linux %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
 <%- set key = tgt.name + "-edgedb-" + server %>
@@ -257,6 +262,7 @@
 
 <%- if publications %>
 <%- for server in servers %>
+<%- set server = server.replace(".", "-") -%>
 <%- for tgt in targets.macos %>
 <%- set key = tgt.name + "-edgedb-" + server %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
@@ -307,6 +313,7 @@
     <%- else %>
     <%- endif %>
     <%- for server in servers %>
+    <%- set server = server.replace(".", "-") -%>
     <%- for tgt in targets.linux %>
     <%- set key = tgt.name + "-edgedb-" + server %>
       - build-<< key >>
