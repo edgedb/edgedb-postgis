@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #
 # This source file is part of the EdgeDB open source project.
 #
@@ -403,7 +404,7 @@ def parse_postgis_extension(
     for fpath in root.glob('postgis*.sql'):
         name = fpath.name
         # We might scan more postgis extension files
-        if name in {'postgis--3.4.3.sql'}:
+        if name in {'postgis--3.5.0.sql'}:
             with open(fpath, mode='rt') as f:
                 sql_query = ''.join(
                     line for line in f.readlines()
