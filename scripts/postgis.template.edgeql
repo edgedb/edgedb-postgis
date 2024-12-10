@@ -17,9 +17,9 @@
 #
 
 
-create extension package postgis version '3.4.3' {
+create extension package postgis version '3.5.0' {
     set ext_module := "ext::postgis";
-    set sql_extensions := ["postgis >=3.4.3,<4.0.0"];
+    set sql_extensions := ["postgis >=3.5.0,<4.0.0"];
 
     set sql_setup_script := $$
         -- Make it possible to have `!=`, `?!=`, and `not in` for geometry
