@@ -22,29 +22,11 @@ create extension package postgis version '3.5.0' {
     set sql_extensions := ["postgis >=3.5.0,<4.0.0"];
 
     set sql_setup_script := $$
-        -- Make it possible to have `!=`, `?!=`, and `not in` for geometry
-        CREATE FUNCTION edgedb.geo_neq(l edgedb.geometry, r edgedb.geometry)
-        RETURNS bool
-            LANGUAGE sql
-            STRICT
-            IMMUTABLE
-            AS 'SELECT not(l = r)';
-
-        CREATE OPERATOR <> (
-                LEFTARG = edgedb.geometry, RIGHTARG = edgedb.geometry,
-                PROCEDURE = edgedb.geo_neq,
-                COMMUTATOR = '<>'
-        );
-
         -- All comparisons between box3d values need a cast to geometry, but
         -- implicit cast to box creates ambiguity and prevents the implicit
         -- cast to geometry for comparisons.
         ALTER EXTENSION postgis DROP CAST (edgedb.box3d AS box);
         DROP CAST (edgedb.box3d AS box);
-    $$;
-    set sql_teardown_script := $$
-        DROP OPERATOR <> (edgedb.geometry, edgedb.geometry);
-        DROP FUNCTION edgedb.geo_neq(l edgedb.geometry, r edgedb.geometry);
     $$;
 
     create module ext::postgis;
@@ -290,8 +272,17 @@ create extension package postgis version '3.5.0' {
         $$;
     };
 
-    # total operators: 35
+    # total operators: 36
     ##################################################
+
+    # Postgres only manages to inline this function if it isn't marked
+    # strict, and we want it to be inlined so that indexes work with it.
+    create function ext::postgis::op_neq(a: ext::postgis::geometry, b: ext::postgis::geometry) ->  std::bool {
+        set volatility := 'Immutable';
+        set impl_is_strict := false;
+        set prefer_subquery_args := true;
+        using sql $$SELECT a <> b$$;
+    };
 
     # Postgres only manages to inline this function if it isn't marked
     # strict, and we want it to be inlined so that indexes work with it.
@@ -609,7 +600,7 @@ create extension package postgis version '3.5.0' {
     };
 
 
-    # total functions: 453
+    # total functions: 459
     ##################################################
 
     create function ext::postgis::to_geometry(a0: ext::postgis::box2d) ->  ext::postgis::geometry {
@@ -1055,7 +1046,7 @@ create extension package postgis version '3.5.0' {
     create function ext::postgis::lineextend(geom: ext::postgis::geometry, distance_forward: std::float64, distance_backward: std::float64 = 0.0) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
-        create annotation description := 'args: line, distance_forward, distance_backward=0.0 - Returns a line with the last and first segments extended the specified distance(s).';
+        create annotation description := 'args: line, distance_forward, distance_backward=0.0 - Returns a line extended forwards and backwards by specified distances.';
         using sql function 'st_lineextend';
     };
 
@@ -1230,6 +1221,20 @@ create extension package postgis version '3.5.0' {
         set force_return_cast := true;
         create annotation description := 'args: g1 - Returns the coordinate dimension of a geometry.';
         using sql function 'st_ndims';
+    };
+
+    create function ext::postgis::hasz(a0: ext::postgis::geometry) ->  std::bool {
+        set volatility := 'Immutable';
+        set force_return_cast := true;
+        create annotation description := 'args: geom - Checks if a geometry has a Z dimension.';
+        using sql function 'st_hasz';
+    };
+
+    create function ext::postgis::hasm(a0: ext::postgis::geometry) ->  std::bool {
+        set volatility := 'Immutable';
+        set force_return_cast := true;
+        create annotation description := 'args: geom - Checks if a geometry has an M (measure) dimension.';
+        using sql function 'st_hasm';
     };
 
     create function ext::postgis::asewkt(a0: ext::postgis::geometry) ->  std::str {
@@ -1700,6 +1705,14 @@ create extension package postgis version '3.5.0' {
         using sql function 'postgis_proj_version';
     };
 
+    create function ext::postgis::postgis_proj_compiled_version() -> optional std::str {
+        set volatility := 'Immutable';
+        set force_return_cast := true;
+        create annotation description := 'Returns the version number of the PROJ library against which PostGIS was built.';
+        set impl_is_strict := false;
+        using sql function 'postgis_proj_compiled_version';
+    };
+
     create function ext::postgis::postgis_wagyu_version() -> optional std::str {
         set volatility := 'Immutable';
         set force_return_cast := true;
@@ -1825,28 +1838,28 @@ create extension package postgis version '3.5.0' {
     create function ext::postgis::simplify(a0: ext::postgis::geometry, a1: std::float64) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
-        create annotation description := 'args: geomA, tolerance - Returns a simplified version of a geometry, using the Douglas-Peucker algorithm.';
+        create annotation description := 'args: geom, tolerance - Returns a simplified representation of a geometry, using the Douglas-Peucker algorithm.';
         using sql function 'st_simplify';
     };
 
     create function ext::postgis::simplify(a0: ext::postgis::geometry, a1: std::float64, a2: std::bool) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
-        create annotation description := 'args: geomA, tolerance - Returns a simplified version of a geometry, using the Douglas-Peucker algorithm.';
+        create annotation description := 'args: geom, tolerance - Returns a simplified representation of a geometry, using the Douglas-Peucker algorithm.';
         using sql function 'st_simplify';
     };
 
     create function ext::postgis::simplifyvw(a0: ext::postgis::geometry, a1: std::float64) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
-        create annotation description := 'args: geomA, tolerance - Returns a simplified version of a geometry, using the Visvalingam-Whyatt algorithm';
+        create annotation description := 'args: geom, tolerance - Returns a simplified representation of a geometry, using the Visvalingam-Whyatt algorithm';
         using sql function 'st_simplifyvw';
     };
 
     create function ext::postgis::seteffectivearea(a0: ext::postgis::geometry, a1: std::float64 = -1, a2: std::int64 = 1) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
-        create annotation description := 'args: geomA, threshold = 0, set_area = 1 - Sets the effective area for each vertex, using the Visvalingam-Whyatt algorithm.';
+        create annotation description := 'args: geom, threshold = 0, set_area = 1 - Sets the effective area for each vertex, using the Visvalingam-Whyatt algorithm.';
         using sql $$SELECT st_seteffectivearea("a0", "a1", "a2"::int4)$$;
     };
 
@@ -2131,14 +2144,14 @@ create extension package postgis version '3.5.0' {
     create function ext::postgis::generatepoints(area: ext::postgis::geometry, npoints: std::int64) ->  ext::postgis::geometry {
         set volatility := 'Volatile';
         set force_return_cast := true;
-        create annotation description := 'args: g, npoints - Generates random points contained in a Polygon or MultiPolygon.';
+        create annotation description := 'args: g, npoints, seed = 0 - Generates a multipoint of random points contained in a Polygon or MultiPolygon.';
         using sql $$SELECT st_generatepoints("area", "npoints"::int4)$$;
     };
 
     create function ext::postgis::generatepoints(area: ext::postgis::geometry, npoints: std::int64, seed: std::int64) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
-        create annotation description := 'args: g, npoints - Generates random points contained in a Polygon or MultiPolygon.';
+        create annotation description := 'args: g, npoints, seed = 0 - Generates a multipoint of random points contained in a Polygon or MultiPolygon.';
         using sql $$SELECT st_generatepoints("area", "npoints"::int4, "seed"::int4)$$;
     };
 
@@ -2152,7 +2165,7 @@ create extension package postgis version '3.5.0' {
     create function ext::postgis::simplifypreservetopology(a0: ext::postgis::geometry, a1: std::float64) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
-        create annotation description := 'args: geomA, tolerance - Returns a simplified and valid version of a geometry, using the Douglas-Peucker algorithm.';
+        create annotation description := 'args: geom, tolerance - Returns a simplified and valid representation of a geometry, using the Douglas-Peucker algorithm.';
         using sql function 'st_simplifypreservetopology';
     };
 
@@ -2716,6 +2729,7 @@ create extension package postgis version '3.5.0' {
     create function ext::postgis::postgis_libjson_version() ->  std::str {
         set volatility := 'Immutable';
         set force_return_cast := true;
+        create annotation description := 'Returns the version number of the libjson-c library.';
         using sql function 'postgis_libjson_version';
     };
 
@@ -3402,13 +3416,6 @@ create extension package postgis version '3.5.0' {
         using sql $$SELECT st_bdmpolyfromtext("a0", "a1"::int4)$$;
     };
 
-    create function ext::postgis::longtransactionsenabled() -> optional std::bool {
-        set volatility := 'Volatile';
-        set force_return_cast := true;
-        set impl_is_strict := false;
-        using sql function 'longtransactionsenabled';
-    };
-
     create function ext::postgis::to_geography(a0: std::bytes) ->  ext::postgis::geography {
         set volatility := 'Immutable';
         set force_return_cast := true;
@@ -3546,6 +3553,20 @@ create extension package postgis version '3.5.0' {
         using sql function 'st_linetocurve';
     };
 
+    create function ext::postgis::numcurves(geometry: ext::postgis::geometry) ->  std::int64 {
+        set volatility := 'Immutable';
+        set force_return_cast := true;
+        create annotation description := 'args: a_compoundcurve - Return the number of component curves in a CompoundCurve.';
+        using sql function 'st_numcurves';
+    };
+
+    create function ext::postgis::curven(geometry: ext::postgis::geometry, i: std::int64) ->  ext::postgis::geometry {
+        set volatility := 'Immutable';
+        set force_return_cast := true;
+        create annotation description := 'args: a_compoundcurve, index - Returns the Nth component curve geometry of a CompoundCurve.';
+        using sql $$SELECT st_curven("geometry", "i"::int4)$$;
+    };
+
     create function ext::postgis::point(a0: std::float64, a1: std::float64) ->  ext::postgis::geometry {
         set volatility := 'Immutable';
         set force_return_cast := true;
@@ -3656,6 +3677,20 @@ create extension package postgis version '3.5.0' {
         set force_return_cast := true;
         create annotation description := 'args: a_linestring, a_fraction - Returns a point interpolated along a 3D line at a fractional location.';
         using sql function 'st_3dlineinterpolatepoint';
+    };
+
+    create function ext::postgis::removeirrelevantpointsforview(a0: ext::postgis::geometry, a1: ext::postgis::box2d, a2: std::bool = false) ->  ext::postgis::geometry {
+        set volatility := 'Immutable';
+        set force_return_cast := true;
+        create annotation description := 'args: geom, bounds, cartesian_hint = false - Removes points that are irrelevant for rendering a specific rectangluar view of a geometry.';
+        using sql function 'st_removeirrelevantpointsforview';
+    };
+
+    create function ext::postgis::removesmallparts(a0: ext::postgis::geometry, a1: std::float64, a2: std::float64) ->  ext::postgis::geometry {
+        set volatility := 'Immutable';
+        set force_return_cast := true;
+        create annotation description := 'args: geom, minSizeX, minSizeY - Removes small parts (polygon rings or linestrings) of a geometry.';
+        using sql function 'st_removesmallparts';
     };
 
 
