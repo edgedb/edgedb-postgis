@@ -22,29 +22,11 @@ create extension package postgis version '3.5.0' {
     set sql_extensions := ["postgis >=3.5.0,<4.0.0"];
 
     set sql_setup_script := $$
-        -- Make it possible to have `!=`, `?!=`, and `not in` for geometry
-        CREATE FUNCTION edgedb.geo_neq(l edgedb.geometry, r edgedb.geometry)
-        RETURNS bool
-            LANGUAGE sql
-            STRICT
-            IMMUTABLE
-            AS 'SELECT not(l = r)';
-
-        CREATE OPERATOR <> (
-                LEFTARG = edgedb.geometry, RIGHTARG = edgedb.geometry,
-                PROCEDURE = edgedb.geo_neq,
-                COMMUTATOR = '<>'
-        );
-
         -- All comparisons between box3d values need a cast to geometry, but
         -- implicit cast to box creates ambiguity and prevents the implicit
         -- cast to geometry for comparisons.
         ALTER EXTENSION postgis DROP CAST (edgedb.box3d AS box);
         DROP CAST (edgedb.box3d AS box);
-    $$;
-    set sql_teardown_script := $$
-        DROP OPERATOR <> (edgedb.geometry, edgedb.geometry);
-        DROP FUNCTION edgedb.geo_neq(l edgedb.geometry, r edgedb.geometry);
     $$;
 
     create module ext::postgis;

@@ -955,9 +955,6 @@ class TestEdgeQLPostgis(tb.QueryTestCase):
                             with module ext::postgis
                             select {fname}({", ".join(args)})
                         '''
-
-                        import sys
-                        print('===========', q, file=sys.stderr)
                         await self.con.query_json(q)
                     except edgedb.errors.InternalServerError as e:
                         # Some ISE are acceptable here, namely if they come

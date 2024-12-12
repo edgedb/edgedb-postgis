@@ -74,4 +74,4 @@ These functions operate of sets of geometric data.
 
 .. REFLECT: AGGREGATES
 .. _postgis:
-    https://postgis.net/docs/manual-3.4/
+    https://postgis.net/docs/manual-3.5/
