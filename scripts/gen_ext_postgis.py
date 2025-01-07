@@ -404,7 +404,7 @@ def parse_postgis_extension(
     for fpath in root.glob('**/postgis*.sql'):
         name = fpath.name
         # We might scan more postgis extension files
-        if name in {'postgis--3.5.0.sql', 'postgis_comments.sql'}:
+        if name in {'postgis--3.5.1.sql', 'postgis_comments.sql'}:
             with open(fpath, mode='rt') as f:
                 sql_query = ''.join(
                     line for line in f.readlines()
@@ -842,7 +842,7 @@ def main(show_broken=False):
     # We're looking for the SQL files in the build location. This requires the
     # build to be already done.
     parse_postgis_extension(
-        base_build / 'build' / 'postgis--3.5.0' / 'share' / 'postgresql',
+        base_build / 'build' / 'postgis--3.5.1' / 'share' / 'postgresql',
         functions, aggregates, comments, aggcomments, operators,
     )
     eqlop = generate_eqlop(operators, functions)

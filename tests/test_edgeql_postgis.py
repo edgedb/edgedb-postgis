@@ -124,7 +124,7 @@ class TestEdgeQLPostgis(tb.QueryTestCase):
             with open(os.path.join(root, 'edb/lib/ext/postgis.edgeql')) as f:
                 contents = f.read()
             to_add = '''
-                drop extension package postgis version '3.5.0';
+                drop extension package postgis version '3.5.1';
             ''' + contents
             splice = '__internal_testmode := true;'
             res = res.replace(splice, splice + to_add)

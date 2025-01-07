@@ -17,7 +17,7 @@
 #
 
 
-create extension package postgis version '3.5.0' {
+create extension package postgis version '3.5.1' {
     set ext_module := "ext::postgis";
     set sql_extensions := ["postgis >=3.5.0,<4.0.0"];
 
