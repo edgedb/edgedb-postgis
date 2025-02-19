@@ -65,53 +65,53 @@ jobs:
       if_macos_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_macos_aarch64_edgedb_6_rc_2 }}
 
 
-      if_debian_buster_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_buster_x86_64_edgedb_nightly }}
+      if_debian_buster_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_debian_buster_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_debian_buster_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_buster_aarch64_edgedb_nightly }}
+      if_debian_buster_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_debian_buster_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_debian_bullseye_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bullseye_x86_64_edgedb_nightly }}
+      if_debian_bullseye_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_debian_bullseye_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_debian_bullseye_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bullseye_aarch64_edgedb_nightly }}
+      if_debian_bullseye_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_debian_bullseye_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_debian_bookworm_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bookworm_x86_64_edgedb_nightly }}
+      if_debian_bookworm_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_debian_bookworm_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_debian_bookworm_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bookworm_aarch64_edgedb_nightly }}
+      if_debian_bookworm_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_debian_bookworm_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_bionic_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_bionic_x86_64_edgedb_nightly }}
+      if_ubuntu_bionic_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_bionic_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_bionic_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_bionic_aarch64_edgedb_nightly }}
+      if_ubuntu_bionic_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_bionic_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_focal_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_focal_x86_64_edgedb_nightly }}
+      if_ubuntu_focal_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_focal_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_focal_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_focal_aarch64_edgedb_nightly }}
+      if_ubuntu_focal_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_focal_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_jammy_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_jammy_x86_64_edgedb_nightly }}
+      if_ubuntu_jammy_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_jammy_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_jammy_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_jammy_aarch64_edgedb_nightly }}
+      if_ubuntu_jammy_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_jammy_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_noble_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_noble_x86_64_edgedb_nightly }}
+      if_ubuntu_noble_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_noble_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_ubuntu_noble_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_noble_aarch64_edgedb_nightly }}
+      if_ubuntu_noble_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_ubuntu_noble_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_centos_8_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_centos_8_x86_64_edgedb_nightly }}
+      if_centos_8_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_centos_8_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_centos_8_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_centos_8_aarch64_edgedb_nightly }}
+      if_centos_8_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_centos_8_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_rockylinux_9_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_rockylinux_9_x86_64_edgedb_nightly }}
+      if_rockylinux_9_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_rockylinux_9_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_rockylinux_9_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_rockylinux_9_aarch64_edgedb_nightly }}
+      if_rockylinux_9_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_rockylinux_9_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_linux_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_linux_x86_64_edgedb_nightly }}
+      if_linux_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_linux_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_linux_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_linux_aarch64_edgedb_nightly }}
+      if_linux_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_linux_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_linuxmusl_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_linuxmusl_x86_64_edgedb_nightly }}
+      if_linuxmusl_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_linuxmusl_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_linuxmusl_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_linuxmusl_aarch64_edgedb_nightly }}
+      if_linuxmusl_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_linuxmusl_aarch64_edgedb_7_0_dev_9202 }}
 
-      if_macos_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_macos_x86_64_edgedb_nightly }}
+      if_macos_x86_64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_macos_x86_64_edgedb_7_0_dev_9202 }}
 
-      if_macos_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_macos_aarch64_edgedb_nightly }}
+      if_macos_aarch64_edgedb_7_0_dev_9202: ${{ steps.scm.outputs.if_macos_aarch64_edgedb_7_0_dev_9202 }}
 
 
 
@@ -531,8 +531,8 @@ jobs:
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
 
-        key="debian-buster-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="debian-buster-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=buster.nightly.json
@@ -549,8 +549,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="debian-buster-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="debian-buster-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=buster.nightly.json
@@ -567,8 +567,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="debian-bullseye-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="debian-bullseye-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=bullseye.nightly.json
@@ -585,8 +585,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="debian-bullseye-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="debian-bullseye-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=bullseye.nightly.json
@@ -603,8 +603,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="debian-bookworm-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="debian-bookworm-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=bookworm.nightly.json
@@ -621,8 +621,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="debian-bookworm-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="debian-bookworm-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=bookworm.nightly.json
@@ -639,8 +639,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-bionic-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-bionic-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=bionic.nightly.json
@@ -657,8 +657,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-bionic-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-bionic-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=bionic.nightly.json
@@ -675,8 +675,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-focal-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-focal-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=focal.nightly.json
@@ -693,8 +693,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-focal-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-focal-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=focal.nightly.json
@@ -711,8 +711,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-jammy-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-jammy-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=jammy.nightly.json
@@ -729,8 +729,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-jammy-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-jammy-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=jammy.nightly.json
@@ -747,8 +747,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-noble-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-noble-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=noble.nightly.json
@@ -765,8 +765,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="ubuntu-noble-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="ubuntu-noble-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=noble.nightly.json
@@ -783,8 +783,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="centos-8-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="centos-8-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=el8.nightly.json
@@ -801,8 +801,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="centos-8-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="centos-8-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=el8.nightly.json
@@ -819,8 +819,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="rockylinux-9-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="rockylinux-9-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=el9.nightly.json
@@ -837,8 +837,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="rockylinux-9-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="rockylinux-9-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         idx_file=el9.nightly.json
@@ -855,8 +855,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="linux-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="linux-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
@@ -867,8 +867,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="linux-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="linux-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
@@ -879,8 +879,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="linuxmusl-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="linuxmusl-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
@@ -891,8 +891,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="linuxmusl-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="linuxmusl-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
@@ -904,8 +904,8 @@ jobs:
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
 
-        key="macos-x86_64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="macos-x86_64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
@@ -916,8 +916,8 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
-        key="macos-aarch64-edgedb-nightly"
-        name="edgedb-server-nightly-postgis"
+        key="macos-aarch64-edgedb-7-0-dev-9202"
+        name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
         out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
@@ -1639,11 +1639,11 @@ jobs:
         name: builds-macos-aarch64-edgedb-6-rc-2
         path: artifacts/macos-aarch64
 
-  build-debian-buster-x86_64-edgedb-nightly:
+  build-debian-buster-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_buster_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_buster_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1651,9 +1651,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-buster@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -1663,14 +1663,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-x86_64-edgedb-nightly
+        name: builds-debian-buster-x86_64-edgedb-7-0-dev-9202
         path: artifacts/debian-buster
 
-  build-debian-buster-aarch64-edgedb-nightly:
+  build-debian-buster-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_buster_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_buster_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1678,9 +1678,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-buster@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -1690,14 +1690,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-aarch64-edgedb-nightly
+        name: builds-debian-buster-aarch64-edgedb-7-0-dev-9202
         path: artifacts/debian-buster
 
-  build-debian-bullseye-x86_64-edgedb-nightly:
+  build-debian-bullseye-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bullseye_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bullseye_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1705,9 +1705,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bullseye@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -1717,14 +1717,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-x86_64-edgedb-nightly
+        name: builds-debian-bullseye-x86_64-edgedb-7-0-dev-9202
         path: artifacts/debian-bullseye
 
-  build-debian-bullseye-aarch64-edgedb-nightly:
+  build-debian-bullseye-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bullseye_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bullseye_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1732,9 +1732,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bullseye@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -1744,14 +1744,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-aarch64-edgedb-nightly
+        name: builds-debian-bullseye-aarch64-edgedb-7-0-dev-9202
         path: artifacts/debian-bullseye
 
-  build-debian-bookworm-x86_64-edgedb-nightly:
+  build-debian-bookworm-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bookworm_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bookworm_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1759,9 +1759,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bookworm@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -1771,14 +1771,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-x86_64-edgedb-nightly
+        name: builds-debian-bookworm-x86_64-edgedb-7-0-dev-9202
         path: artifacts/debian-bookworm
 
-  build-debian-bookworm-aarch64-edgedb-nightly:
+  build-debian-bookworm-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bookworm_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bookworm_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1786,9 +1786,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bookworm@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -1798,14 +1798,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-aarch64-edgedb-nightly
+        name: builds-debian-bookworm-aarch64-edgedb-7-0-dev-9202
         path: artifacts/debian-bookworm
 
-  build-ubuntu-bionic-x86_64-edgedb-nightly:
+  build-ubuntu-bionic-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_bionic_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_bionic_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1813,9 +1813,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -1825,14 +1825,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-bionic-x86_64-edgedb-nightly
+        name: builds-ubuntu-bionic-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-bionic
 
-  build-ubuntu-bionic-aarch64-edgedb-nightly:
+  build-ubuntu-bionic-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_bionic_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_bionic_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1840,9 +1840,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -1852,14 +1852,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-bionic-aarch64-edgedb-nightly
+        name: builds-ubuntu-bionic-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-bionic
 
-  build-ubuntu-focal-x86_64-edgedb-nightly:
+  build-ubuntu-focal-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_focal_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_focal_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1867,9 +1867,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-focal@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -1879,14 +1879,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-x86_64-edgedb-nightly
+        name: builds-ubuntu-focal-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-focal-aarch64-edgedb-nightly:
+  build-ubuntu-focal-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_focal_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_focal_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1894,9 +1894,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-focal@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -1906,14 +1906,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-aarch64-edgedb-nightly
+        name: builds-ubuntu-focal-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-jammy-x86_64-edgedb-nightly:
+  build-ubuntu-jammy-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_jammy_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_jammy_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1921,9 +1921,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-jammy@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -1933,14 +1933,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-x86_64-edgedb-nightly
+        name: builds-ubuntu-jammy-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-jammy-aarch64-edgedb-nightly:
+  build-ubuntu-jammy-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_jammy_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_jammy_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1948,9 +1948,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-jammy@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -1960,14 +1960,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-aarch64-edgedb-nightly
+        name: builds-ubuntu-jammy-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-noble-x86_64-edgedb-nightly:
+  build-ubuntu-noble-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_noble_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_noble_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -1975,9 +1975,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-noble@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -1987,14 +1987,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-x86_64-edgedb-nightly
+        name: builds-ubuntu-noble-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-noble
 
-  build-ubuntu-noble-aarch64-edgedb-nightly:
+  build-ubuntu-noble-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_noble_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_noble_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2002,9 +2002,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-noble@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -2014,14 +2014,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-aarch64-edgedb-nightly
+        name: builds-ubuntu-noble-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-noble
 
-  build-centos-8-x86_64-edgedb-nightly:
+  build-centos-8-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_centos_8_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_centos_8_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2029,9 +2029,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/centos-8@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "centos"
@@ -2041,14 +2041,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-x86_64-edgedb-nightly
+        name: builds-centos-8-x86_64-edgedb-7-0-dev-9202
         path: artifacts/centos-8
 
-  build-centos-8-aarch64-edgedb-nightly:
+  build-centos-8-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_centos_8_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_centos_8_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2056,9 +2056,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/centos-8@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "centos"
@@ -2068,14 +2068,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-aarch64-edgedb-nightly
+        name: builds-centos-8-aarch64-edgedb-7-0-dev-9202
         path: artifacts/centos-8
 
-  build-rockylinux-9-x86_64-edgedb-nightly:
+  build-rockylinux-9-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_rockylinux_9_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_rockylinux_9_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2083,9 +2083,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/rockylinux-9@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "rockylinux"
@@ -2095,14 +2095,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-x86_64-edgedb-nightly
+        name: builds-rockylinux-9-x86_64-edgedb-7-0-dev-9202
         path: artifacts/rockylinux-9
 
-  build-rockylinux-9-aarch64-edgedb-nightly:
+  build-rockylinux-9-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_rockylinux_9_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_rockylinux_9_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2110,9 +2110,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/rockylinux-9@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "rockylinux"
@@ -2122,14 +2122,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-aarch64-edgedb-nightly
+        name: builds-rockylinux-9-aarch64-edgedb-7-0-dev-9202
         path: artifacts/rockylinux-9
 
-  build-linux-x86_64-edgedb-nightly:
+  build-linux-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_linux_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linux_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2137,9 +2137,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linux-x86_64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2150,14 +2150,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-x86_64-edgedb-nightly
+        name: builds-linux-x86_64-edgedb-7-0-dev-9202
         path: artifacts/linux-x86_64
 
-  build-linux-aarch64-edgedb-nightly:
+  build-linux-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_linux_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linux_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2165,9 +2165,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linux-aarch64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2178,14 +2178,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-aarch64-edgedb-nightly
+        name: builds-linux-aarch64-edgedb-7-0-dev-9202
         path: artifacts/linux-aarch64
 
-  build-linuxmusl-x86_64-edgedb-nightly:
+  build-linuxmusl-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_linuxmusl_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linuxmusl_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2193,9 +2193,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linuxmusl-x86_64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2207,14 +2207,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-x86_64-edgedb-nightly
+        name: builds-linuxmusl-x86_64-edgedb-7-0-dev-9202
         path: artifacts/linuxmusl-x86_64
 
-  build-linuxmusl-aarch64-edgedb-nightly:
+  build-linuxmusl-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_linuxmusl_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linuxmusl_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2222,9 +2222,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linuxmusl-aarch64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2236,14 +2236,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-aarch64-edgedb-nightly
+        name: builds-linuxmusl-aarch64-edgedb-7-0-dev-9202
         path: artifacts/linuxmusl-aarch64
 
-  build-macos-x86_64-edgedb-nightly:
+  build-macos-x86_64-edgedb-7-0-dev-9202:
     runs-on: ['macos-13']
     needs: prep
 
-    if: needs.prep.outputs.if_macos_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_macos_x86_64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2274,9 +2274,9 @@ jobs:
     - name: Build
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "macos"
@@ -2290,14 +2290,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-x86_64-edgedb-nightly
+        name: builds-macos-x86_64-edgedb-7-0-dev-9202
         path: artifacts/macos-x86_64
 
-  build-macos-aarch64-edgedb-nightly:
+  build-macos-aarch64-edgedb-7-0-dev-9202:
     runs-on: ['macos-14']
     needs: prep
 
-    if: needs.prep.outputs.if_macos_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_macos_aarch64_edgedb_7_0_dev_9202 == 'true'
 
 
     steps:
@@ -2328,9 +2328,9 @@ jobs:
     - name: Build
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "nightly!${{ github.sha }}"
+        SRC_REF: "7-0-dev-9202!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=nightly"
+        PKG_TAGS: "extension=postgis,server_slot=7-0-dev-9202"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "macos"
@@ -2344,7 +2344,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-aarch64-edgedb-nightly
+        name: builds-macos-aarch64-edgedb-7-0-dev-9202
         path: artifacts/macos-aarch64
 
   publish-debian-buster-x86_64-edgedb-6-rc-2:
@@ -2787,14 +2787,14 @@ jobs:
         PKG_PLATFORM_LIBC: "musl"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-buster-x86_64-edgedb-nightly:
-    needs: [build-debian-buster-x86_64-edgedb-nightly]
+  publish-debian-buster-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-debian-buster-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-buster-x86_64-edgedb-nightly
+        name: builds-debian-buster-x86_64-edgedb-7-0-dev-9202
         path: artifacts/debian-buster
 
     - name: Publish
@@ -2807,14 +2807,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-buster-aarch64-edgedb-nightly:
-    needs: [build-debian-buster-aarch64-edgedb-nightly]
+  publish-debian-buster-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-debian-buster-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-buster-aarch64-edgedb-nightly
+        name: builds-debian-buster-aarch64-edgedb-7-0-dev-9202
         path: artifacts/debian-buster
 
     - name: Publish
@@ -2827,14 +2827,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bullseye-x86_64-edgedb-nightly:
-    needs: [build-debian-bullseye-x86_64-edgedb-nightly]
+  publish-debian-bullseye-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-debian-bullseye-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bullseye-x86_64-edgedb-nightly
+        name: builds-debian-bullseye-x86_64-edgedb-7-0-dev-9202
         path: artifacts/debian-bullseye
 
     - name: Publish
@@ -2847,14 +2847,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bullseye-aarch64-edgedb-nightly:
-    needs: [build-debian-bullseye-aarch64-edgedb-nightly]
+  publish-debian-bullseye-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-debian-bullseye-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bullseye-aarch64-edgedb-nightly
+        name: builds-debian-bullseye-aarch64-edgedb-7-0-dev-9202
         path: artifacts/debian-bullseye
 
     - name: Publish
@@ -2867,14 +2867,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bookworm-x86_64-edgedb-nightly:
-    needs: [build-debian-bookworm-x86_64-edgedb-nightly]
+  publish-debian-bookworm-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-debian-bookworm-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bookworm-x86_64-edgedb-nightly
+        name: builds-debian-bookworm-x86_64-edgedb-7-0-dev-9202
         path: artifacts/debian-bookworm
 
     - name: Publish
@@ -2887,14 +2887,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bookworm-aarch64-edgedb-nightly:
-    needs: [build-debian-bookworm-aarch64-edgedb-nightly]
+  publish-debian-bookworm-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-debian-bookworm-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bookworm-aarch64-edgedb-nightly
+        name: builds-debian-bookworm-aarch64-edgedb-7-0-dev-9202
         path: artifacts/debian-bookworm
 
     - name: Publish
@@ -2907,14 +2907,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-bionic-x86_64-edgedb-nightly:
-    needs: [build-ubuntu-bionic-x86_64-edgedb-nightly]
+  publish-ubuntu-bionic-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-bionic-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-bionic-x86_64-edgedb-nightly
+        name: builds-ubuntu-bionic-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-bionic
 
     - name: Publish
@@ -2927,14 +2927,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-bionic-aarch64-edgedb-nightly:
-    needs: [build-ubuntu-bionic-aarch64-edgedb-nightly]
+  publish-ubuntu-bionic-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-bionic-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-bionic-aarch64-edgedb-nightly
+        name: builds-ubuntu-bionic-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-bionic
 
     - name: Publish
@@ -2947,14 +2947,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-focal-x86_64-edgedb-nightly:
-    needs: [build-ubuntu-focal-x86_64-edgedb-nightly]
+  publish-ubuntu-focal-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-focal-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-focal-x86_64-edgedb-nightly
+        name: builds-ubuntu-focal-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-focal
 
     - name: Publish
@@ -2967,14 +2967,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-focal-aarch64-edgedb-nightly:
-    needs: [build-ubuntu-focal-aarch64-edgedb-nightly]
+  publish-ubuntu-focal-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-focal-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-focal-aarch64-edgedb-nightly
+        name: builds-ubuntu-focal-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-focal
 
     - name: Publish
@@ -2987,14 +2987,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-jammy-x86_64-edgedb-nightly:
-    needs: [build-ubuntu-jammy-x86_64-edgedb-nightly]
+  publish-ubuntu-jammy-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-jammy-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-jammy-x86_64-edgedb-nightly
+        name: builds-ubuntu-jammy-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-jammy
 
     - name: Publish
@@ -3007,14 +3007,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-jammy-aarch64-edgedb-nightly:
-    needs: [build-ubuntu-jammy-aarch64-edgedb-nightly]
+  publish-ubuntu-jammy-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-jammy-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-jammy-aarch64-edgedb-nightly
+        name: builds-ubuntu-jammy-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-jammy
 
     - name: Publish
@@ -3027,14 +3027,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-noble-x86_64-edgedb-nightly:
-    needs: [build-ubuntu-noble-x86_64-edgedb-nightly]
+  publish-ubuntu-noble-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-noble-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-noble-x86_64-edgedb-nightly
+        name: builds-ubuntu-noble-x86_64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-noble
 
     - name: Publish
@@ -3047,14 +3047,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-noble-aarch64-edgedb-nightly:
-    needs: [build-ubuntu-noble-aarch64-edgedb-nightly]
+  publish-ubuntu-noble-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-ubuntu-noble-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-noble-aarch64-edgedb-nightly
+        name: builds-ubuntu-noble-aarch64-edgedb-7-0-dev-9202
         path: artifacts/ubuntu-noble
 
     - name: Publish
@@ -3067,14 +3067,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-centos-8-x86_64-edgedb-nightly:
-    needs: [build-centos-8-x86_64-edgedb-nightly]
+  publish-centos-8-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-centos-8-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-centos-8-x86_64-edgedb-nightly
+        name: builds-centos-8-x86_64-edgedb-7-0-dev-9202
         path: artifacts/centos-8
 
     - name: Publish
@@ -3087,14 +3087,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-centos-8-aarch64-edgedb-nightly:
-    needs: [build-centos-8-aarch64-edgedb-nightly]
+  publish-centos-8-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-centos-8-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-centos-8-aarch64-edgedb-nightly
+        name: builds-centos-8-aarch64-edgedb-7-0-dev-9202
         path: artifacts/centos-8
 
     - name: Publish
@@ -3107,14 +3107,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-rockylinux-9-x86_64-edgedb-nightly:
-    needs: [build-rockylinux-9-x86_64-edgedb-nightly]
+  publish-rockylinux-9-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-rockylinux-9-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-rockylinux-9-x86_64-edgedb-nightly
+        name: builds-rockylinux-9-x86_64-edgedb-7-0-dev-9202
         path: artifacts/rockylinux-9
 
     - name: Publish
@@ -3127,14 +3127,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-rockylinux-9-aarch64-edgedb-nightly:
-    needs: [build-rockylinux-9-aarch64-edgedb-nightly]
+  publish-rockylinux-9-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-rockylinux-9-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-rockylinux-9-aarch64-edgedb-nightly
+        name: builds-rockylinux-9-aarch64-edgedb-7-0-dev-9202
         path: artifacts/rockylinux-9
 
     - name: Publish
@@ -3147,14 +3147,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linux-x86_64-edgedb-nightly:
-    needs: [build-linux-x86_64-edgedb-nightly]
+  publish-linux-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-linux-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linux-x86_64-edgedb-nightly
+        name: builds-linux-x86_64-edgedb-7-0-dev-9202
         path: artifacts/linux-x86_64
 
     - name: Publish
@@ -3167,14 +3167,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linux-aarch64-edgedb-nightly:
-    needs: [build-linux-aarch64-edgedb-nightly]
+  publish-linux-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-linux-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linux-aarch64-edgedb-nightly
+        name: builds-linux-aarch64-edgedb-7-0-dev-9202
         path: artifacts/linux-aarch64
 
     - name: Publish
@@ -3187,14 +3187,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linuxmusl-x86_64-edgedb-nightly:
-    needs: [build-linuxmusl-x86_64-edgedb-nightly]
+  publish-linuxmusl-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-linuxmusl-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linuxmusl-x86_64-edgedb-nightly
+        name: builds-linuxmusl-x86_64-edgedb-7-0-dev-9202
         path: artifacts/linuxmusl-x86_64
 
     - name: Publish
@@ -3207,14 +3207,14 @@ jobs:
         PKG_PLATFORM_LIBC: "musl"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linuxmusl-aarch64-edgedb-nightly:
-    needs: [build-linuxmusl-aarch64-edgedb-nightly]
+  publish-linuxmusl-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-linuxmusl-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linuxmusl-aarch64-edgedb-nightly
+        name: builds-linuxmusl-aarch64-edgedb-7-0-dev-9202
         path: artifacts/linuxmusl-aarch64
 
     - name: Publish
@@ -3287,14 +3287,14 @@ jobs:
         PKG_PLATFORM_VERSION: "aarch64"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-x86_64-edgedb-nightly:
-    needs: [build-macos-x86_64-edgedb-nightly]
+  publish-macos-x86_64-edgedb-7-0-dev-9202:
+    needs: [build-macos-x86_64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-macos-x86_64-edgedb-nightly
+        name: builds-macos-x86_64-edgedb-7-0-dev-9202
         path: artifacts/macos-x86_64
 
     - uses: actions/checkout@v4
@@ -3317,14 +3317,14 @@ jobs:
         PKG_PLATFORM_VERSION: "x86_64"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-aarch64-edgedb-nightly:
-    needs: [build-macos-aarch64-edgedb-nightly]
+  publish-macos-aarch64-edgedb-7-0-dev-9202:
+    needs: [build-macos-aarch64-edgedb-7-0-dev-9202]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-macos-aarch64-edgedb-nightly
+        name: builds-macos-aarch64-edgedb-7-0-dev-9202
         path: artifacts/macos-aarch64
 
     - uses: actions/checkout@v4
@@ -3401,53 +3401,53 @@ jobs:
       - publish-macos-x86_64
       - build-macos-aarch64-edgedb-6-rc-2
       - publish-macos-aarch64
-      - build-debian-buster-x86_64-edgedb-nightly
-      - publish-debian-buster-x86_64-edgedb-nightly
-      - build-debian-buster-aarch64-edgedb-nightly
-      - publish-debian-buster-aarch64-edgedb-nightly
-      - build-debian-bullseye-x86_64-edgedb-nightly
-      - publish-debian-bullseye-x86_64-edgedb-nightly
-      - build-debian-bullseye-aarch64-edgedb-nightly
-      - publish-debian-bullseye-aarch64-edgedb-nightly
-      - build-debian-bookworm-x86_64-edgedb-nightly
-      - publish-debian-bookworm-x86_64-edgedb-nightly
-      - build-debian-bookworm-aarch64-edgedb-nightly
-      - publish-debian-bookworm-aarch64-edgedb-nightly
-      - build-ubuntu-bionic-x86_64-edgedb-nightly
-      - publish-ubuntu-bionic-x86_64-edgedb-nightly
-      - build-ubuntu-bionic-aarch64-edgedb-nightly
-      - publish-ubuntu-bionic-aarch64-edgedb-nightly
-      - build-ubuntu-focal-x86_64-edgedb-nightly
-      - publish-ubuntu-focal-x86_64-edgedb-nightly
-      - build-ubuntu-focal-aarch64-edgedb-nightly
-      - publish-ubuntu-focal-aarch64-edgedb-nightly
-      - build-ubuntu-jammy-x86_64-edgedb-nightly
-      - publish-ubuntu-jammy-x86_64-edgedb-nightly
-      - build-ubuntu-jammy-aarch64-edgedb-nightly
-      - publish-ubuntu-jammy-aarch64-edgedb-nightly
-      - build-ubuntu-noble-x86_64-edgedb-nightly
-      - publish-ubuntu-noble-x86_64-edgedb-nightly
-      - build-ubuntu-noble-aarch64-edgedb-nightly
-      - publish-ubuntu-noble-aarch64-edgedb-nightly
-      - build-centos-8-x86_64-edgedb-nightly
-      - publish-centos-8-x86_64-edgedb-nightly
-      - build-centos-8-aarch64-edgedb-nightly
-      - publish-centos-8-aarch64-edgedb-nightly
-      - build-rockylinux-9-x86_64-edgedb-nightly
-      - publish-rockylinux-9-x86_64-edgedb-nightly
-      - build-rockylinux-9-aarch64-edgedb-nightly
-      - publish-rockylinux-9-aarch64-edgedb-nightly
-      - build-linux-x86_64-edgedb-nightly
-      - publish-linux-x86_64-edgedb-nightly
-      - build-linux-aarch64-edgedb-nightly
-      - publish-linux-aarch64-edgedb-nightly
-      - build-linuxmusl-x86_64-edgedb-nightly
-      - publish-linuxmusl-x86_64-edgedb-nightly
-      - build-linuxmusl-aarch64-edgedb-nightly
-      - publish-linuxmusl-aarch64-edgedb-nightly
-      - build-macos-x86_64-edgedb-nightly
+      - build-debian-buster-x86_64-edgedb-7-0-dev-9202
+      - publish-debian-buster-x86_64-edgedb-7-0-dev-9202
+      - build-debian-buster-aarch64-edgedb-7-0-dev-9202
+      - publish-debian-buster-aarch64-edgedb-7-0-dev-9202
+      - build-debian-bullseye-x86_64-edgedb-7-0-dev-9202
+      - publish-debian-bullseye-x86_64-edgedb-7-0-dev-9202
+      - build-debian-bullseye-aarch64-edgedb-7-0-dev-9202
+      - publish-debian-bullseye-aarch64-edgedb-7-0-dev-9202
+      - build-debian-bookworm-x86_64-edgedb-7-0-dev-9202
+      - publish-debian-bookworm-x86_64-edgedb-7-0-dev-9202
+      - build-debian-bookworm-aarch64-edgedb-7-0-dev-9202
+      - publish-debian-bookworm-aarch64-edgedb-7-0-dev-9202
+      - build-ubuntu-bionic-x86_64-edgedb-7-0-dev-9202
+      - publish-ubuntu-bionic-x86_64-edgedb-7-0-dev-9202
+      - build-ubuntu-bionic-aarch64-edgedb-7-0-dev-9202
+      - publish-ubuntu-bionic-aarch64-edgedb-7-0-dev-9202
+      - build-ubuntu-focal-x86_64-edgedb-7-0-dev-9202
+      - publish-ubuntu-focal-x86_64-edgedb-7-0-dev-9202
+      - build-ubuntu-focal-aarch64-edgedb-7-0-dev-9202
+      - publish-ubuntu-focal-aarch64-edgedb-7-0-dev-9202
+      - build-ubuntu-jammy-x86_64-edgedb-7-0-dev-9202
+      - publish-ubuntu-jammy-x86_64-edgedb-7-0-dev-9202
+      - build-ubuntu-jammy-aarch64-edgedb-7-0-dev-9202
+      - publish-ubuntu-jammy-aarch64-edgedb-7-0-dev-9202
+      - build-ubuntu-noble-x86_64-edgedb-7-0-dev-9202
+      - publish-ubuntu-noble-x86_64-edgedb-7-0-dev-9202
+      - build-ubuntu-noble-aarch64-edgedb-7-0-dev-9202
+      - publish-ubuntu-noble-aarch64-edgedb-7-0-dev-9202
+      - build-centos-8-x86_64-edgedb-7-0-dev-9202
+      - publish-centos-8-x86_64-edgedb-7-0-dev-9202
+      - build-centos-8-aarch64-edgedb-7-0-dev-9202
+      - publish-centos-8-aarch64-edgedb-7-0-dev-9202
+      - build-rockylinux-9-x86_64-edgedb-7-0-dev-9202
+      - publish-rockylinux-9-x86_64-edgedb-7-0-dev-9202
+      - build-rockylinux-9-aarch64-edgedb-7-0-dev-9202
+      - publish-rockylinux-9-aarch64-edgedb-7-0-dev-9202
+      - build-linux-x86_64-edgedb-7-0-dev-9202
+      - publish-linux-x86_64-edgedb-7-0-dev-9202
+      - build-linux-aarch64-edgedb-7-0-dev-9202
+      - publish-linux-aarch64-edgedb-7-0-dev-9202
+      - build-linuxmusl-x86_64-edgedb-7-0-dev-9202
+      - publish-linuxmusl-x86_64-edgedb-7-0-dev-9202
+      - build-linuxmusl-aarch64-edgedb-7-0-dev-9202
+      - publish-linuxmusl-aarch64-edgedb-7-0-dev-9202
+      - build-macos-x86_64-edgedb-7-0-dev-9202
       - publish-macos-x86_64
-      - build-macos-aarch64-edgedb-nightly
+      - build-macos-aarch64-edgedb-7-0-dev-9202
       - publish-macos-aarch64
     runs-on: ubuntu-latest
     permissions:
