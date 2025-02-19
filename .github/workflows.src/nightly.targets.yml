@@ -5,6 +5,7 @@ publications:
 
 servers:
     - "6-rc.2"
+    - "nightly"
 
 targets:
     linux:
