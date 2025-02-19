@@ -3227,7 +3227,7 @@ jobs:
         PKG_PLATFORM_LIBC: "musl"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-x86_64:
+  publish-macos-x86_64-edgedb-6-rc-2:
     needs: [build-macos-x86_64-edgedb-6-rc-2]
     runs-on: ubuntu-latest
 
@@ -3257,7 +3257,7 @@ jobs:
         PKG_PLATFORM_VERSION: "x86_64"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-aarch64:
+  publish-macos-aarch64-edgedb-6-rc-2:
     needs: [build-macos-aarch64-edgedb-6-rc-2]
     runs-on: ubuntu-latest
 
@@ -3287,7 +3287,7 @@ jobs:
         PKG_PLATFORM_VERSION: "aarch64"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-x86_64:
+  publish-macos-x86_64-edgedb-nightly:
     needs: [build-macos-x86_64-edgedb-nightly]
     runs-on: ubuntu-latest
 
@@ -3317,7 +3317,7 @@ jobs:
         PKG_PLATFORM_VERSION: "x86_64"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-aarch64:
+  publish-macos-aarch64-edgedb-nightly:
     needs: [build-macos-aarch64-edgedb-nightly]
     runs-on: ubuntu-latest
 
