@@ -1,0 +1,52 @@
+name: Package Build Dry Run
+
+on:
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    outputs:
+      branch: ${{ steps.whichver.outputs.branch }}
+
+
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Determine package version
+      shell: bash
+      run: |
+        branch=${GITHUB_REF#refs/heads/}
+        echo branch="${branch}" >> $GITHUB_OUTPUT
+      id: whichver
+
+
+    - name: Determine SCM revision
+      id: scm
+      shell: bash
+      run: |
+        rev=$(git rev-parse HEAD)
+        jq_filter='.packages[] | select(.basename == $NAME) | select(.architecture == $ARCH) | .version_details.metadata.scm_revision | . as $rev | select(($rev != null) and ($REV | startswith($rev)))'
+
+
+
+  workflow-notifications:
+    if: failure() && github.event_name != 'pull_request'
+    name: Notify in Slack on failures
+
+    needs:
+      - prep
+    runs-on: ubuntu-latest
+    permissions:
+      actions: 'read'
+    steps:
+      - name: Slack Workflow Notification
+        uses: Gamesight/slack-workflow-status@26a36836c887f260477432e4314ec3490a84f309
+        with:
+          repo_token: ${{secrets.GITHUB_TOKEN}}
+          slack_webhook_url: ${{secrets.ACTIONS_SLACK_WEBHOOK_URL}}
+          name: 'Workflow notifications'
+          icon_emoji: ':hammer:'
+          include_jobs: 'on-failure'
