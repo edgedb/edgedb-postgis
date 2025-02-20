@@ -137,12 +137,18 @@ jobs:
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=buster.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -150,17 +156,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-buster-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=buster.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -168,17 +181,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bullseye-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=bullseye.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -186,17 +206,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bullseye-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=bullseye.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -204,17 +231,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bookworm-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=bookworm.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -222,17 +256,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bookworm-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=bookworm.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -240,17 +281,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-bionic-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=bionic.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -258,17 +306,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-bionic-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=bionic.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -276,17 +331,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-focal-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=focal.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -294,17 +356,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-focal-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=focal.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -312,17 +381,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-jammy-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=jammy.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -330,17 +406,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-jammy-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=jammy.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -348,17 +431,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-noble-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=noble.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -366,17 +456,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-noble-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=noble.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -384,17 +481,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="centos-8-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=el8.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -402,17 +506,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="centos-8-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=el8.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -420,17 +531,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="rockylinux-9-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=el9.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -438,17 +556,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="rockylinux-9-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
+
         idx_file=el9.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -457,50 +582,102 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
+
         key="linux-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=x86_64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="linux-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=aarch64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="linuxmusl-x86_64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=x86_64-unknown-linux-musl.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="linuxmusl-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=aarch64-unknown-linux-musl.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
@@ -510,37 +687,69 @@ jobs:
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=x86_64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="macos-aarch64-edgedb-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=aarch64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
 
         key="debian-buster-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=buster.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -548,17 +757,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-buster-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=buster.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -566,17 +782,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bullseye-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=bullseye.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -584,17 +807,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bullseye-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=bullseye.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -602,17 +832,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bookworm-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=bookworm.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -620,17 +857,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="debian-bookworm-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=bookworm.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -638,17 +882,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-bionic-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=bionic.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -656,17 +907,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-bionic-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=bionic.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -674,17 +932,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-focal-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=focal.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -692,17 +957,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-focal-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=focal.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -710,17 +982,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-jammy-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=jammy.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -728,17 +1007,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-jammy-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=jammy.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -746,17 +1032,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-noble-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=noble.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -764,17 +1057,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="ubuntu-noble-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=noble.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/apt/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/apt/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -782,17 +1082,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="centos-8-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=el8.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -800,17 +1107,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="centos-8-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=el8.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -818,17 +1132,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="rockylinux-9-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=el9.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -836,17 +1157,24 @@ jobs:
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="rockylinux-9-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
+
         idx_file=el9.nightly.json
-        if [ ! -e "/tmp/$idx_file" ]; then
-          curl --fail -o /tmp/$idx_file -s https://packages.edgedb.com/rpm/.jsonindexes/$idx_file || true
+        url=https://packages.edgedb.com/rpm/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
         fi
-        if [ -e "/tmp/$idx_file" ]; then
-          out=$(cat /tmp/$idx_file | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
           if [ -n "$out" ]; then
             echo "Skip rebuilding existing ${key}"
             val=false
@@ -855,50 +1183,102 @@ jobs:
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
+
         key="linux-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=x86_64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="linux-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-gnu.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=aarch64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="linuxmusl-x86_64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=x86_64-unknown-linux-musl.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="linuxmusl-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-unknown-linux-musl.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=aarch64-unknown-linux-musl.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
@@ -908,25 +1288,51 @@ jobs:
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/x86_64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=x86_64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "x86_64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
         key="macos-aarch64-edgedb-7-0-dev-9202"
         name="edgedb-server-7-0-dev-9202-postgis"
         val=true
 
-        out=$(curl --fail -s https://packages.edgedb.com/archive/.jsonindexes/aarch64-apple-darwin.nightly.json | jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter" || true)
-        if [ -n "$out" ]; then
-          echo "Skip rebuilding existing ${key}"
-          val=false
+
+        idx_file=aarch64-unknown-linux-gnu.nightly.json
+        url=https://packages.edgedb.com/archive/.jsonindexes/$idx_file
+
+
+        tmp_file="/tmp/$idx_file"
+
+        if [ ! -e "$tmp_file" ]; then
+          curl --fail -o $tmp_file -s $url || true
+        fi
+        if [ -e "$tmp_file" ]; then
+          out=$(< "$tmp_file" jq -r --arg NAME "$name" --arg REV "$rev" --arg ARCH "aarch64" "$jq_filter")
+          if [ -n "$out" ]; then
+            echo "Skip rebuilding existing ${key}"
+            val=false
+          fi
         fi
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
+
 
 
 
