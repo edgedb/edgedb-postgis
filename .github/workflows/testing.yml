@@ -178,58 +178,6 @@ jobs:
         name: builds-debian-bookworm-aarch64-edgedb-6-rc-2
         path: artifacts/debian-bookworm
 
-  build-ubuntu-bionic-x86_64-edgedb-6-rc-2:
-    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
-    needs: prep
-
-
-    steps:
-    - name: Build
-      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
-      env:
-        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "6-rc-2!${{ needs.prep.outputs.branch }}"
-        PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=6-rc-2"
-        PKG_COMPRESSION: "zstd,zip"
-        PKG_SUBDIST: "testing"
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
-        EXTRA_OPTIMIZATIONS: "true"
-        BUILD_IS_RELEASE: "true"
-        METAPKG_GIT_CACHE: disabled
-
-    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
-      with:
-        name: builds-ubuntu-bionic-x86_64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
-  build-ubuntu-bionic-aarch64-edgedb-6-rc-2:
-    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
-    needs: prep
-
-
-    steps:
-    - name: Build
-      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
-      env:
-        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "6-rc-2!${{ needs.prep.outputs.branch }}"
-        PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=6-rc-2"
-        PKG_COMPRESSION: "zstd,zip"
-        PKG_SUBDIST: "testing"
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
-        EXTRA_OPTIMIZATIONS: "true"
-        BUILD_IS_RELEASE: "true"
-        METAPKG_GIT_CACHE: disabled
-
-    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
-      with:
-        name: builds-ubuntu-bionic-aarch64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
   build-ubuntu-focal-x86_64-edgedb-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
@@ -713,8 +661,6 @@ jobs:
     - build-debian-bullseye-aarch64-edgedb-6-rc-2
     - build-debian-bookworm-x86_64-edgedb-6-rc-2
     - build-debian-bookworm-aarch64-edgedb-6-rc-2
-    - build-ubuntu-bionic-x86_64-edgedb-6-rc-2
-    - build-ubuntu-bionic-aarch64-edgedb-6-rc-2
     - build-ubuntu-focal-x86_64-edgedb-6-rc-2
     - build-ubuntu-focal-aarch64-edgedb-6-rc-2
     - build-ubuntu-jammy-x86_64-edgedb-6-rc-2
@@ -852,46 +798,6 @@ jobs:
         PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
         PKG_PLATFORM: "debian"
         PKG_PLATFORM_VERSION: "bookworm"
-        PKG_PLATFORM_LIBC: ""
-        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
-
-  publish-ubuntu-bionic-x86_64-edgedb-6-rc-2:
-    needs: [collect]
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
-      with:
-        name: builds-ubuntu-bionic-x86_64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
-    - name: Publish
-      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
-      env:
-        PKG_SUBDIST: "testing"
-        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
-        PKG_PLATFORM_LIBC: ""
-        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
-
-  publish-ubuntu-bionic-aarch64-edgedb-6-rc-2:
-    needs: [collect]
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
-      with:
-        name: builds-ubuntu-bionic-aarch64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
-    - name: Publish
-      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
-      env:
-        PKG_SUBDIST: "testing"
-        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
@@ -1254,10 +1160,6 @@ jobs:
       - publish-debian-bookworm-x86_64-edgedb-6-rc-2
       - build-debian-bookworm-aarch64-edgedb-6-rc-2
       - publish-debian-bookworm-aarch64-edgedb-6-rc-2
-      - build-ubuntu-bionic-x86_64-edgedb-6-rc-2
-      - publish-ubuntu-bionic-x86_64-edgedb-6-rc-2
-      - build-ubuntu-bionic-aarch64-edgedb-6-rc-2
-      - publish-ubuntu-bionic-aarch64-edgedb-6-rc-2
       - build-ubuntu-focal-x86_64-edgedb-6-rc-2
       - publish-ubuntu-focal-x86_64-edgedb-6-rc-2
       - build-ubuntu-focal-aarch64-edgedb-6-rc-2
