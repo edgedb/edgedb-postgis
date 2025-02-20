@@ -899,7 +899,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -929,7 +929,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -959,7 +959,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -989,7 +989,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1019,7 +1019,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1049,7 +1049,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1079,7 +1079,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1109,7 +1109,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1139,7 +1139,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1169,7 +1169,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1199,7 +1199,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1229,7 +1229,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1259,7 +1259,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1289,7 +1289,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1319,7 +1319,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1349,7 +1349,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1379,7 +1379,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1409,7 +1409,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1439,7 +1439,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1469,7 +1469,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1499,7 +1499,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1529,7 +1529,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1559,7 +1559,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "x86_64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
@@ -1589,7 +1589,7 @@ jobs:
 
 
         nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "aarch64" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
-        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+        echo nightly_${key//-/_}="$nightly_ver" >> $GITHUB_OUTPUT
 
 
 
