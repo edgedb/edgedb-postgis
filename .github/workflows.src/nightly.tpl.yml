@@ -3,7 +3,8 @@ name: Build Test and Publish Nightly Packages
 
 on:
   schedule:
-    - cron: "0 1 * * *"
+    # Deliberately scheduled 4 hours after edgedb nightly
+    - cron: "0 5 * * *"
   workflow_dispatch:
     inputs: {}
   push:
