@@ -9,6 +9,9 @@
 <% for tgt in targets.linux + targets.macos %>
 <%- set key = tgt.name + "-edgedb-" + server %>
       if_<< key.replace('-', '_') >>: ${{ steps.scm.outputs.if_<< key.replace('-', '_') >> }}
+<% if server == "nightly" %>
+      nightly_<< key.replace('-', '_') >>: ${{ steps.scm.outputs.nightly_<< key.replace('-', '_') >> }}
+<% endif %>
 <% endfor %>
 <% endfor %>
 <% endif %>
@@ -68,15 +71,27 @@
 
         echo if_${key//-/_}="$val" >> $GITHUB_OUTPUT
 
+<% if server == "nightly" %>
+        nightly_ver=$(< "$tmp_file" jq -r --arg ARCH "<< tgt.arch >>" 'first(.packages | sort_by(.build_date) | reverse | .[] | select(.basename == "gel-server") | select(.architecture == $ARCH)).version | split("+")[0]')
+        echo nightly_${key//-/_}="nightly_ver" >> $GITHUB_OUTPUT
+<% endif %>
+
 <% endfor %>
 <% endfor %>
 <% endif %>
 
 <%- for server in servers %>
 <%- set server = server.replace(".", "-") -%>
+
 <%- for tgt in targets.linux %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
 <%- set key = tgt.name + "-edgedb-" + server %>
+
+<%- if server == 'nightly' -%>
+<%- set server_ver = "${{ needs.prep.outputs.nightly_" + key.replace('-', '_') + " }}" -%>
+<%- else %>
+<%- set server_ver = server -%>
+<% endif %>
 
   build-<< key >>:
     runs-on: << tgt.runs_on if tgt.runs_on else "ubuntu-latest" >>
@@ -91,12 +106,12 @@
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         <%- if subdist != "nightly" %>
-        SRC_REF: "<< server >>!${{ needs.prep.outputs.branch }}"
+        SRC_REF: "<< server_ver >>!${{ needs.prep.outputs.branch }}"
         <%- else %>
-        SRC_REF: "<< server >>!${{ github.sha }}"
+        SRC_REF: "<< server_ver >>!${{ github.sha }}"
         <%- endif %>
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=<< server >>"
+        PKG_TAGS: "extension=postgis,server_slot=<< server_ver >>"
         PKG_COMPRESSION: "zstd,zip"
         <%- if subdist != "" %>
         PKG_SUBDIST: "<< subdist >>"
@@ -124,6 +139,12 @@
 <%- for tgt in targets.macos %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
 <%- set key = tgt.name + "-edgedb-" + server %>
+
+<%- if server == 'nightly' -%>
+<%- set server_ver = "${{ needs.prep.outputs.nightly_" + key.replace('-', '_') + " }}" -%>
+<%- else %>
+<%- set server_ver = server -%>
+<% endif %>
 
   build-<< key >>:
     runs-on: << tgt.runs_on if tgt.runs_on else "macos-latest" >>
@@ -161,9 +182,9 @@
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
         <%- if subdist != "nightly" %>
-        SRC_REF: "<< server >>!${{ needs.prep.outputs.branch }}"
+        SRC_REF: "<< server_ver >>!${{ needs.prep.outputs.branch }}"
         <%- else %>
-        SRC_REF: "<< server >>!${{ github.sha }}"
+        SRC_REF: "<< server_ver >>!${{ github.sha }}"
         <%- endif %>
         <%- if subdist != "nightly" %>
         BUILD_IS_RELEASE: "true"
