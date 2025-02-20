@@ -7,7 +7,7 @@
 <% for server in servers %>
 <%- set server = server.replace(".", "-") -%>
 <% for tgt in targets.linux + targets.macos %>
-<%- set key = tgt.name + "-edgedb-" + server %>
+<%- set key = tgt.name + "-gel-" + server %>
       if_<< key.replace('-', '_') >>: ${{ steps.scm.outputs.if_<< key.replace('-', '_') >> }}
 <% if server == "nightly" %>
       nightly_<< key.replace('-', '_') >>: ${{ steps.scm.outputs.nightly_<< key.replace('-', '_') >> }}
@@ -35,7 +35,7 @@
 <% for server in servers %>
 <%- set server = server.replace(".", "-") -%>
 <% for tgt in targets.linux + targets.macos %>
-        key="<< tgt.name >>-edgedb-<< server >>"
+        key="<< tgt.name >>-gel-<< server >>"
         name="edgedb-server-<< server >>-postgis"
         val=true
 
@@ -88,7 +88,7 @@
 
 <%- for tgt in targets.linux %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
-<%- set key = tgt.name + "-edgedb-" + server %>
+<%- set key = tgt.name + "-gel-" + server %>
 
 <%- if server == 'nightly' -%>
 <%- set server_ver = "${{ needs.prep.outputs.nightly_" + key.replace('-', '_') + " }}" -%>
@@ -141,7 +141,7 @@
 
 <%- for tgt in targets.macos %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
-<%- set key = tgt.name + "-edgedb-" + server %>
+<%- set key = tgt.name + "-gel-" + server %>
 
 <%- if server == 'nightly' -%>
 <%- set server_ver = "${{ needs.prep.outputs.nightly_" + key.replace('-', '_') + " }}" -%>
@@ -222,7 +222,7 @@
     <%- for server in servers %>
     <%- set server = server.replace(".", "-") -%>
     <%- for tgt in targets.linux + targets.macos %>
-    <%- set key = tgt.name + "-edgedb-" + server %>
+    <%- set key = tgt.name + "-gel-" + server %>
     - build-<< key >>
     <%- endfor %>
     <%- endfor %>
@@ -235,7 +235,7 @@
 <%- set server = server.replace(".", "-") -%>
 <%- for tgt in targets.linux %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
-<%- set key = tgt.name + "-edgedb-" + server %>
+<%- set key = tgt.name + "-gel-" + server %>
 <%- for publish in publications %>
 
   publish<< publish.suffix >>-<< key >>:
@@ -270,7 +270,7 @@
 <%- for server in servers %>
 <%- set server = server.replace(".", "-") -%>
 <%- for tgt in targets.macos %>
-<%- set key = tgt.name + "-edgedb-" + server %>
+<%- set key = tgt.name + "-gel-" + server %>
 <%- set plat_id = tgt.platform + ("{}".format(tgt.platform_libc) if tgt.platform_libc else "") + ("-{}".format(tgt.platform_version) if tgt.platform_version else "") %>
 <%- for publish in publications %>
 
@@ -323,14 +323,14 @@
     <%- for server in servers %>
     <%- set server = server.replace(".", "-") -%>
     <%- for tgt in targets.linux %>
-    <%- set key = tgt.name + "-edgedb-" + server %>
+    <%- set key = tgt.name + "-gel-" + server %>
       - build-<< key >>
     <%- for publish in publications %>
       - publish<< publish.suffix>>-<< key >>
     <%- endfor %>
     <%- endfor %>
     <%- for tgt in targets.macos %>
-    <%- set key = tgt.name + "-edgedb-" + server %>
+    <%- set key = tgt.name + "-gel-" + server %>
       - build-<< key >>
     <%- for publish in publications %>
       - publish<< publish.suffix>>-<< tgt.name >>

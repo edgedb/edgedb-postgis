@@ -11,181 +11,181 @@ jobs:
       branch: ${{ steps.whichver.outputs.branch }}
 
 
-      if_debian_buster_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_debian_buster_x86_64_edgedb_6_rc_2 }}
+      if_debian_buster_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_debian_buster_x86_64_gel_6_rc_2 }}
 
 
-      if_debian_buster_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_debian_buster_aarch64_edgedb_6_rc_2 }}
+      if_debian_buster_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_debian_buster_aarch64_gel_6_rc_2 }}
 
 
-      if_debian_bullseye_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_debian_bullseye_x86_64_edgedb_6_rc_2 }}
+      if_debian_bullseye_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_debian_bullseye_x86_64_gel_6_rc_2 }}
 
 
-      if_debian_bullseye_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_debian_bullseye_aarch64_edgedb_6_rc_2 }}
+      if_debian_bullseye_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_debian_bullseye_aarch64_gel_6_rc_2 }}
 
 
-      if_debian_bookworm_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_debian_bookworm_x86_64_edgedb_6_rc_2 }}
+      if_debian_bookworm_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_debian_bookworm_x86_64_gel_6_rc_2 }}
 
 
-      if_debian_bookworm_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_debian_bookworm_aarch64_edgedb_6_rc_2 }}
+      if_debian_bookworm_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_debian_bookworm_aarch64_gel_6_rc_2 }}
 
 
-      if_ubuntu_focal_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_focal_x86_64_edgedb_6_rc_2 }}
+      if_ubuntu_focal_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_focal_x86_64_gel_6_rc_2 }}
 
 
-      if_ubuntu_focal_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_focal_aarch64_edgedb_6_rc_2 }}
+      if_ubuntu_focal_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_focal_aarch64_gel_6_rc_2 }}
 
 
-      if_ubuntu_jammy_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_jammy_x86_64_edgedb_6_rc_2 }}
+      if_ubuntu_jammy_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_jammy_x86_64_gel_6_rc_2 }}
 
 
-      if_ubuntu_jammy_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_jammy_aarch64_edgedb_6_rc_2 }}
+      if_ubuntu_jammy_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_jammy_aarch64_gel_6_rc_2 }}
 
 
-      if_ubuntu_noble_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_noble_x86_64_edgedb_6_rc_2 }}
+      if_ubuntu_noble_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_noble_x86_64_gel_6_rc_2 }}
 
 
-      if_ubuntu_noble_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_noble_aarch64_edgedb_6_rc_2 }}
+      if_ubuntu_noble_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_ubuntu_noble_aarch64_gel_6_rc_2 }}
 
 
-      if_centos_8_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_centos_8_x86_64_edgedb_6_rc_2 }}
+      if_centos_8_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_centos_8_x86_64_gel_6_rc_2 }}
 
 
-      if_centos_8_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_centos_8_aarch64_edgedb_6_rc_2 }}
+      if_centos_8_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_centos_8_aarch64_gel_6_rc_2 }}
 
 
-      if_rockylinux_9_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_rockylinux_9_x86_64_edgedb_6_rc_2 }}
+      if_rockylinux_9_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_rockylinux_9_x86_64_gel_6_rc_2 }}
 
 
-      if_rockylinux_9_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_rockylinux_9_aarch64_edgedb_6_rc_2 }}
+      if_rockylinux_9_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_rockylinux_9_aarch64_gel_6_rc_2 }}
 
 
-      if_linux_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_linux_x86_64_edgedb_6_rc_2 }}
+      if_linux_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_linux_x86_64_gel_6_rc_2 }}
 
 
-      if_linux_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_linux_aarch64_edgedb_6_rc_2 }}
+      if_linux_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_linux_aarch64_gel_6_rc_2 }}
 
 
-      if_linuxmusl_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_linuxmusl_x86_64_edgedb_6_rc_2 }}
+      if_linuxmusl_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_linuxmusl_x86_64_gel_6_rc_2 }}
 
 
-      if_linuxmusl_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_linuxmusl_aarch64_edgedb_6_rc_2 }}
+      if_linuxmusl_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_linuxmusl_aarch64_gel_6_rc_2 }}
 
 
-      if_macos_x86_64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_macos_x86_64_edgedb_6_rc_2 }}
+      if_macos_x86_64_gel_6_rc_2: ${{ steps.scm.outputs.if_macos_x86_64_gel_6_rc_2 }}
 
 
-      if_macos_aarch64_edgedb_6_rc_2: ${{ steps.scm.outputs.if_macos_aarch64_edgedb_6_rc_2 }}
+      if_macos_aarch64_gel_6_rc_2: ${{ steps.scm.outputs.if_macos_aarch64_gel_6_rc_2 }}
 
 
 
-      if_debian_buster_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_buster_x86_64_edgedb_nightly }}
+      if_debian_buster_x86_64_gel_nightly: ${{ steps.scm.outputs.if_debian_buster_x86_64_gel_nightly }}
 
-      nightly_debian_buster_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_debian_buster_x86_64_edgedb_nightly }}
+      nightly_debian_buster_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_debian_buster_x86_64_gel_nightly }}
 
 
-      if_debian_buster_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_buster_aarch64_edgedb_nightly }}
+      if_debian_buster_aarch64_gel_nightly: ${{ steps.scm.outputs.if_debian_buster_aarch64_gel_nightly }}
 
-      nightly_debian_buster_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_debian_buster_aarch64_edgedb_nightly }}
+      nightly_debian_buster_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_debian_buster_aarch64_gel_nightly }}
 
 
-      if_debian_bullseye_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bullseye_x86_64_edgedb_nightly }}
+      if_debian_bullseye_x86_64_gel_nightly: ${{ steps.scm.outputs.if_debian_bullseye_x86_64_gel_nightly }}
 
-      nightly_debian_bullseye_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_debian_bullseye_x86_64_edgedb_nightly }}
+      nightly_debian_bullseye_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_debian_bullseye_x86_64_gel_nightly }}
 
 
-      if_debian_bullseye_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bullseye_aarch64_edgedb_nightly }}
+      if_debian_bullseye_aarch64_gel_nightly: ${{ steps.scm.outputs.if_debian_bullseye_aarch64_gel_nightly }}
 
-      nightly_debian_bullseye_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_debian_bullseye_aarch64_edgedb_nightly }}
+      nightly_debian_bullseye_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_debian_bullseye_aarch64_gel_nightly }}
 
 
-      if_debian_bookworm_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bookworm_x86_64_edgedb_nightly }}
+      if_debian_bookworm_x86_64_gel_nightly: ${{ steps.scm.outputs.if_debian_bookworm_x86_64_gel_nightly }}
 
-      nightly_debian_bookworm_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_debian_bookworm_x86_64_edgedb_nightly }}
+      nightly_debian_bookworm_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_debian_bookworm_x86_64_gel_nightly }}
 
 
-      if_debian_bookworm_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_debian_bookworm_aarch64_edgedb_nightly }}
+      if_debian_bookworm_aarch64_gel_nightly: ${{ steps.scm.outputs.if_debian_bookworm_aarch64_gel_nightly }}
 
-      nightly_debian_bookworm_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_debian_bookworm_aarch64_edgedb_nightly }}
+      nightly_debian_bookworm_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_debian_bookworm_aarch64_gel_nightly }}
 
 
-      if_ubuntu_focal_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_focal_x86_64_edgedb_nightly }}
+      if_ubuntu_focal_x86_64_gel_nightly: ${{ steps.scm.outputs.if_ubuntu_focal_x86_64_gel_nightly }}
 
-      nightly_ubuntu_focal_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_ubuntu_focal_x86_64_edgedb_nightly }}
+      nightly_ubuntu_focal_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_ubuntu_focal_x86_64_gel_nightly }}
 
 
-      if_ubuntu_focal_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_focal_aarch64_edgedb_nightly }}
+      if_ubuntu_focal_aarch64_gel_nightly: ${{ steps.scm.outputs.if_ubuntu_focal_aarch64_gel_nightly }}
 
-      nightly_ubuntu_focal_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_ubuntu_focal_aarch64_edgedb_nightly }}
+      nightly_ubuntu_focal_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_ubuntu_focal_aarch64_gel_nightly }}
 
 
-      if_ubuntu_jammy_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_jammy_x86_64_edgedb_nightly }}
+      if_ubuntu_jammy_x86_64_gel_nightly: ${{ steps.scm.outputs.if_ubuntu_jammy_x86_64_gel_nightly }}
 
-      nightly_ubuntu_jammy_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_ubuntu_jammy_x86_64_edgedb_nightly }}
+      nightly_ubuntu_jammy_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_ubuntu_jammy_x86_64_gel_nightly }}
 
 
-      if_ubuntu_jammy_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_jammy_aarch64_edgedb_nightly }}
+      if_ubuntu_jammy_aarch64_gel_nightly: ${{ steps.scm.outputs.if_ubuntu_jammy_aarch64_gel_nightly }}
 
-      nightly_ubuntu_jammy_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_ubuntu_jammy_aarch64_edgedb_nightly }}
+      nightly_ubuntu_jammy_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_ubuntu_jammy_aarch64_gel_nightly }}
 
 
-      if_ubuntu_noble_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_noble_x86_64_edgedb_nightly }}
+      if_ubuntu_noble_x86_64_gel_nightly: ${{ steps.scm.outputs.if_ubuntu_noble_x86_64_gel_nightly }}
 
-      nightly_ubuntu_noble_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_ubuntu_noble_x86_64_edgedb_nightly }}
+      nightly_ubuntu_noble_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_ubuntu_noble_x86_64_gel_nightly }}
 
 
-      if_ubuntu_noble_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_ubuntu_noble_aarch64_edgedb_nightly }}
+      if_ubuntu_noble_aarch64_gel_nightly: ${{ steps.scm.outputs.if_ubuntu_noble_aarch64_gel_nightly }}
 
-      nightly_ubuntu_noble_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_ubuntu_noble_aarch64_edgedb_nightly }}
+      nightly_ubuntu_noble_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_ubuntu_noble_aarch64_gel_nightly }}
 
 
-      if_centos_8_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_centos_8_x86_64_edgedb_nightly }}
+      if_centos_8_x86_64_gel_nightly: ${{ steps.scm.outputs.if_centos_8_x86_64_gel_nightly }}
 
-      nightly_centos_8_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_centos_8_x86_64_edgedb_nightly }}
+      nightly_centos_8_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_centos_8_x86_64_gel_nightly }}
 
 
-      if_centos_8_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_centos_8_aarch64_edgedb_nightly }}
+      if_centos_8_aarch64_gel_nightly: ${{ steps.scm.outputs.if_centos_8_aarch64_gel_nightly }}
 
-      nightly_centos_8_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_centos_8_aarch64_edgedb_nightly }}
+      nightly_centos_8_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_centos_8_aarch64_gel_nightly }}
 
 
-      if_rockylinux_9_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_rockylinux_9_x86_64_edgedb_nightly }}
+      if_rockylinux_9_x86_64_gel_nightly: ${{ steps.scm.outputs.if_rockylinux_9_x86_64_gel_nightly }}
 
-      nightly_rockylinux_9_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_rockylinux_9_x86_64_edgedb_nightly }}
+      nightly_rockylinux_9_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_rockylinux_9_x86_64_gel_nightly }}
 
 
-      if_rockylinux_9_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_rockylinux_9_aarch64_edgedb_nightly }}
+      if_rockylinux_9_aarch64_gel_nightly: ${{ steps.scm.outputs.if_rockylinux_9_aarch64_gel_nightly }}
 
-      nightly_rockylinux_9_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_rockylinux_9_aarch64_edgedb_nightly }}
+      nightly_rockylinux_9_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_rockylinux_9_aarch64_gel_nightly }}
 
 
-      if_linux_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_linux_x86_64_edgedb_nightly }}
+      if_linux_x86_64_gel_nightly: ${{ steps.scm.outputs.if_linux_x86_64_gel_nightly }}
 
-      nightly_linux_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_linux_x86_64_edgedb_nightly }}
+      nightly_linux_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_linux_x86_64_gel_nightly }}
 
 
-      if_linux_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_linux_aarch64_edgedb_nightly }}
+      if_linux_aarch64_gel_nightly: ${{ steps.scm.outputs.if_linux_aarch64_gel_nightly }}
 
-      nightly_linux_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_linux_aarch64_edgedb_nightly }}
+      nightly_linux_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_linux_aarch64_gel_nightly }}
 
 
-      if_linuxmusl_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_linuxmusl_x86_64_edgedb_nightly }}
+      if_linuxmusl_x86_64_gel_nightly: ${{ steps.scm.outputs.if_linuxmusl_x86_64_gel_nightly }}
 
-      nightly_linuxmusl_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_linuxmusl_x86_64_edgedb_nightly }}
+      nightly_linuxmusl_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_linuxmusl_x86_64_gel_nightly }}
 
 
-      if_linuxmusl_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_linuxmusl_aarch64_edgedb_nightly }}
+      if_linuxmusl_aarch64_gel_nightly: ${{ steps.scm.outputs.if_linuxmusl_aarch64_gel_nightly }}
 
-      nightly_linuxmusl_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_linuxmusl_aarch64_edgedb_nightly }}
+      nightly_linuxmusl_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_linuxmusl_aarch64_gel_nightly }}
 
 
-      if_macos_x86_64_edgedb_nightly: ${{ steps.scm.outputs.if_macos_x86_64_edgedb_nightly }}
+      if_macos_x86_64_gel_nightly: ${{ steps.scm.outputs.if_macos_x86_64_gel_nightly }}
 
-      nightly_macos_x86_64_edgedb_nightly: ${{ steps.scm.outputs.nightly_macos_x86_64_edgedb_nightly }}
+      nightly_macos_x86_64_gel_nightly: ${{ steps.scm.outputs.nightly_macos_x86_64_gel_nightly }}
 
 
-      if_macos_aarch64_edgedb_nightly: ${{ steps.scm.outputs.if_macos_aarch64_edgedb_nightly }}
+      if_macos_aarch64_gel_nightly: ${{ steps.scm.outputs.if_macos_aarch64_gel_nightly }}
 
-      nightly_macos_aarch64_edgedb_nightly: ${{ steps.scm.outputs.nightly_macos_aarch64_edgedb_nightly }}
+      nightly_macos_aarch64_gel_nightly: ${{ steps.scm.outputs.nightly_macos_aarch64_gel_nightly }}
 
 
 
@@ -208,7 +208,7 @@ jobs:
         rev=$(git rev-parse HEAD)
         jq_filter='.packages[] | select(.basename == $NAME) | select(.architecture == $ARCH) | .version_details.metadata.scm_revision | . as $rev | select(($rev != null) and ($REV | startswith($rev)))'
 
-        key="debian-buster-x86_64-edgedb-6-rc-2"
+        key="debian-buster-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -235,7 +235,7 @@ jobs:
 
 
 
-        key="debian-buster-aarch64-edgedb-6-rc-2"
+        key="debian-buster-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -262,7 +262,7 @@ jobs:
 
 
 
-        key="debian-bullseye-x86_64-edgedb-6-rc-2"
+        key="debian-bullseye-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -289,7 +289,7 @@ jobs:
 
 
 
-        key="debian-bullseye-aarch64-edgedb-6-rc-2"
+        key="debian-bullseye-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -316,7 +316,7 @@ jobs:
 
 
 
-        key="debian-bookworm-x86_64-edgedb-6-rc-2"
+        key="debian-bookworm-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -343,7 +343,7 @@ jobs:
 
 
 
-        key="debian-bookworm-aarch64-edgedb-6-rc-2"
+        key="debian-bookworm-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -370,7 +370,7 @@ jobs:
 
 
 
-        key="ubuntu-focal-x86_64-edgedb-6-rc-2"
+        key="ubuntu-focal-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -397,7 +397,7 @@ jobs:
 
 
 
-        key="ubuntu-focal-aarch64-edgedb-6-rc-2"
+        key="ubuntu-focal-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -424,7 +424,7 @@ jobs:
 
 
 
-        key="ubuntu-jammy-x86_64-edgedb-6-rc-2"
+        key="ubuntu-jammy-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -451,7 +451,7 @@ jobs:
 
 
 
-        key="ubuntu-jammy-aarch64-edgedb-6-rc-2"
+        key="ubuntu-jammy-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -478,7 +478,7 @@ jobs:
 
 
 
-        key="ubuntu-noble-x86_64-edgedb-6-rc-2"
+        key="ubuntu-noble-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -505,7 +505,7 @@ jobs:
 
 
 
-        key="ubuntu-noble-aarch64-edgedb-6-rc-2"
+        key="ubuntu-noble-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -532,7 +532,7 @@ jobs:
 
 
 
-        key="centos-8-x86_64-edgedb-6-rc-2"
+        key="centos-8-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -559,7 +559,7 @@ jobs:
 
 
 
-        key="centos-8-aarch64-edgedb-6-rc-2"
+        key="centos-8-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -586,7 +586,7 @@ jobs:
 
 
 
-        key="rockylinux-9-x86_64-edgedb-6-rc-2"
+        key="rockylinux-9-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -613,7 +613,7 @@ jobs:
 
 
 
-        key="rockylinux-9-aarch64-edgedb-6-rc-2"
+        key="rockylinux-9-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -640,7 +640,7 @@ jobs:
 
 
 
-        key="linux-x86_64-edgedb-6-rc-2"
+        key="linux-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -667,7 +667,7 @@ jobs:
 
 
 
-        key="linux-aarch64-edgedb-6-rc-2"
+        key="linux-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -694,7 +694,7 @@ jobs:
 
 
 
-        key="linuxmusl-x86_64-edgedb-6-rc-2"
+        key="linuxmusl-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -721,7 +721,7 @@ jobs:
 
 
 
-        key="linuxmusl-aarch64-edgedb-6-rc-2"
+        key="linuxmusl-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -748,7 +748,7 @@ jobs:
 
 
 
-        key="macos-x86_64-edgedb-6-rc-2"
+        key="macos-x86_64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -775,7 +775,7 @@ jobs:
 
 
 
-        key="macos-aarch64-edgedb-6-rc-2"
+        key="macos-aarch64-gel-6-rc-2"
         name="edgedb-server-6-rc-2-postgis"
         val=true
 
@@ -803,7 +803,7 @@ jobs:
 
 
 
-        key="debian-buster-x86_64-edgedb-nightly"
+        key="debian-buster-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -836,7 +836,7 @@ jobs:
 
 
 
-        key="debian-buster-aarch64-edgedb-nightly"
+        key="debian-buster-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -869,7 +869,7 @@ jobs:
 
 
 
-        key="debian-bullseye-x86_64-edgedb-nightly"
+        key="debian-bullseye-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -902,7 +902,7 @@ jobs:
 
 
 
-        key="debian-bullseye-aarch64-edgedb-nightly"
+        key="debian-bullseye-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -935,7 +935,7 @@ jobs:
 
 
 
-        key="debian-bookworm-x86_64-edgedb-nightly"
+        key="debian-bookworm-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -968,7 +968,7 @@ jobs:
 
 
 
-        key="debian-bookworm-aarch64-edgedb-nightly"
+        key="debian-bookworm-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1001,7 +1001,7 @@ jobs:
 
 
 
-        key="ubuntu-focal-x86_64-edgedb-nightly"
+        key="ubuntu-focal-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1034,7 +1034,7 @@ jobs:
 
 
 
-        key="ubuntu-focal-aarch64-edgedb-nightly"
+        key="ubuntu-focal-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1067,7 +1067,7 @@ jobs:
 
 
 
-        key="ubuntu-jammy-x86_64-edgedb-nightly"
+        key="ubuntu-jammy-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1100,7 +1100,7 @@ jobs:
 
 
 
-        key="ubuntu-jammy-aarch64-edgedb-nightly"
+        key="ubuntu-jammy-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1133,7 +1133,7 @@ jobs:
 
 
 
-        key="ubuntu-noble-x86_64-edgedb-nightly"
+        key="ubuntu-noble-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1166,7 +1166,7 @@ jobs:
 
 
 
-        key="ubuntu-noble-aarch64-edgedb-nightly"
+        key="ubuntu-noble-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1199,7 +1199,7 @@ jobs:
 
 
 
-        key="centos-8-x86_64-edgedb-nightly"
+        key="centos-8-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1232,7 +1232,7 @@ jobs:
 
 
 
-        key="centos-8-aarch64-edgedb-nightly"
+        key="centos-8-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1265,7 +1265,7 @@ jobs:
 
 
 
-        key="rockylinux-9-x86_64-edgedb-nightly"
+        key="rockylinux-9-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1298,7 +1298,7 @@ jobs:
 
 
 
-        key="rockylinux-9-aarch64-edgedb-nightly"
+        key="rockylinux-9-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1331,7 +1331,7 @@ jobs:
 
 
 
-        key="linux-x86_64-edgedb-nightly"
+        key="linux-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1364,7 +1364,7 @@ jobs:
 
 
 
-        key="linux-aarch64-edgedb-nightly"
+        key="linux-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1397,7 +1397,7 @@ jobs:
 
 
 
-        key="linuxmusl-x86_64-edgedb-nightly"
+        key="linuxmusl-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1430,7 +1430,7 @@ jobs:
 
 
 
-        key="linuxmusl-aarch64-edgedb-nightly"
+        key="linuxmusl-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1463,7 +1463,7 @@ jobs:
 
 
 
-        key="macos-x86_64-edgedb-nightly"
+        key="macos-x86_64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1496,7 +1496,7 @@ jobs:
 
 
 
-        key="macos-aarch64-edgedb-nightly"
+        key="macos-aarch64-gel-nightly"
         name="edgedb-server-nightly-postgis"
         val=true
 
@@ -1532,11 +1532,11 @@ jobs:
 
 
 
-  build-debian-buster-x86_64-edgedb-6-rc-2:
+  build-debian-buster-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_buster_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_debian_buster_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1556,14 +1556,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-x86_64-edgedb-6-rc-2
+        name: builds-debian-buster-x86_64-gel-6-rc-2
         path: artifacts/debian-buster
 
-  build-debian-buster-aarch64-edgedb-6-rc-2:
+  build-debian-buster-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_buster_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_debian_buster_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1583,14 +1583,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-aarch64-edgedb-6-rc-2
+        name: builds-debian-buster-aarch64-gel-6-rc-2
         path: artifacts/debian-buster
 
-  build-debian-bullseye-x86_64-edgedb-6-rc-2:
+  build-debian-bullseye-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bullseye_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_debian_bullseye_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1610,14 +1610,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-x86_64-edgedb-6-rc-2
+        name: builds-debian-bullseye-x86_64-gel-6-rc-2
         path: artifacts/debian-bullseye
 
-  build-debian-bullseye-aarch64-edgedb-6-rc-2:
+  build-debian-bullseye-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bullseye_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_debian_bullseye_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1637,14 +1637,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-aarch64-edgedb-6-rc-2
+        name: builds-debian-bullseye-aarch64-gel-6-rc-2
         path: artifacts/debian-bullseye
 
-  build-debian-bookworm-x86_64-edgedb-6-rc-2:
+  build-debian-bookworm-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bookworm_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_debian_bookworm_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1664,14 +1664,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-x86_64-edgedb-6-rc-2
+        name: builds-debian-bookworm-x86_64-gel-6-rc-2
         path: artifacts/debian-bookworm
 
-  build-debian-bookworm-aarch64-edgedb-6-rc-2:
+  build-debian-bookworm-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bookworm_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_debian_bookworm_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1691,14 +1691,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-aarch64-edgedb-6-rc-2
+        name: builds-debian-bookworm-aarch64-gel-6-rc-2
         path: artifacts/debian-bookworm
 
-  build-ubuntu-focal-x86_64-edgedb-6-rc-2:
+  build-ubuntu-focal-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_focal_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_ubuntu_focal_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1718,14 +1718,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-focal-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-focal-aarch64-edgedb-6-rc-2:
+  build-ubuntu-focal-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_focal_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_ubuntu_focal_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1745,14 +1745,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-focal-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-jammy-x86_64-edgedb-6-rc-2:
+  build-ubuntu-jammy-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_jammy_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_ubuntu_jammy_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1772,14 +1772,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-jammy-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-jammy-aarch64-edgedb-6-rc-2:
+  build-ubuntu-jammy-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_jammy_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_ubuntu_jammy_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1799,14 +1799,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-jammy-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-noble-x86_64-edgedb-6-rc-2:
+  build-ubuntu-noble-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_noble_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_ubuntu_noble_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1826,14 +1826,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-noble-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-noble
 
-  build-ubuntu-noble-aarch64-edgedb-6-rc-2:
+  build-ubuntu-noble-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_noble_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_ubuntu_noble_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1853,14 +1853,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-noble-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-noble
 
-  build-centos-8-x86_64-edgedb-6-rc-2:
+  build-centos-8-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_centos_8_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_centos_8_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1880,14 +1880,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-x86_64-edgedb-6-rc-2
+        name: builds-centos-8-x86_64-gel-6-rc-2
         path: artifacts/centos-8
 
-  build-centos-8-aarch64-edgedb-6-rc-2:
+  build-centos-8-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_centos_8_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_centos_8_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1907,14 +1907,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-aarch64-edgedb-6-rc-2
+        name: builds-centos-8-aarch64-gel-6-rc-2
         path: artifacts/centos-8
 
-  build-rockylinux-9-x86_64-edgedb-6-rc-2:
+  build-rockylinux-9-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_rockylinux_9_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_rockylinux_9_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1934,14 +1934,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-x86_64-edgedb-6-rc-2
+        name: builds-rockylinux-9-x86_64-gel-6-rc-2
         path: artifacts/rockylinux-9
 
-  build-rockylinux-9-aarch64-edgedb-6-rc-2:
+  build-rockylinux-9-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_rockylinux_9_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_rockylinux_9_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1961,14 +1961,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-aarch64-edgedb-6-rc-2
+        name: builds-rockylinux-9-aarch64-gel-6-rc-2
         path: artifacts/rockylinux-9
 
-  build-linux-x86_64-edgedb-6-rc-2:
+  build-linux-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_linux_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_linux_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -1989,14 +1989,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-x86_64-edgedb-6-rc-2
+        name: builds-linux-x86_64-gel-6-rc-2
         path: artifacts/linux-x86_64
 
-  build-linux-aarch64-edgedb-6-rc-2:
+  build-linux-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_linux_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_linux_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -2017,14 +2017,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-aarch64-edgedb-6-rc-2
+        name: builds-linux-aarch64-gel-6-rc-2
         path: artifacts/linux-aarch64
 
-  build-linuxmusl-x86_64-edgedb-6-rc-2:
+  build-linuxmusl-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_linuxmusl_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_linuxmusl_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -2046,14 +2046,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-x86_64-edgedb-6-rc-2
+        name: builds-linuxmusl-x86_64-gel-6-rc-2
         path: artifacts/linuxmusl-x86_64
 
-  build-linuxmusl-aarch64-edgedb-6-rc-2:
+  build-linuxmusl-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_linuxmusl_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_linuxmusl_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -2075,14 +2075,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-aarch64-edgedb-6-rc-2
+        name: builds-linuxmusl-aarch64-gel-6-rc-2
         path: artifacts/linuxmusl-aarch64
 
-  build-macos-x86_64-edgedb-6-rc-2:
+  build-macos-x86_64-gel-6-rc-2:
     runs-on: ['macos-13']
     needs: prep
 
-    if: needs.prep.outputs.if_macos_x86_64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_macos_x86_64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -2129,14 +2129,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-x86_64-edgedb-6-rc-2
+        name: builds-macos-x86_64-gel-6-rc-2
         path: artifacts/macos-x86_64
 
-  build-macos-aarch64-edgedb-6-rc-2:
+  build-macos-aarch64-gel-6-rc-2:
     runs-on: ['macos-14']
     needs: prep
 
-    if: needs.prep.outputs.if_macos_aarch64_edgedb_6_rc_2 == 'true'
+    if: needs.prep.outputs.if_macos_aarch64_gel_6_rc_2 == 'true'
 
 
     steps:
@@ -2183,14 +2183,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-aarch64-edgedb-6-rc-2
+        name: builds-macos-aarch64-gel-6-rc-2
         path: artifacts/macos-aarch64
 
-  build-debian-buster-x86_64-edgedb-nightly:
+  build-debian-buster-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_buster_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_buster_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2198,9 +2198,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-buster@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_debian_buster_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_debian_buster_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_buster_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_buster_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -2210,14 +2210,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-x86_64-edgedb-nightly
+        name: builds-debian-buster-x86_64-gel-nightly
         path: artifacts/debian-buster
 
-  build-debian-buster-aarch64-edgedb-nightly:
+  build-debian-buster-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_buster_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_buster_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2225,9 +2225,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-buster@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_debian_buster_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_debian_buster_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_buster_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_buster_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -2237,14 +2237,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-aarch64-edgedb-nightly
+        name: builds-debian-buster-aarch64-gel-nightly
         path: artifacts/debian-buster
 
-  build-debian-bullseye-x86_64-edgedb-nightly:
+  build-debian-bullseye-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bullseye_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bullseye_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2252,9 +2252,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bullseye@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bullseye_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bullseye_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bullseye_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bullseye_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -2264,14 +2264,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-x86_64-edgedb-nightly
+        name: builds-debian-bullseye-x86_64-gel-nightly
         path: artifacts/debian-bullseye
 
-  build-debian-bullseye-aarch64-edgedb-nightly:
+  build-debian-bullseye-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bullseye_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bullseye_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2279,9 +2279,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bullseye@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bullseye_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bullseye_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bullseye_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bullseye_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -2291,14 +2291,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-aarch64-edgedb-nightly
+        name: builds-debian-bullseye-aarch64-gel-nightly
         path: artifacts/debian-bullseye
 
-  build-debian-bookworm-x86_64-edgedb-nightly:
+  build-debian-bookworm-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bookworm_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bookworm_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2306,9 +2306,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bookworm@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bookworm_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bookworm_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bookworm_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bookworm_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -2318,14 +2318,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-x86_64-edgedb-nightly
+        name: builds-debian-bookworm-x86_64-gel-nightly
         path: artifacts/debian-bookworm
 
-  build-debian-bookworm-aarch64-edgedb-nightly:
+  build-debian-bookworm-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_debian_bookworm_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_debian_bookworm_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2333,9 +2333,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/debian-bookworm@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bookworm_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_debian_bookworm_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bookworm_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_debian_bookworm_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "debian"
@@ -2345,14 +2345,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-aarch64-edgedb-nightly
+        name: builds-debian-bookworm-aarch64-gel-nightly
         path: artifacts/debian-bookworm
 
-  build-ubuntu-focal-x86_64-edgedb-nightly:
+  build-ubuntu-focal-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_focal_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_focal_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2360,9 +2360,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-focal@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_focal_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_focal_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_focal_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_focal_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -2372,14 +2372,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-x86_64-edgedb-nightly
+        name: builds-ubuntu-focal-x86_64-gel-nightly
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-focal-aarch64-edgedb-nightly:
+  build-ubuntu-focal-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_focal_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_focal_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2387,9 +2387,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-focal@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_focal_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_focal_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_focal_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_focal_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -2399,14 +2399,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-aarch64-edgedb-nightly
+        name: builds-ubuntu-focal-aarch64-gel-nightly
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-jammy-x86_64-edgedb-nightly:
+  build-ubuntu-jammy-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_jammy_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_jammy_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2414,9 +2414,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-jammy@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_jammy_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_jammy_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_jammy_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_jammy_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -2426,14 +2426,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-x86_64-edgedb-nightly
+        name: builds-ubuntu-jammy-x86_64-gel-nightly
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-jammy-aarch64-edgedb-nightly:
+  build-ubuntu-jammy-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_jammy_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_jammy_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2441,9 +2441,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-jammy@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_jammy_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_jammy_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_jammy_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_jammy_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -2453,14 +2453,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-aarch64-edgedb-nightly
+        name: builds-ubuntu-jammy-aarch64-gel-nightly
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-noble-x86_64-edgedb-nightly:
+  build-ubuntu-noble-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_noble_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_noble_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2468,9 +2468,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-noble@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_noble_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_noble_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_noble_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_noble_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -2480,14 +2480,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-x86_64-edgedb-nightly
+        name: builds-ubuntu-noble-x86_64-gel-nightly
         path: artifacts/ubuntu-noble
 
-  build-ubuntu-noble-aarch64-edgedb-nightly:
+  build-ubuntu-noble-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_ubuntu_noble_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_ubuntu_noble_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2495,9 +2495,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-noble@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_noble_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_ubuntu_noble_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_noble_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_ubuntu_noble_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "ubuntu"
@@ -2507,14 +2507,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-aarch64-edgedb-nightly
+        name: builds-ubuntu-noble-aarch64-gel-nightly
         path: artifacts/ubuntu-noble
 
-  build-centos-8-x86_64-edgedb-nightly:
+  build-centos-8-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_centos_8_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_centos_8_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2522,9 +2522,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/centos-8@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_centos_8_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_centos_8_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_centos_8_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_centos_8_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "centos"
@@ -2534,14 +2534,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-x86_64-edgedb-nightly
+        name: builds-centos-8-x86_64-gel-nightly
         path: artifacts/centos-8
 
-  build-centos-8-aarch64-edgedb-nightly:
+  build-centos-8-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_centos_8_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_centos_8_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2549,9 +2549,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/centos-8@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_centos_8_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_centos_8_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_centos_8_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_centos_8_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "centos"
@@ -2561,14 +2561,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-aarch64-edgedb-nightly
+        name: builds-centos-8-aarch64-gel-nightly
         path: artifacts/centos-8
 
-  build-rockylinux-9-x86_64-edgedb-nightly:
+  build-rockylinux-9-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_rockylinux_9_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_rockylinux_9_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2576,9 +2576,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/rockylinux-9@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_rockylinux_9_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_rockylinux_9_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_rockylinux_9_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_rockylinux_9_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "rockylinux"
@@ -2588,14 +2588,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-x86_64-edgedb-nightly
+        name: builds-rockylinux-9-x86_64-gel-nightly
         path: artifacts/rockylinux-9
 
-  build-rockylinux-9-aarch64-edgedb-nightly:
+  build-rockylinux-9-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_rockylinux_9_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_rockylinux_9_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2603,9 +2603,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/rockylinux-9@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_rockylinux_9_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_rockylinux_9_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_rockylinux_9_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_rockylinux_9_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "rockylinux"
@@ -2615,14 +2615,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-aarch64-edgedb-nightly
+        name: builds-rockylinux-9-aarch64-gel-nightly
         path: artifacts/rockylinux-9
 
-  build-linux-x86_64-edgedb-nightly:
+  build-linux-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_linux_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linux_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2630,9 +2630,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linux-x86_64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_linux_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_linux_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linux_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linux_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2643,14 +2643,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-x86_64-edgedb-nightly
+        name: builds-linux-x86_64-gel-nightly
         path: artifacts/linux-x86_64
 
-  build-linux-aarch64-edgedb-nightly:
+  build-linux-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_linux_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linux_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2658,9 +2658,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linux-aarch64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_linux_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_linux_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linux_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linux_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2671,14 +2671,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-aarch64-edgedb-nightly
+        name: builds-linux-aarch64-gel-nightly
         path: artifacts/linux-aarch64
 
-  build-linuxmusl-x86_64-edgedb-nightly:
+  build-linuxmusl-x86_64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
-    if: needs.prep.outputs.if_linuxmusl_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linuxmusl_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2686,9 +2686,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linuxmusl-x86_64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_linuxmusl_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_linuxmusl_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linuxmusl_x86_64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linuxmusl_x86_64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2700,14 +2700,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-x86_64-edgedb-nightly
+        name: builds-linuxmusl-x86_64-gel-nightly
         path: artifacts/linuxmusl-x86_64
 
-  build-linuxmusl-aarch64-edgedb-nightly:
+  build-linuxmusl-aarch64-gel-nightly:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
-    if: needs.prep.outputs.if_linuxmusl_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_linuxmusl_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2715,9 +2715,9 @@ jobs:
       uses: edgedb/edgedb-pkg/integration/linux/build/linuxmusl-aarch64@master
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_linuxmusl_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_linuxmusl_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linuxmusl_aarch64_edgedb_nightly }}"
+        PKG_TAGS: "extension=postgis,server_slot=${{ needs.prep.outputs.nightly_linuxmusl_aarch64_gel_nightly }}"
         PKG_COMPRESSION: "zstd,zip"
         PKG_SUBDIST: "nightly"
         PKG_PLATFORM: "linux"
@@ -2729,14 +2729,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-aarch64-edgedb-nightly
+        name: builds-linuxmusl-aarch64-gel-nightly
         path: artifacts/linuxmusl-aarch64
 
-  build-macos-x86_64-edgedb-nightly:
+  build-macos-x86_64-gel-nightly:
     runs-on: ['macos-13']
     needs: prep
 
-    if: needs.prep.outputs.if_macos_x86_64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_macos_x86_64_gel_nightly == 'true'
 
 
     steps:
@@ -2767,7 +2767,7 @@ jobs:
     - name: Build
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_macos_x86_64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_macos_x86_64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
         PKG_TAGS: "extension=postgis,server_slot=nightly"
         PKG_COMPRESSION: "zstd,zip"
@@ -2783,14 +2783,14 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-x86_64-edgedb-nightly
+        name: builds-macos-x86_64-gel-nightly
         path: artifacts/macos-x86_64
 
-  build-macos-aarch64-edgedb-nightly:
+  build-macos-aarch64-gel-nightly:
     runs-on: ['macos-14']
     needs: prep
 
-    if: needs.prep.outputs.if_macos_aarch64_edgedb_nightly == 'true'
+    if: needs.prep.outputs.if_macos_aarch64_gel_nightly == 'true'
 
 
     steps:
@@ -2821,7 +2821,7 @@ jobs:
     - name: Build
       env:
         PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "${{ needs.prep.outputs.nightly_macos_aarch64_edgedb_nightly }}!${{ github.sha }}"
+        SRC_REF: "${{ needs.prep.outputs.nightly_macos_aarch64_gel_nightly }}!${{ github.sha }}"
         PKG_REVISION: "<current-date>"
         PKG_TAGS: "extension=postgis,server_slot=nightly"
         PKG_COMPRESSION: "zstd,zip"
@@ -2837,7 +2837,7 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-aarch64-edgedb-nightly
+        name: builds-macos-aarch64-gel-nightly
         path: artifacts/macos-aarch64
 
   workflow-notifications:
@@ -2846,50 +2846,50 @@ jobs:
 
     needs:
       - prep
-      - build-debian-buster-x86_64-edgedb-6-rc-2
-      - build-debian-buster-aarch64-edgedb-6-rc-2
-      - build-debian-bullseye-x86_64-edgedb-6-rc-2
-      - build-debian-bullseye-aarch64-edgedb-6-rc-2
-      - build-debian-bookworm-x86_64-edgedb-6-rc-2
-      - build-debian-bookworm-aarch64-edgedb-6-rc-2
-      - build-ubuntu-focal-x86_64-edgedb-6-rc-2
-      - build-ubuntu-focal-aarch64-edgedb-6-rc-2
-      - build-ubuntu-jammy-x86_64-edgedb-6-rc-2
-      - build-ubuntu-jammy-aarch64-edgedb-6-rc-2
-      - build-ubuntu-noble-x86_64-edgedb-6-rc-2
-      - build-ubuntu-noble-aarch64-edgedb-6-rc-2
-      - build-centos-8-x86_64-edgedb-6-rc-2
-      - build-centos-8-aarch64-edgedb-6-rc-2
-      - build-rockylinux-9-x86_64-edgedb-6-rc-2
-      - build-rockylinux-9-aarch64-edgedb-6-rc-2
-      - build-linux-x86_64-edgedb-6-rc-2
-      - build-linux-aarch64-edgedb-6-rc-2
-      - build-linuxmusl-x86_64-edgedb-6-rc-2
-      - build-linuxmusl-aarch64-edgedb-6-rc-2
-      - build-macos-x86_64-edgedb-6-rc-2
-      - build-macos-aarch64-edgedb-6-rc-2
-      - build-debian-buster-x86_64-edgedb-nightly
-      - build-debian-buster-aarch64-edgedb-nightly
-      - build-debian-bullseye-x86_64-edgedb-nightly
-      - build-debian-bullseye-aarch64-edgedb-nightly
-      - build-debian-bookworm-x86_64-edgedb-nightly
-      - build-debian-bookworm-aarch64-edgedb-nightly
-      - build-ubuntu-focal-x86_64-edgedb-nightly
-      - build-ubuntu-focal-aarch64-edgedb-nightly
-      - build-ubuntu-jammy-x86_64-edgedb-nightly
-      - build-ubuntu-jammy-aarch64-edgedb-nightly
-      - build-ubuntu-noble-x86_64-edgedb-nightly
-      - build-ubuntu-noble-aarch64-edgedb-nightly
-      - build-centos-8-x86_64-edgedb-nightly
-      - build-centos-8-aarch64-edgedb-nightly
-      - build-rockylinux-9-x86_64-edgedb-nightly
-      - build-rockylinux-9-aarch64-edgedb-nightly
-      - build-linux-x86_64-edgedb-nightly
-      - build-linux-aarch64-edgedb-nightly
-      - build-linuxmusl-x86_64-edgedb-nightly
-      - build-linuxmusl-aarch64-edgedb-nightly
-      - build-macos-x86_64-edgedb-nightly
-      - build-macos-aarch64-edgedb-nightly
+      - build-debian-buster-x86_64-gel-6-rc-2
+      - build-debian-buster-aarch64-gel-6-rc-2
+      - build-debian-bullseye-x86_64-gel-6-rc-2
+      - build-debian-bullseye-aarch64-gel-6-rc-2
+      - build-debian-bookworm-x86_64-gel-6-rc-2
+      - build-debian-bookworm-aarch64-gel-6-rc-2
+      - build-ubuntu-focal-x86_64-gel-6-rc-2
+      - build-ubuntu-focal-aarch64-gel-6-rc-2
+      - build-ubuntu-jammy-x86_64-gel-6-rc-2
+      - build-ubuntu-jammy-aarch64-gel-6-rc-2
+      - build-ubuntu-noble-x86_64-gel-6-rc-2
+      - build-ubuntu-noble-aarch64-gel-6-rc-2
+      - build-centos-8-x86_64-gel-6-rc-2
+      - build-centos-8-aarch64-gel-6-rc-2
+      - build-rockylinux-9-x86_64-gel-6-rc-2
+      - build-rockylinux-9-aarch64-gel-6-rc-2
+      - build-linux-x86_64-gel-6-rc-2
+      - build-linux-aarch64-gel-6-rc-2
+      - build-linuxmusl-x86_64-gel-6-rc-2
+      - build-linuxmusl-aarch64-gel-6-rc-2
+      - build-macos-x86_64-gel-6-rc-2
+      - build-macos-aarch64-gel-6-rc-2
+      - build-debian-buster-x86_64-gel-nightly
+      - build-debian-buster-aarch64-gel-nightly
+      - build-debian-bullseye-x86_64-gel-nightly
+      - build-debian-bullseye-aarch64-gel-nightly
+      - build-debian-bookworm-x86_64-gel-nightly
+      - build-debian-bookworm-aarch64-gel-nightly
+      - build-ubuntu-focal-x86_64-gel-nightly
+      - build-ubuntu-focal-aarch64-gel-nightly
+      - build-ubuntu-jammy-x86_64-gel-nightly
+      - build-ubuntu-jammy-aarch64-gel-nightly
+      - build-ubuntu-noble-x86_64-gel-nightly
+      - build-ubuntu-noble-aarch64-gel-nightly
+      - build-centos-8-x86_64-gel-nightly
+      - build-centos-8-aarch64-gel-nightly
+      - build-rockylinux-9-x86_64-gel-nightly
+      - build-rockylinux-9-aarch64-gel-nightly
+      - build-linux-x86_64-gel-nightly
+      - build-linux-aarch64-gel-nightly
+      - build-linuxmusl-x86_64-gel-nightly
+      - build-linuxmusl-aarch64-gel-nightly
+      - build-macos-x86_64-gel-nightly
+      - build-macos-aarch64-gel-nightly
     runs-on: ubuntu-latest
     permissions:
       actions: 'read'
