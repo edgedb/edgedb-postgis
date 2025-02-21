@@ -22,7 +22,7 @@ jobs:
 
 
 
-  build-debian-buster-x86_64-edgedb-6-rc-2:
+  build-debian-buster-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -44,10 +44,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-x86_64-edgedb-6-rc-2
+        name: builds-debian-buster-x86_64-gel-6-rc-2
         path: artifacts/debian-buster
 
-  build-debian-buster-aarch64-edgedb-6-rc-2:
+  build-debian-buster-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -69,10 +69,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-buster-aarch64-edgedb-6-rc-2
+        name: builds-debian-buster-aarch64-gel-6-rc-2
         path: artifacts/debian-buster
 
-  build-debian-bullseye-x86_64-edgedb-6-rc-2:
+  build-debian-bullseye-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -94,10 +94,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-x86_64-edgedb-6-rc-2
+        name: builds-debian-bullseye-x86_64-gel-6-rc-2
         path: artifacts/debian-bullseye
 
-  build-debian-bullseye-aarch64-edgedb-6-rc-2:
+  build-debian-bullseye-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -119,10 +119,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bullseye-aarch64-edgedb-6-rc-2
+        name: builds-debian-bullseye-aarch64-gel-6-rc-2
         path: artifacts/debian-bullseye
 
-  build-debian-bookworm-x86_64-edgedb-6-rc-2:
+  build-debian-bookworm-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -144,10 +144,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-x86_64-edgedb-6-rc-2
+        name: builds-debian-bookworm-x86_64-gel-6-rc-2
         path: artifacts/debian-bookworm
 
-  build-debian-bookworm-aarch64-edgedb-6-rc-2:
+  build-debian-bookworm-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -169,60 +169,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-debian-bookworm-aarch64-edgedb-6-rc-2
+        name: builds-debian-bookworm-aarch64-gel-6-rc-2
         path: artifacts/debian-bookworm
 
-  build-ubuntu-bionic-x86_64-edgedb-6-rc-2:
-    runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
-    needs: prep
-
-
-    steps:
-    - name: Build
-      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
-      env:
-        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "6-rc-2!${{ needs.prep.outputs.branch }}"
-        PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=6-rc-2"
-        PKG_COMPRESSION: "zstd,zip"
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
-        EXTRA_OPTIMIZATIONS: "true"
-        BUILD_IS_RELEASE: "true"
-        METAPKG_GIT_CACHE: disabled
-
-    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
-      with:
-        name: builds-ubuntu-bionic-x86_64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
-  build-ubuntu-bionic-aarch64-edgedb-6-rc-2:
-    runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
-    needs: prep
-
-
-    steps:
-    - name: Build
-      uses: edgedb/edgedb-pkg/integration/linux/build/ubuntu-bionic@master
-      env:
-        PACKAGE: edgedbpkg.edgedb_ext.postgis:PostGIS
-        SRC_REF: "6-rc-2!${{ needs.prep.outputs.branch }}"
-        PKG_REVISION: "<current-date>"
-        PKG_TAGS: "extension=postgis,server_slot=6-rc-2"
-        PKG_COMPRESSION: "zstd,zip"
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
-        EXTRA_OPTIMIZATIONS: "true"
-        BUILD_IS_RELEASE: "true"
-        METAPKG_GIT_CACHE: disabled
-
-    - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
-      with:
-        name: builds-ubuntu-bionic-aarch64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
-  build-ubuntu-focal-x86_64-edgedb-6-rc-2:
+  build-ubuntu-focal-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -244,10 +194,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-focal-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-focal-aarch64-edgedb-6-rc-2:
+  build-ubuntu-focal-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -269,10 +219,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-focal-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-focal-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-focal
 
-  build-ubuntu-jammy-x86_64-edgedb-6-rc-2:
+  build-ubuntu-jammy-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -294,10 +244,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-jammy-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-jammy-aarch64-edgedb-6-rc-2:
+  build-ubuntu-jammy-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -319,10 +269,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-jammy-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-jammy-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-jammy
 
-  build-ubuntu-noble-x86_64-edgedb-6-rc-2:
+  build-ubuntu-noble-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -344,10 +294,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-noble-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-noble
 
-  build-ubuntu-noble-aarch64-edgedb-6-rc-2:
+  build-ubuntu-noble-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -369,10 +319,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-ubuntu-noble-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-noble-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-noble
 
-  build-centos-8-x86_64-edgedb-6-rc-2:
+  build-centos-8-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -394,10 +344,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-x86_64-edgedb-6-rc-2
+        name: builds-centos-8-x86_64-gel-6-rc-2
         path: artifacts/centos-8
 
-  build-centos-8-aarch64-edgedb-6-rc-2:
+  build-centos-8-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -419,10 +369,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-centos-8-aarch64-edgedb-6-rc-2
+        name: builds-centos-8-aarch64-gel-6-rc-2
         path: artifacts/centos-8
 
-  build-rockylinux-9-x86_64-edgedb-6-rc-2:
+  build-rockylinux-9-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -444,10 +394,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-x86_64-edgedb-6-rc-2
+        name: builds-rockylinux-9-x86_64-gel-6-rc-2
         path: artifacts/rockylinux-9
 
-  build-rockylinux-9-aarch64-edgedb-6-rc-2:
+  build-rockylinux-9-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -469,10 +419,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-rockylinux-9-aarch64-edgedb-6-rc-2
+        name: builds-rockylinux-9-aarch64-gel-6-rc-2
         path: artifacts/rockylinux-9
 
-  build-linux-x86_64-edgedb-6-rc-2:
+  build-linux-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -495,10 +445,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-x86_64-edgedb-6-rc-2
+        name: builds-linux-x86_64-gel-6-rc-2
         path: artifacts/linux-x86_64
 
-  build-linux-aarch64-edgedb-6-rc-2:
+  build-linux-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -521,10 +471,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linux-aarch64-edgedb-6-rc-2
+        name: builds-linux-aarch64-gel-6-rc-2
         path: artifacts/linux-aarch64
 
-  build-linuxmusl-x86_64-edgedb-6-rc-2:
+  build-linuxmusl-x86_64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'x64']
     needs: prep
 
@@ -548,10 +498,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-x86_64-edgedb-6-rc-2
+        name: builds-linuxmusl-x86_64-gel-6-rc-2
         path: artifacts/linuxmusl-x86_64
 
-  build-linuxmusl-aarch64-edgedb-6-rc-2:
+  build-linuxmusl-aarch64-gel-6-rc-2:
     runs-on: ['package-builder', 'self-hosted', 'linux', 'arm64']
     needs: prep
 
@@ -575,10 +525,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-linuxmusl-aarch64-edgedb-6-rc-2
+        name: builds-linuxmusl-aarch64-gel-6-rc-2
         path: artifacts/linuxmusl-aarch64
 
-  build-macos-x86_64-edgedb-6-rc-2:
+  build-macos-x86_64-gel-6-rc-2:
     runs-on: ['macos-13']
     needs: prep
 
@@ -627,10 +577,10 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-x86_64-edgedb-6-rc-2
+        name: builds-macos-x86_64-gel-6-rc-2
         path: artifacts/macos-x86_64
 
-  build-macos-aarch64-edgedb-6-rc-2:
+  build-macos-aarch64-gel-6-rc-2:
     runs-on: ['macos-14']
     needs: prep
 
@@ -679,46 +629,44 @@ jobs:
 
     - uses: actions/upload-artifact@50769540e7f4bd5e21e526ee35c689e35e0d6874  # v4.4.0
       with:
-        name: builds-macos-aarch64-edgedb-6-rc-2
+        name: builds-macos-aarch64-gel-6-rc-2
         path: artifacts/macos-aarch64
   collect:
     needs:
-    - build-debian-buster-x86_64-edgedb-6-rc-2
-    - build-debian-buster-aarch64-edgedb-6-rc-2
-    - build-debian-bullseye-x86_64-edgedb-6-rc-2
-    - build-debian-bullseye-aarch64-edgedb-6-rc-2
-    - build-debian-bookworm-x86_64-edgedb-6-rc-2
-    - build-debian-bookworm-aarch64-edgedb-6-rc-2
-    - build-ubuntu-bionic-x86_64-edgedb-6-rc-2
-    - build-ubuntu-bionic-aarch64-edgedb-6-rc-2
-    - build-ubuntu-focal-x86_64-edgedb-6-rc-2
-    - build-ubuntu-focal-aarch64-edgedb-6-rc-2
-    - build-ubuntu-jammy-x86_64-edgedb-6-rc-2
-    - build-ubuntu-jammy-aarch64-edgedb-6-rc-2
-    - build-ubuntu-noble-x86_64-edgedb-6-rc-2
-    - build-ubuntu-noble-aarch64-edgedb-6-rc-2
-    - build-centos-8-x86_64-edgedb-6-rc-2
-    - build-centos-8-aarch64-edgedb-6-rc-2
-    - build-rockylinux-9-x86_64-edgedb-6-rc-2
-    - build-rockylinux-9-aarch64-edgedb-6-rc-2
-    - build-linux-x86_64-edgedb-6-rc-2
-    - build-linux-aarch64-edgedb-6-rc-2
-    - build-linuxmusl-x86_64-edgedb-6-rc-2
-    - build-linuxmusl-aarch64-edgedb-6-rc-2
-    - build-macos-x86_64-edgedb-6-rc-2
-    - build-macos-aarch64-edgedb-6-rc-2
+    - build-debian-buster-x86_64-gel-6-rc-2
+    - build-debian-buster-aarch64-gel-6-rc-2
+    - build-debian-bullseye-x86_64-gel-6-rc-2
+    - build-debian-bullseye-aarch64-gel-6-rc-2
+    - build-debian-bookworm-x86_64-gel-6-rc-2
+    - build-debian-bookworm-aarch64-gel-6-rc-2
+    - build-ubuntu-focal-x86_64-gel-6-rc-2
+    - build-ubuntu-focal-aarch64-gel-6-rc-2
+    - build-ubuntu-jammy-x86_64-gel-6-rc-2
+    - build-ubuntu-jammy-aarch64-gel-6-rc-2
+    - build-ubuntu-noble-x86_64-gel-6-rc-2
+    - build-ubuntu-noble-aarch64-gel-6-rc-2
+    - build-centos-8-x86_64-gel-6-rc-2
+    - build-centos-8-aarch64-gel-6-rc-2
+    - build-rockylinux-9-x86_64-gel-6-rc-2
+    - build-rockylinux-9-aarch64-gel-6-rc-2
+    - build-linux-x86_64-gel-6-rc-2
+    - build-linux-aarch64-gel-6-rc-2
+    - build-linuxmusl-x86_64-gel-6-rc-2
+    - build-linuxmusl-aarch64-gel-6-rc-2
+    - build-macos-x86_64-gel-6-rc-2
+    - build-macos-aarch64-gel-6-rc-2
     runs-on: ubuntu-latest
     steps:
       - run: echo 'All build+tests passed, ready to publish now!'
 
-  publish-debian-buster-x86_64-edgedb-6-rc-2:
+  publish-debian-buster-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-buster-x86_64-edgedb-6-rc-2
+        name: builds-debian-buster-x86_64-gel-6-rc-2
         path: artifacts/debian-buster
 
     - name: Publish
@@ -730,14 +678,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-buster-aarch64-edgedb-6-rc-2:
+  publish-debian-buster-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-buster-aarch64-edgedb-6-rc-2
+        name: builds-debian-buster-aarch64-gel-6-rc-2
         path: artifacts/debian-buster
 
     - name: Publish
@@ -749,14 +697,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bullseye-x86_64-edgedb-6-rc-2:
+  publish-debian-bullseye-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bullseye-x86_64-edgedb-6-rc-2
+        name: builds-debian-bullseye-x86_64-gel-6-rc-2
         path: artifacts/debian-bullseye
 
     - name: Publish
@@ -768,14 +716,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bullseye-aarch64-edgedb-6-rc-2:
+  publish-debian-bullseye-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bullseye-aarch64-edgedb-6-rc-2
+        name: builds-debian-bullseye-aarch64-gel-6-rc-2
         path: artifacts/debian-bullseye
 
     - name: Publish
@@ -787,14 +735,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bookworm-x86_64-edgedb-6-rc-2:
+  publish-debian-bookworm-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bookworm-x86_64-edgedb-6-rc-2
+        name: builds-debian-bookworm-x86_64-gel-6-rc-2
         path: artifacts/debian-bookworm
 
     - name: Publish
@@ -806,14 +754,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-debian-bookworm-aarch64-edgedb-6-rc-2:
+  publish-debian-bookworm-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-debian-bookworm-aarch64-edgedb-6-rc-2
+        name: builds-debian-bookworm-aarch64-gel-6-rc-2
         path: artifacts/debian-bookworm
 
     - name: Publish
@@ -825,52 +773,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-bionic-x86_64-edgedb-6-rc-2:
+  publish-ubuntu-focal-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-bionic-x86_64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
-    - name: Publish
-      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
-      env:
-        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
-        PKG_PLATFORM_LIBC: ""
-        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
-
-  publish-ubuntu-bionic-aarch64-edgedb-6-rc-2:
-    needs: [collect]
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
-      with:
-        name: builds-ubuntu-bionic-aarch64-edgedb-6-rc-2
-        path: artifacts/ubuntu-bionic
-
-    - name: Publish
-      uses: edgedb/edgedb-pkg/integration/linux/upload/linux-x86_64@master
-      env:
-        PACKAGE_SERVER: sftp://uploader@package-upload.edgedb.net:22/
-        PKG_PLATFORM: "ubuntu"
-        PKG_PLATFORM_VERSION: "bionic"
-        PKG_PLATFORM_LIBC: ""
-        PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
-
-  publish-ubuntu-focal-x86_64-edgedb-6-rc-2:
-    needs: [collect]
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
-      with:
-        name: builds-ubuntu-focal-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-focal-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-focal
 
     - name: Publish
@@ -882,14 +792,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-focal-aarch64-edgedb-6-rc-2:
+  publish-ubuntu-focal-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-focal-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-focal-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-focal
 
     - name: Publish
@@ -901,14 +811,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-jammy-x86_64-edgedb-6-rc-2:
+  publish-ubuntu-jammy-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-jammy-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-jammy-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-jammy
 
     - name: Publish
@@ -920,14 +830,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-jammy-aarch64-edgedb-6-rc-2:
+  publish-ubuntu-jammy-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-jammy-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-jammy-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-jammy
 
     - name: Publish
@@ -939,14 +849,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-noble-x86_64-edgedb-6-rc-2:
+  publish-ubuntu-noble-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-noble-x86_64-edgedb-6-rc-2
+        name: builds-ubuntu-noble-x86_64-gel-6-rc-2
         path: artifacts/ubuntu-noble
 
     - name: Publish
@@ -958,14 +868,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-ubuntu-noble-aarch64-edgedb-6-rc-2:
+  publish-ubuntu-noble-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-ubuntu-noble-aarch64-edgedb-6-rc-2
+        name: builds-ubuntu-noble-aarch64-gel-6-rc-2
         path: artifacts/ubuntu-noble
 
     - name: Publish
@@ -977,14 +887,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-centos-8-x86_64-edgedb-6-rc-2:
+  publish-centos-8-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-centos-8-x86_64-edgedb-6-rc-2
+        name: builds-centos-8-x86_64-gel-6-rc-2
         path: artifacts/centos-8
 
     - name: Publish
@@ -996,14 +906,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-centos-8-aarch64-edgedb-6-rc-2:
+  publish-centos-8-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-centos-8-aarch64-edgedb-6-rc-2
+        name: builds-centos-8-aarch64-gel-6-rc-2
         path: artifacts/centos-8
 
     - name: Publish
@@ -1015,14 +925,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-rockylinux-9-x86_64-edgedb-6-rc-2:
+  publish-rockylinux-9-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-rockylinux-9-x86_64-edgedb-6-rc-2
+        name: builds-rockylinux-9-x86_64-gel-6-rc-2
         path: artifacts/rockylinux-9
 
     - name: Publish
@@ -1034,14 +944,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-rockylinux-9-aarch64-edgedb-6-rc-2:
+  publish-rockylinux-9-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-rockylinux-9-aarch64-edgedb-6-rc-2
+        name: builds-rockylinux-9-aarch64-gel-6-rc-2
         path: artifacts/rockylinux-9
 
     - name: Publish
@@ -1053,14 +963,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linux-x86_64-edgedb-6-rc-2:
+  publish-linux-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linux-x86_64-edgedb-6-rc-2
+        name: builds-linux-x86_64-gel-6-rc-2
         path: artifacts/linux-x86_64
 
     - name: Publish
@@ -1072,14 +982,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linux-aarch64-edgedb-6-rc-2:
+  publish-linux-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linux-aarch64-edgedb-6-rc-2
+        name: builds-linux-aarch64-gel-6-rc-2
         path: artifacts/linux-aarch64
 
     - name: Publish
@@ -1091,14 +1001,14 @@ jobs:
         PKG_PLATFORM_LIBC: ""
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linuxmusl-x86_64-edgedb-6-rc-2:
+  publish-linuxmusl-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linuxmusl-x86_64-edgedb-6-rc-2
+        name: builds-linuxmusl-x86_64-gel-6-rc-2
         path: artifacts/linuxmusl-x86_64
 
     - name: Publish
@@ -1110,14 +1020,14 @@ jobs:
         PKG_PLATFORM_LIBC: "musl"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-linuxmusl-aarch64-edgedb-6-rc-2:
+  publish-linuxmusl-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-linuxmusl-aarch64-edgedb-6-rc-2
+        name: builds-linuxmusl-aarch64-gel-6-rc-2
         path: artifacts/linuxmusl-aarch64
 
     - name: Publish
@@ -1129,14 +1039,14 @@ jobs:
         PKG_PLATFORM_LIBC: "musl"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-x86_64:
+  publish-macos-x86_64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-macos-x86_64-edgedb-6-rc-2
+        name: builds-macos-x86_64-gel-6-rc-2
         path: artifacts/macos-x86_64
 
     - uses: actions/checkout@v4
@@ -1158,14 +1068,14 @@ jobs:
         PKG_PLATFORM_VERSION: "x86_64"
         PACKAGE_UPLOAD_SSH_KEY: "${{ secrets.PACKAGE_UPLOAD_SSH_KEY }}"
 
-  publish-macos-aarch64:
+  publish-macos-aarch64-gel-6-rc-2:
     needs: [collect]
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/download-artifact@fa0a91b85d4f404e444e00e005971372dc801d16  # v4.1.8
       with:
-        name: builds-macos-aarch64-edgedb-6-rc-2
+        name: builds-macos-aarch64-gel-6-rc-2
         path: artifacts/macos-aarch64
 
     - uses: actions/checkout@v4
@@ -1194,53 +1104,49 @@ jobs:
     needs:
       - prep
       - collect
-      - build-debian-buster-x86_64-edgedb-6-rc-2
-      - publish-debian-buster-x86_64-edgedb-6-rc-2
-      - build-debian-buster-aarch64-edgedb-6-rc-2
-      - publish-debian-buster-aarch64-edgedb-6-rc-2
-      - build-debian-bullseye-x86_64-edgedb-6-rc-2
-      - publish-debian-bullseye-x86_64-edgedb-6-rc-2
-      - build-debian-bullseye-aarch64-edgedb-6-rc-2
-      - publish-debian-bullseye-aarch64-edgedb-6-rc-2
-      - build-debian-bookworm-x86_64-edgedb-6-rc-2
-      - publish-debian-bookworm-x86_64-edgedb-6-rc-2
-      - build-debian-bookworm-aarch64-edgedb-6-rc-2
-      - publish-debian-bookworm-aarch64-edgedb-6-rc-2
-      - build-ubuntu-bionic-x86_64-edgedb-6-rc-2
-      - publish-ubuntu-bionic-x86_64-edgedb-6-rc-2
-      - build-ubuntu-bionic-aarch64-edgedb-6-rc-2
-      - publish-ubuntu-bionic-aarch64-edgedb-6-rc-2
-      - build-ubuntu-focal-x86_64-edgedb-6-rc-2
-      - publish-ubuntu-focal-x86_64-edgedb-6-rc-2
-      - build-ubuntu-focal-aarch64-edgedb-6-rc-2
-      - publish-ubuntu-focal-aarch64-edgedb-6-rc-2
-      - build-ubuntu-jammy-x86_64-edgedb-6-rc-2
-      - publish-ubuntu-jammy-x86_64-edgedb-6-rc-2
-      - build-ubuntu-jammy-aarch64-edgedb-6-rc-2
-      - publish-ubuntu-jammy-aarch64-edgedb-6-rc-2
-      - build-ubuntu-noble-x86_64-edgedb-6-rc-2
-      - publish-ubuntu-noble-x86_64-edgedb-6-rc-2
-      - build-ubuntu-noble-aarch64-edgedb-6-rc-2
-      - publish-ubuntu-noble-aarch64-edgedb-6-rc-2
-      - build-centos-8-x86_64-edgedb-6-rc-2
-      - publish-centos-8-x86_64-edgedb-6-rc-2
-      - build-centos-8-aarch64-edgedb-6-rc-2
-      - publish-centos-8-aarch64-edgedb-6-rc-2
-      - build-rockylinux-9-x86_64-edgedb-6-rc-2
-      - publish-rockylinux-9-x86_64-edgedb-6-rc-2
-      - build-rockylinux-9-aarch64-edgedb-6-rc-2
-      - publish-rockylinux-9-aarch64-edgedb-6-rc-2
-      - build-linux-x86_64-edgedb-6-rc-2
-      - publish-linux-x86_64-edgedb-6-rc-2
-      - build-linux-aarch64-edgedb-6-rc-2
-      - publish-linux-aarch64-edgedb-6-rc-2
-      - build-linuxmusl-x86_64-edgedb-6-rc-2
-      - publish-linuxmusl-x86_64-edgedb-6-rc-2
-      - build-linuxmusl-aarch64-edgedb-6-rc-2
-      - publish-linuxmusl-aarch64-edgedb-6-rc-2
-      - build-macos-x86_64-edgedb-6-rc-2
+      - build-debian-buster-x86_64-gel-6-rc-2
+      - publish-debian-buster-x86_64-gel-6-rc-2
+      - build-debian-buster-aarch64-gel-6-rc-2
+      - publish-debian-buster-aarch64-gel-6-rc-2
+      - build-debian-bullseye-x86_64-gel-6-rc-2
+      - publish-debian-bullseye-x86_64-gel-6-rc-2
+      - build-debian-bullseye-aarch64-gel-6-rc-2
+      - publish-debian-bullseye-aarch64-gel-6-rc-2
+      - build-debian-bookworm-x86_64-gel-6-rc-2
+      - publish-debian-bookworm-x86_64-gel-6-rc-2
+      - build-debian-bookworm-aarch64-gel-6-rc-2
+      - publish-debian-bookworm-aarch64-gel-6-rc-2
+      - build-ubuntu-focal-x86_64-gel-6-rc-2
+      - publish-ubuntu-focal-x86_64-gel-6-rc-2
+      - build-ubuntu-focal-aarch64-gel-6-rc-2
+      - publish-ubuntu-focal-aarch64-gel-6-rc-2
+      - build-ubuntu-jammy-x86_64-gel-6-rc-2
+      - publish-ubuntu-jammy-x86_64-gel-6-rc-2
+      - build-ubuntu-jammy-aarch64-gel-6-rc-2
+      - publish-ubuntu-jammy-aarch64-gel-6-rc-2
+      - build-ubuntu-noble-x86_64-gel-6-rc-2
+      - publish-ubuntu-noble-x86_64-gel-6-rc-2
+      - build-ubuntu-noble-aarch64-gel-6-rc-2
+      - publish-ubuntu-noble-aarch64-gel-6-rc-2
+      - build-centos-8-x86_64-gel-6-rc-2
+      - publish-centos-8-x86_64-gel-6-rc-2
+      - build-centos-8-aarch64-gel-6-rc-2
+      - publish-centos-8-aarch64-gel-6-rc-2
+      - build-rockylinux-9-x86_64-gel-6-rc-2
+      - publish-rockylinux-9-x86_64-gel-6-rc-2
+      - build-rockylinux-9-aarch64-gel-6-rc-2
+      - publish-rockylinux-9-aarch64-gel-6-rc-2
+      - build-linux-x86_64-gel-6-rc-2
+      - publish-linux-x86_64-gel-6-rc-2
+      - build-linux-aarch64-gel-6-rc-2
+      - publish-linux-aarch64-gel-6-rc-2
+      - build-linuxmusl-x86_64-gel-6-rc-2
+      - publish-linuxmusl-x86_64-gel-6-rc-2
+      - build-linuxmusl-aarch64-gel-6-rc-2
+      - publish-linuxmusl-aarch64-gel-6-rc-2
+      - build-macos-x86_64-gel-6-rc-2
       - publish-macos-x86_64
-      - build-macos-aarch64-edgedb-6-rc-2
+      - build-macos-aarch64-gel-6-rc-2
       - publish-macos-aarch64
     runs-on: ubuntu-latest
     permissions:
