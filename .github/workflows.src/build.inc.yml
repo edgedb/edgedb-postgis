@@ -322,18 +322,11 @@
     <%- endif %>
     <%- for server in servers %>
     <%- set server = server.replace(".", "-") -%>
-    <%- for tgt in targets.linux %>
+    <%- for tgt in targets.linux + targets.macos %>
     <%- set key = tgt.name + "-gel-" + server %>
       - build-<< key >>
     <%- for publish in publications %>
       - publish<< publish.suffix>>-<< key >>
-    <%- endfor %>
-    <%- endfor %>
-    <%- for tgt in targets.macos %>
-    <%- set key = tgt.name + "-gel-" + server %>
-      - build-<< key >>
-    <%- for publish in publications %>
-      - publish<< publish.suffix>>-<< tgt.name >>
     <%- endfor %>
     <%- endfor %>
     <%- endfor %>
