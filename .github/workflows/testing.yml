@@ -1189,9 +1189,9 @@ jobs:
       - build-linuxmusl-aarch64-gel-6-rc-2
       - publish-linuxmusl-aarch64-gel-6-rc-2
       - build-macos-x86_64-gel-6-rc-2
-      - publish-macos-x86_64
+      - publish-macos-x86_64-gel-6-rc-2
       - build-macos-aarch64-gel-6-rc-2
-      - publish-macos-aarch64
+      - publish-macos-aarch64-gel-6-rc-2
     runs-on: ubuntu-latest
     permissions:
       actions: 'read'
