@@ -5,6 +5,7 @@ publications:
 
 servers:
     - "6-rc.2"
+    - "6-rc.3"
 
 targets:
     linux:
