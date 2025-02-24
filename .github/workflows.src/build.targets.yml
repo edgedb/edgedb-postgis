@@ -4,8 +4,7 @@ publications:
       server: sftp://uploader@package-upload.edgedb.net:22/
 
 servers:
-    - "6-rc.2"
-    - "6-rc.3"
+    - "6"
 
 targets:
     linux:
